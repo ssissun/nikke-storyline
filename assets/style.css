@@ -305,11 +305,10 @@ body {
   margin: 18px 0;
 }
 .node .marker {
-  position: relative;
-  grid-column: 2;
-  display: flex;
-  justify-content: center;
-  padding-top: 12px;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 3;
 }
 .node .marker .dot {
@@ -713,8 +712,7 @@ body {
 
   .node { grid-template-columns: 44px 1fr; }
   .node .marker {
-    grid-column: 1;
-    padding-top: 15px;          /* dot center (24px) aligns with connector top */
+    left: 22px;                  /* absolute on spine — stays at node top regardless of card height */
   }
   .card.left, .card.right {
     grid-column: 2;
