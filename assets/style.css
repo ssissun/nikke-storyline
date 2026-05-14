@@ -1,9 +1,10 @@
 /* NIKKE Storyline Guide - Deep Ocean / Cosmic Theme */
 
 :root {
-  --paper:        #0A1730;        /* deep midnight — NIKKE HUD base */
-  --paper-2:      #1A3056;        /* card surface — clearly lifted */
+  --paper:        #09152B;        /* deep midnight — NIKKE HUD base (90% of #0A1730) */
+  --paper-2:      #172B4D;        /* card surface (90% of #1A3056) */
   --paper-3:      #2C4A7C;        /* card border */
+  --paper-bright: #0A1730;        /* preserved original — for 선택 카드 & ROUTE 카드 */
   --ink:          #EAF1FA;        /* starlight white */
   --ink-2:        #BCCBE4;        /* secondary text */
   --ink-3:        #8A9CBC;        /* meta */
@@ -449,7 +450,7 @@ body {
 
 .card[data-req="opt"] {
   border-style: dashed;
-  background: var(--paper);
+  background: var(--paper-bright);
   opacity: 0.95;
 }
 
@@ -543,7 +544,7 @@ body {
   margin-top: 10px;
 }
 .route {
-  background: var(--paper);
+  background: var(--paper-bright);
   border: 1px solid var(--line-strong);
   border-radius: 3px;
   padding: 10px 12px;
@@ -713,6 +714,7 @@ body {
   --paper:        #F4EDE2;
   --paper-2:      #EBE2D2;
   --paper-3:      #E2D7C2;
+  --paper-bright: #F4EDE2;
   --ink:          #1F1A14;
   --ink-2:        #3C342A;
   --ink-3:        #6B5E4E;
