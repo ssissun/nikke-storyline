@@ -682,19 +682,36 @@ body {
 }
 .foot a { color: var(--ink-2); text-decoration: underline; text-decoration-color: var(--line); }
 
-/* Responsive */
+/* Responsive — Tablet & small laptop */
 @media (max-width: 760px) {
+  body { background-attachment: scroll; }
+
   .page { padding: 32px 16px 56px; }
+
   .masthead h1 { font-size: 34px; }
+  .masthead .subtitle { font-size: 14px; }
+
+  .intro { padding: 16px 18px; }
+  .intro h2 { font-size: 19px; }
   .intro ul { grid-template-columns: 1fr; }
-  .notes-grid { grid-template-columns: 1fr; }
+
   .legend { grid-template-columns: repeat(2, 1fr); }
-  .routes { grid-template-columns: 1fr; }
-  .group ul.glist { grid-template-columns: 1fr; }
-  .timeline::before { left: 22px; }
-  .node {
-    grid-template-columns: 44px 1fr;
+  .legend-importance {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 16px;
   }
+
+  .notes h2 { font-size: 20px; }
+  .notes-grid { grid-template-columns: 1fr; }
+  .bonus-lead { margin: 0 0 14px; }
+  .bonus h2 { font-size: 18px; }
+
+  .timeline-header h2 { font-size: 26px; }
+  .timeline::before { left: 22px; }
+
+  .node { grid-template-columns: 44px 1fr; }
   .node .marker { grid-column: 1; }
   .card.left, .card.right {
     grid-column: 2;
@@ -706,6 +723,75 @@ body {
     left: -14px;
     right: auto;
     width: 14px;
+  }
+
+  .card .head .ttl { font-size: 17px; }
+  .card .meta-row .imp { margin-left: 0; }
+
+  .group { padding: 14px 18px; }
+  .group ul.glist { grid-template-columns: 1fr; }
+  .routes { grid-template-columns: 1fr; }
+}
+
+/* Responsive — Small phones */
+@media (max-width: 480px) {
+  .page { padding: 24px 12px 48px; }
+
+  .masthead { padding: 24px 0 18px; }
+  .masthead h1 { font-size: 28px; }
+  .masthead .subtitle { font-size: 13.5px; }
+  .masthead .meta { font-size: 12px; }
+
+  .intro { padding: 14px 16px; }
+  .intro h2 { font-size: 18px; margin-bottom: 10px; }
+  .intro li { font-size: 13px; }
+
+  .legend { grid-template-columns: 1fr; gap: 10px; }
+  .legend-importance { font-size: 12.5px; }
+
+  .notes h2 { font-size: 19px; }
+  .note { padding: 14px 16px; }
+  .note .ttl { font-size: 14px; }
+  .note .body { font-size: 13px; }
+
+  .timeline-header h2 { font-size: 22px; }
+  .timeline { margin: 24px 0 24px; }
+  .node { margin: 14px 0; }
+
+  .card { padding: 14px 14px 12px; }
+  .card .head .ttl { font-size: 16px; }
+  .card .annot { font-size: 13px; }
+
+  .group { padding: 12px 14px; }
+  .group .gh { font-size: 16px; }
+  .group .gd { font-size: 13px; }
+
+  .route { padding: 9px 11px; }
+  .route .rp { font-size: 12.5px; }
+  .route .rd { font-size: 11.5px; }
+
+  .bonus h2 { font-size: 17px; }
+  .bonus-list li { font-size: 13px; }
+
+  .arc-divider span { font-size: 12.5px; padding: 4px 14px; }
+
+  /* Theme switch — smaller on small phones */
+  .theme-switch { top: 12px; right: 12px; padding: 3px; }
+  .theme-switch-track { width: 52px; height: 24px; }
+  .theme-switch-knob { width: 18px; height: 18px; }
+  .theme-switch-icon { font-size: 12px; }
+
+  .foot { margin-top: 40px; font-size: 12px; }
+}
+
+/* Touch devices — disable hover lift to avoid sticky :hover state */
+@media (hover: none) {
+  .card:hover,
+  .note:hover,
+  .legend-card:hover,
+  .route:hover,
+  .group ul.glist li:hover {
+    transform: none;
   }
 }
 
