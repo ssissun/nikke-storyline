@@ -77,7 +77,7 @@ body {
   margin-bottom: 8px;
 }
 .masthead h1 {
-  font-family: var(--serif-en);
+  font-family: var(--kor);
   font-size: 48px;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -86,6 +86,7 @@ body {
   margin-bottom: 10px;
 }
 .masthead h1 .accent { color: var(--coral); }
+.masthead h1 .en { font-family: var(--serif-en); }
 .masthead .subtitle {
   font-size: 16px;
   color: var(--ink-2);
@@ -107,7 +108,7 @@ body {
   border-radius: 2px;
 }
 .intro h2 {
-  font-family: var(--serif-en);
+  font-family: var(--kor);
   font-size: 22px;
   margin-bottom: 12px;
   color: var(--ink);
@@ -203,7 +204,7 @@ body {
   margin-bottom: 44px;
 }
 .notes h2 {
-  font-family: var(--serif-en);
+  font-family: var(--kor);
   font-size: 24px;
   color: var(--ink);
   margin-bottom: 16px;
@@ -268,6 +269,7 @@ body {
   font-size: 36px;
   letter-spacing: -0.01em;
   display: block;
+  text-shadow: 0 0 24px rgba(93, 194, 240, 0.44), 0 0 8px rgba(93, 194, 240, 0.32);
 }
 
 .timeline {
@@ -496,7 +498,7 @@ body {
   padding: 18px 22px 20px;
 }
 .group .gh {
-  font-family: var(--serif-en);
+  font-family: var(--kor);
   font-size: 18px;
   font-weight: 700;
   color: var(--ink);
@@ -586,7 +588,7 @@ body {
   background: var(--paper-2);
   border: 1px solid var(--line-strong);
   padding: 4px 18px;
-  font-family: var(--serif-en);
+  font-family: var(--kor);
   font-style: italic;
   font-size: 14px;
   color: var(--ink-2);
@@ -607,6 +609,7 @@ body {
   border: 1px solid var(--coral);
   font-family: var(--serif-en);
   font-style: italic;
+  font-weight: 700;
   padding: 8px 24px;
   border-radius: 999px;
   font-size: 14px;
