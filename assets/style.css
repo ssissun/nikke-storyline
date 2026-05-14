@@ -266,8 +266,8 @@ body {
   font-family: var(--serif-en);
   font-style: italic;
   color: var(--coral);
-  font-size: 16px;
-  margin-bottom: 4px;
+  font-size: 36px;
+  letter-spacing: -0.01em;
   display: block;
 }
 
@@ -707,7 +707,7 @@ body {
   .bonus-lead { margin: 0 0 14px; }
   .bonus h2 { font-size: 18px; }
 
-  .timeline-header h2 { font-size: 26px; }
+  .timeline-header .tag { font-size: 26px; }
   .timeline::before { left: 22px; }
 
   .node { grid-template-columns: 44px 1fr; }
@@ -755,7 +755,7 @@ body {
   .note .ttl { font-size: 14px; }
   .note .body { font-size: 13px; }
 
-  .timeline-header h2 { font-size: 22px; }
+  .timeline-header .tag { font-size: 22px; }
   .timeline { margin: 24px 0 24px; }
   .node { margin: 14px 0; }
 
