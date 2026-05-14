@@ -310,7 +310,7 @@ body {
   display: flex;
   justify-content: center;
   padding-top: 12px;
-  z-index: 2;
+  z-index: 3;
 }
 .node .marker .dot {
   width: 18px;
@@ -712,7 +712,10 @@ body {
   .timeline::before { left: 22px; }
 
   .node { grid-template-columns: 44px 1fr; }
-  .node .marker { grid-column: 1; }
+  .node .marker {
+    grid-column: 1;
+    padding-top: 15px;          /* dot center (24px) aligns with connector top */
+  }
   .card.left, .card.right {
     grid-column: 2;
     margin-left: 12px;
@@ -720,9 +723,9 @@ body {
   }
   .node[data-side="left"]  .card.left::after,
   .node[data-side="right"] .card.right::after {
-    left: -14px;
+    left: -34px;                /* reach from card edge back to spine */
     right: auto;
-    width: 14px;
+    width: 34px;
   }
 
   .card .head .ttl { font-size: 17px; }
