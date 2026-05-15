@@ -17,6 +17,7 @@ export const timeline: TimelineItem[] = [
     title: 'OVER ZONE',
     category: 'event',
     required: true,
+    anniversary: '0.5주년',
     annotations: [
       '21지 이후 추천 의견도 있으나, <strong>특정 인물의 인상 변화</strong>가 이 시점에서 중요하다고 판단.',
       '미니게임 <em>WHITE MEMORY 필수</em>.',
@@ -54,6 +55,7 @@ export const timeline: TimelineItem[] = [
     title: 'RED ASH',
     category: 'event',
     required: true,
+    anniversary: '1주년',
     annotations: [
       '하드 스테이지 <strong>좌측 상단 테이프 · 빨간 버튼</strong> 이스터에그.',
       '<em>유실물 스토리</em> 감상 추천.',
@@ -78,6 +80,7 @@ export const timeline: TimelineItem[] = [
     title: 'NEW YEAR, NEW SWORD',
     category: 'event',
     required: true,
+    anniversary: '24 신년',
   },
   {
     type: 'card',
@@ -102,6 +105,7 @@ export const timeline: TimelineItem[] = [
     title: 'LAST KINGDOM',
     category: 'event',
     required: true,
+    anniversary: '1.5주년',
   },
   {
     type: 'optional-events',
@@ -127,6 +131,7 @@ export const timeline: TimelineItem[] = [
     type: 'old-tales',
     title: 'Chapter 31 — 32 · OLD TALES',
     badge: '메인 + 이벤트 · 필수',
+    anniversary: '2주년',
     description:
       '<em>본 가이드의 가장 중요한 구간.</em> 여기까지만 순서 신경 쓰면 이후로는 릴리즈 순서만 따라가도 됨. 4가지 루트 중 본인 취향대로 선택.',
     routes: [
@@ -173,6 +178,7 @@ export const timeline: TimelineItem[] = [
     title: 'FOOTSTEP, WALK, RUN',
     category: 'event',
     required: true,
+    anniversary: '25 신년',
   },
   {
     type: 'card',
@@ -223,6 +229,7 @@ export const timeline: TimelineItem[] = [
     title: 'UNBREAKABLE SPHERE',
     category: 'event',
     required: true,
+    anniversary: '2.5주년',
     annotations: ['<em>유실물 · 물거품 스토리</em> 감상 추천.'],
   },
   {
@@ -276,6 +283,7 @@ export const timeline: TimelineItem[] = [
     title: 'GODDESS FALL',
     category: 'event',
     required: true,
+    anniversary: '3주년',
     annotations: [
       '미니게임 <strong>REBUILD EDEN</strong> 스토리 감상 추천 — 다만 <em>미니게임 진행에 시간 상당히 소요</em>됨.',
     ],
@@ -286,6 +294,7 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: true,
     noArchive: true,
+    anniversary: '26 신년',
   },
   {
     type: 'card',
@@ -329,5 +338,6 @@ export const timeline: TimelineItem[] = [
     title: 'STAR ANIS',
     category: 'event',
     required: true,
+    anniversary: '3.5주년',
   },
 ];

@@ -11,6 +11,7 @@ export interface StoryCard {
   importance?: Importance; // 선택(opt) 카드일 때 의미
   noDub?: boolean;
   noArchive?: boolean;
+  anniversary?: string; // 주년·신년 마커 (예: '0.5주년', '24 신년')
   /**
    * annotations: HTML allowed (em/strong 사용)
    */
@@ -40,6 +41,7 @@ export interface OldTalesGroup {
   type: 'old-tales';
   title: string; // "Chapter 31 — 32 · OLD TALES"
   badge: string; // "메인 + 이벤트 · 필수"
+  anniversary?: string; // 주년·신년 마커 (예: '2주년')
   description: string; // HTML allowed
   routes: RouteEntry[];
   innerNote: string; // HTML allowed

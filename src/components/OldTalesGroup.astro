@@ -14,6 +14,9 @@ const orderStr = String(order).padStart(2, '0');
   <div class="group">
     <div class="gh">
       <span class="order">{orderStr}</span>{group.title}
+      {group.anniversary && (
+        <span class="badge anniv" style="margin-left:8px;">{group.anniversary}</span>
+      )}
       <span
         class="b"
         style="font-family:var(--kor);font-size:11px;color:var(--ink-3);margin-left:8px;"
