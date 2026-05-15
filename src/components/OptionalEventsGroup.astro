@@ -1,0 +1,29 @@
+---
+import type { OptionalEventsGroup } from '../data/types';
+
+interface Props {
+  group: OptionalEventsGroup;
+  order: number;
+}
+
+const { group, order } = Astro.props;
+const orderStr = String(order).padStart(2, '0');
+---
+
+<div class="node">
+  <div class="group">
+    <div class="gh">
+      <span class="order">{orderStr}</span>{group.title}
+    </div>
+    <div class="gd" set:html={group.description}></div>
+    <ul class="glist">
+      {
+        group.items.map((item) => (
+          <li>
+            <strong>{item.title}</strong> <span class="b">{item.meta}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

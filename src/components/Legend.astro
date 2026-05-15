@@ -1,0 +1,29 @@
+---
+import { legendCategories } from '../data/legend';
+---
+
+<div class="legend">
+  {
+    legendCategories.map(({ category, label, description }) => (
+      <div class="legend-card">
+        <span class={`swatch ${category === 'main' ? 'main' : category === 'event' ? 'event' : category === 'side' ? 'side' : 'affinity'}`} />
+        <span class="label">{label}</span>
+        <div class="desc">{description}</div>
+      </div>
+    ))
+  }
+</div>
+
+<div class="legend-importance">
+  <div><span class="imp-key">필수</span> 메인 줄기와 직결 (실선 테두리)</div>
+  <div><span class="imp-key">선택</span> 본편과 직결 약함 (점선 테두리)</div>
+  <div>
+    <span class="imp-key">중요도</span>
+    <span class="stars">★★★</span> 높음 ·
+    <span class="stars">★★</span><span class="stars-dim">☆</span> 중간 ·
+    <span class="stars">★</span><span class="stars-dim">☆☆</span> 낮음
+  </div>
+  <div>
+    <span class="imp-key">표기</span> 아카이브X 는 인게임 다시보기 제한 (추후 업데이트 예정)
+  </div>
+</div>

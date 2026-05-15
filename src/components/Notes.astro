@@ -1,0 +1,18 @@
+---
+import { externalNotes } from '../data/notes';
+---
+
+<section class="notes">
+  <h2>외부 분기</h2>
+  <div class="notes-grid">
+    {
+      externalNotes.map((note) => (
+        <div class="note">
+          <span class="tag">{note.tag}</span>
+          <div class="ttl">{note.title}</div>
+          <div class="body" set:html={note.body} />
+        </div>
+      ))
+    }
+  </div>
+</section>

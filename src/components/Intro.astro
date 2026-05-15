@@ -1,0 +1,10 @@
+---
+import { introBullets } from '../data/intro';
+---
+
+<section class="intro">
+  <h2>먼저 알아둘 점</h2>
+  <ul>
+    {introBullets.map((bullet) => <li set:html={bullet} />)}
+  </ul>
+</section>

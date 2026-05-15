@@ -1,0 +1,21 @@
+---
+interface Props {
+  lastUpdated: string; // e.g. "2026-05-14"
+}
+const { lastUpdated } = Astro.props;
+---
+
+<header class="masthead">
+  <div class="eyebrow">Story Viewing Order · Personal Guide</div>
+  <h1>
+    <span class="en">NIKKE</span>
+    <span class="accent">스토리 감상</span> 순서
+  </h1>
+  <p class="subtitle">
+    메인 · 이벤트 · 사이드 · 호감도 스토리를 감상 순서 추천. 단순 릴리즈 순이 아니라
+    <strong>이야기 흐름</strong> 기준 추천 동선.
+  </p>
+  <div class="meta">
+    최종 갱신 · {lastUpdated} · 본 가이드는 개인 감상 권장이며 공식 권장 순서는 아님
+  </div>
+</header>

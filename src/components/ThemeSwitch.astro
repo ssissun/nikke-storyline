@@ -1,0 +1,28 @@
+---
+// 다크/라이트 토글 스위치. localStorage에 nikke-theme 저장.
+---
+
+<button
+  class="theme-switch"
+  type="button"
+  role="switch"
+  aria-label="테마 전환"
+  data-theme-switch
+>
+  <span class="theme-switch-track">
+    <span class="theme-switch-icon sun" aria-hidden="true">☀</span>
+    <span class="theme-switch-icon moon" aria-hidden="true">☾</span>
+    <span class="theme-switch-knob"></span>
+  </span>
+</button>
+
+<script>
+  const btn = document.querySelector('[data-theme-switch]');
+  btn?.addEventListener('click', () => {
+    const html = document.documentElement;
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    btn.setAttribute('aria-checked', String(next === 'dark'));
+    localStorage.setItem('nikke-theme', next);
+  });
+</script>

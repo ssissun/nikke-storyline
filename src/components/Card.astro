@@ -1,0 +1,62 @@
+---
+import type { StoryCard } from '../data/types';
+import { laneFor } from '../data/types';
+import Stars from './Stars.astro';
+
+interface Props {
+  card: StoryCard;
+  order: number; // 1-indexed
+}
+
+const { card, order } = Astro.props;
+
+const lane = laneFor(card.category);
+const dataReq = card.required ? 'req' : 'opt';
+const orderStr = String(order).padStart(2, '0');
+const ttlClass = card.titleScript === 'kor' ? 'ttl kor' : 'ttl';
+
+const categoryLabel: Record<StoryCard['category'], string> = {
+  main: '메인',
+  event: '이벤트',
+  side: '사이드',
+  affinity: '호감도',
+};
+---
+
+<div
+  class="node"
+  data-cat={card.category}
+  data-req={dataReq}
+  data-side={lane}
+>
+  {lane === 'right' && <div class="marker"><div class="dot"></div></div>}
+
+  <div class={`card ${lane}`} data-cat={card.category} data-req={dataReq}>
+    <div class="head">
+      <span class="order">{orderStr}</span>
+      <span class={ttlClass}>{card.title}</span>
+    </div>
+    <div class="meta-row">
+      <span class={`badge cat-${card.category}`}>{categoryLabel[card.category]}</span>
+      {card.noArchive && <span class="badge no-archive">아카이브X</span>}
+      {card.noDub && <span class="badge no-dub">더빙X</span>}
+      <span class={`badge ${card.required ? 'req' : 'opt'}`}>
+        {card.required ? '필수' : '선택'}
+      </span>
+      <Stars required={card.required} importance={card.importance} />
+    </div>
+    {
+      card.annotations && card.annotations.length > 0 && (
+        <div class="annot">
+          <ul>
+            {card.annotations.map((a) => (
+              <li set:html={a} />
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </div>
+
+  {lane === 'left' && <div class="marker"><div class="dot"></div></div>}
+</div>

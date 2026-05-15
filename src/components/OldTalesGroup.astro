@@ -1,0 +1,46 @@
+---
+import type { OldTalesGroup } from '../data/types';
+
+interface Props {
+  group: OldTalesGroup;
+  order: number;
+}
+
+const { group, order } = Astro.props;
+const orderStr = String(order).padStart(2, '0');
+---
+
+<div class="node">
+  <div class="group">
+    <div class="gh">
+      <span class="order">{orderStr}</span>{group.title}
+      <span
+        class="b"
+        style="font-family:var(--kor);font-size:11px;color:var(--ink-3);margin-left:8px;"
+      >
+        {group.badge}
+      </span>
+    </div>
+    <div class="gd" set:html={group.description}></div>
+    <div class="routes">
+      {
+        group.routes.map((route) => (
+          <div class="route">
+            <div class={`rn ${route.best ? 'rn-best' : ''}`}>
+              {route.name}
+              {route.best && <span class="rn-star">★</span>}
+            </div>
+            <div class="rp">{route.path}</div>
+            <div class="rd" set:html={route.description} />
+          </div>
+        ))
+      }
+    </div>
+    <div
+      class="gd"
+      style="margin-top:14px; border-bottom:none; padding-bottom:0;"
+      set:html={group.innerNote}
+    >
+    </div>
+  </div>
+</div>

@@ -828,7 +828,8 @@ body {
 :root[data-theme="light"] .masthead {
   border-top: 4px solid var(--ink);
 }
-:root[data-theme="light"] .masthead h1 .accent {
+:root[data-theme="light"] .masthead h1 .accent,
+:root[data-theme="light"] .timeline-header .tag {
   text-shadow: none;
 }
 

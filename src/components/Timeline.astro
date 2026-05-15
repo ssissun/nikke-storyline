@@ -1,0 +1,47 @@
+---
+import { timeline } from '../data/timeline';
+import Card from './Card.astro';
+import OptionalEventsGroup from './OptionalEventsGroup.astro';
+import OldTalesGroup from './OldTalesGroup.astro';
+import ArcDivider from './ArcDivider.astro';
+
+/**
+ * Order numbering: dividers는 카운트하지 않음. 그 외 항목(card / group)은 순서대로 1, 2, 3...
+ */
+let order = 0;
+const itemsWithOrder = timeline.map((item) => {
+  if (item.type === 'divider') {
+    return { item, order: null };
+  }
+  order += 1;
+  return { item, order };
+});
+---
+
+<div class="timeline-header">
+  <span class="tag">— The Storyline —</span>
+</div>
+
+<div class="timeline">
+  {
+    itemsWithOrder.map(({ item, order }) => {
+      if (item.type === 'divider') {
+        return <ArcDivider text={item.text} />;
+      }
+      if (item.type === 'card') {
+        return <Card card={item} order={order!} />;
+      }
+      if (item.type === 'optional-events') {
+        return <OptionalEventsGroup group={item} order={order!} />;
+      }
+      if (item.type === 'old-tales') {
+        return <OldTalesGroup group={item} order={order!} />;
+      }
+      return null;
+    })
+  }
+
+  <div class="timeline-end">
+    <div class="endcap">— To be Continued —</div>
+  </div>
+</div>
