@@ -1,19 +1,4 @@
-# 검색엔진 색인은 차단
 User-agent: *
-Disallow: /
-
-# 단, 링크 미리보기(썸네일) 크롤러는 허용
-User-agent: Twitterbot
 Allow: /
 
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: Discordbot
-Allow: /
-
-User-agent: kakaotalk-scrap
-Allow: /
-
-User-agent: Slackbot
-Allow: /
+Sitemap: https://ssissun.github.io/nikke-storyline/sitemap.xml
