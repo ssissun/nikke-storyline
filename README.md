@@ -1,6 +1,4 @@
-# NIKKE Storyline — Astro 버전
-
-기존 `nikke-storyline/` (정적 HTML/CSS)을 Astro + TypeScript로 마이그레이션한 버전.
+# NIKKE Storyline
 
 ## 구조
 
@@ -53,6 +51,18 @@ npm run preview    # 빌드 결과 미리보기
 ```
 
 ## 배포
-
-GitHub Pages용 빌드 산출물(`dist/`)을 푸시하거나, GitHub Actions로 자동화 가능.
-(자동 배포는 별도 설정 필요 — 현재 미설정)
+GitHub Actions로 자동화됨
+main 브랜치에 push될 때마다 자동 실행:
+```
+  git push (main으로)
+    ↓
+   [자동] GitHub Actions 트리거
+     1. checkout
+     2. npm ci (의존성 설치, package-lock.json 기준)
+     3. npm run build (Astro → dist/)
+     4. actions/upload-pages-artifact
+     5. actions/deploy-pages
+    ↓
+   [자동] ssissun.github.io/nikke-storyline 에 새 dist/ 반영 (1-2분
+   내)
+```
