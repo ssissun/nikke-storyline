@@ -21,7 +21,8 @@ import { bonusCards } from '../data/bonus';
               ))}
             </ul>
             <div class="rel-nikke">
-              <span class="rl">관련 니케</span> {card.relatedNikke}
+              <span class="rl">관련 {card.related.type === 'squad' ? '스쿼드' : '니케'}</span>
+              {card.related.value}
             </div>
           </div>
         </div>

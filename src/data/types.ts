@@ -61,7 +61,10 @@ export interface BonusCard {
   tag: string;
   title: string;
   bullets: string[]; // HTML allowed
-  relatedNikke: string;
+  related: {
+    type: 'nikke' | 'squad';
+    value: string;
+  };
 }
 
 export interface LegendCategory {

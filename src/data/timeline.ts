@@ -107,14 +107,14 @@ export const timeline: TimelineItem[] = [
     type: 'optional-events',
     title: '선택적 감상 이벤트 스토리',
     description:
-      '다 보기를 추천하지만 시간이 부족하다면 — 메인 연관성 가장 높은 것은 <strong>DIRTY BACKYARD</strong>. 단, <em>동시에 가장 재미없다고 평가받는 것도 DIRTY BACKYARD</em>. 취사 선택은 본인 판단.',
+      '다 보기를 추천하지만 시간이 부족하다면 — 메인 연관성 가장 높은 것은 <strong>DIRTY BACKYARD</strong>. 취사 선택은 본인 판단.',
     items: [
-      { title: 'DIRTY BACKYARD', meta: '이벤트 · 더빙X · 메인 연관 ↑' },
-      { title: 'L.T.K — LICENSE TO KILL', meta: '이벤트 · 더빙X' },
-      { title: 'KILL THE LORD', meta: '이벤트 · 더빙X' },
-      { title: "BOOM'S DAY", meta: '이벤트 · 더빙X' },
-      { title: 'D.ARK HERO', meta: '이벤트 · 더빙X · ICE DRAGON SAGA 로 이어짐' },
-      { title: 'ICE DRAGON SAGA', meta: '이벤트 · D.ARK HERO 후속' },
+      { title: 'DIRTY BACKYARD', meta: '이벤트 · 더빙X · 메인 연관 ↑ · 목단' },
+      { title: 'L.T.K — LICENSE TO KILL', meta: '이벤트 · 더빙X · 시지 패러리스' },
+      { title: 'KILL THE LORD', meta: '이벤트 · 더빙X · 시지 패러리스' },
+      { title: "BOOM'S DAY", meta: '이벤트 · 더빙X · 일렉트로닉 쇼크' },
+      { title: 'D.ARK HERO', meta: '이벤트 · 더빙X · ICE DRAGON SAGA 로 이어짐 · 일렉트로닉 쇼크 · 익스터너' },
+      { title: 'ICE DRAGON SAGA', meta: '이벤트 · D.ARK HERO 후속 · 익스터너' },
     ],
   },
   {
@@ -237,6 +237,7 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: true,
     noArchive: true,
+    noDub: true,
   },
   {
     type: 'card',

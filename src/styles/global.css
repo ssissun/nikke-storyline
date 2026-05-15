@@ -10,7 +10,7 @@
   --ink-3:        #8A9CBC;        /* meta */
   --ink-4:        #5E7196;        /* faint */
   --coral:        #5DC2F0;        /* primary accent — electric cyan (메인) */
-  --steel:        #88A8E8;        /* 이벤트 — sky blue */
+  --steel:        #B594E8;        /* 이벤트 — lavender purple */
   --moss:         #4FCFAE;        /* 사이드 — teal */
   --gold:         #F2C674;        /* 호감도 — gold */
   --warn:         #E2A555;        /* amber */
@@ -30,7 +30,7 @@ body {
   background: var(--paper);
   background-image:
     radial-gradient(ellipse at 18% 0%, rgba(93, 194, 240, 0.16), transparent 55%),
-    radial-gradient(ellipse at 85% 30%, rgba(136, 168, 232, 0.10), transparent 50%),
+    radial-gradient(ellipse at 85% 30%, rgba(181, 148, 232, 0.10), transparent 50%),
     radial-gradient(ellipse at 50% 100%, rgba(79, 207, 174, 0.08), transparent 60%),
     linear-gradient(rgba(93, 194, 240, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(93, 194, 240, 0.05) 1px, transparent 1px),
@@ -288,7 +288,7 @@ body {
     to bottom,
     transparent 0,
     rgba(93, 194, 240, 0.80) 18px,
-    rgba(136, 168, 232, 0.60) 50%,
+    rgba(181, 148, 232, 0.60) 50%,
     rgba(79, 207, 174, 0.55) calc(100% - 18px),
     transparent 100%
   );
@@ -400,7 +400,7 @@ body {
   border: 1px solid currentColor;
 }
 .badge.cat-main     { color: var(--coral);  background: rgba(93, 194, 240, 0.15); }
-.badge.cat-event    { color: var(--steel);  background: rgba(136, 168, 232, 0.15); }
+.badge.cat-event    { color: var(--steel);  background: rgba(181, 148, 232, 0.15); }
 .badge.cat-side     { color: var(--moss);   background: rgba(79, 207, 174, 0.15); }
 .badge.cat-affinity { color: var(--gold);   background: rgba(242, 198, 116, 0.15); }
 .badge.req          { color: var(--ink);    background: rgba(234, 241, 250, 0.08); }
@@ -471,7 +471,7 @@ body {
 /* dot colors by category */
 .node[data-cat="main"]     .marker .dot { border-color: var(--coral); background: var(--coral); box-shadow: 0 0 16px rgba(93, 194, 240, 0.60), 0 0 4px rgba(93, 194, 240, 0.72); }
 .node[data-cat="main"]     .marker .dot::after { background: var(--paper); inset: 5px; }
-.node[data-cat="event"]    .marker .dot { border-color: var(--steel); box-shadow: 0 0 12px rgba(136, 168, 232, 0.44); }
+.node[data-cat="event"]    .marker .dot { border-color: var(--steel); box-shadow: 0 0 12px rgba(181, 148, 232, 0.44); }
 .node[data-cat="event"]    .marker .dot::after { background: var(--steel); }
 .node[data-cat="side"]     .marker .dot { border-color: var(--moss); box-shadow: 0 0 12px rgba(79, 207, 174, 0.44); }
 .node[data-cat="side"]     .marker .dot::after { background: var(--moss); }
@@ -811,7 +811,7 @@ body {
   --ink-3:        #6B5E4E;
   --ink-4:        #9A8C76;
   --coral:        #C9532D;
-  --steel:        #2E5A88;
+  --steel:        #6B3FA0;
   --moss:         #4A6B2F;
   --gold:         #B8862E;
   --warn:         #8A6A1F;
@@ -890,7 +890,7 @@ body {
 :root[data-theme="light"] .node[data-cat="affinity"] .marker .dot { box-shadow: none; }
 
 :root[data-theme="light"] .badge.cat-main     { background: rgba(201, 83, 45, 0.06); }
-:root[data-theme="light"] .badge.cat-event    { background: rgba(46, 90, 136, 0.07); }
+:root[data-theme="light"] .badge.cat-event    { background: rgba(107, 63, 160, 0.10); }
 :root[data-theme="light"] .badge.cat-side     { background: rgba(74, 107, 47, 0.07); }
 :root[data-theme="light"] .badge.cat-affinity { background: rgba(184, 134, 46, 0.07); }
 :root[data-theme="light"] .badge.req          { background: var(--paper-2); }
