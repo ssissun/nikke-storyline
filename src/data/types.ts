@@ -40,11 +40,11 @@ export interface RouteEntry {
 export interface OldTalesGroup {
   type: 'old-tales';
   title: string; // "Chapter 31 — 32 · OLD TALES"
-  badge: string; // "메인 + 이벤트 · 필수"
   anniversary?: string; // 주년·신년 마커 (예: '2주년')
   description: string; // HTML allowed
   routes: RouteEntry[];
   innerNote: string; // HTML allowed
+  // 카테고리: 메인 + 이벤트, 필수성: 필수 — 컴포넌트에서 고정 렌더링
 }
 
 export type TimelineItem =

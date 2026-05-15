@@ -130,7 +130,6 @@ export const timeline: TimelineItem[] = [
   {
     type: 'old-tales',
     title: 'Chapter 31 — 32 · OLD TALES',
-    badge: '메인 + 이벤트 · 필수',
     anniversary: '2주년',
     description:
       '<em>본 가이드의 가장 중요한 구간.</em> 여기까지만 순서 신경 쓰면 이후로는 릴리즈 순서만 따라가도 됨. 4가지 루트 중 본인 취향대로 선택.',

@@ -14,10 +14,12 @@ const orderStr = String(order).padStart(2, '0');
   <div class="group">
     <div class="gh">
       <span class="order">{orderStr}</span>{group.title}
-      {group.anniversary && (
-        <span class="badge anniv" style="margin-left:8px;">{group.anniversary}</span>
-      )}
-      <span class="badge combo" style="margin-left:8px;">{group.badge}</span>
+    </div>
+    <div class="meta-row" style="margin: 4px 0 12px;">
+      <span class="badge cat-main">메인</span>
+      <span class="badge cat-event">이벤트</span>
+      {group.anniversary && <span class="badge anniv">{group.anniversary}</span>}
+      <span class="badge req">필수</span>
     </div>
     <div class="gd" set:html={group.description}></div>
     <div class="routes">
