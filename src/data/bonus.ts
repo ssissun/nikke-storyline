@@ -2,7 +2,7 @@ import type { BonusCard } from './types';
 
 /**
  * 메인 줄기와 무관하지만 단독 감상으로 호평인 이벤트
- * 순서: MIRACLE SNOW · 2X2 LOVE · BLANK TICKET · TERMINUS TICKET
+ * 순서: MIRACLE SNOW · MEMORIES TELLER · 2X2 LOVE · BLANK TICKET · TERMINUS TICKET
  */
 export const bonusCards: BonusCard[] = [
   {
@@ -13,6 +13,15 @@ export const bonusCards: BonusCard[] = [
       '감상 전 <em>N102 · 루피 호감도 스토리</em> 감상 권장.',
     ],
     related: { type: 'nikke', value: 'N102 · 루피' },
+  },
+  {
+    tag: '아카이브 O',
+    title: 'MEMORIES TELLER',
+    bullets: [
+      '<strong>스텔라 블레이드</strong> 콜라보 이벤트.',
+      '<strong>정사(스토리 라인)에 편입</strong>됨.',
+      '감상 전 <em>롬(수집 로봇) 관련 서브퀘스트</em> 완료 권장.',
+    ],
   },
   {
     tag: '아카이브 X',

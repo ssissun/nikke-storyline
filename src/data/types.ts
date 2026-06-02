@@ -63,7 +63,7 @@ export interface BonusCard {
   tag: string;
   title: string;
   bullets: string[]; // HTML allowed
-  related: {
+  related?: {
     type: 'nikke' | 'squad';
     value: string;
   };

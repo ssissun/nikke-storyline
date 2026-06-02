@@ -3,9 +3,9 @@ import { bonusCards } from '../data/bonus';
 ---
 
 <section class="notes bonus">
-  <h2>메인 줄기와는 무관하지만 — 스토리가 호평인 이벤트</h2>
+  <h2>메인 스토리 흐름과는 큰 관련이 없으나 — 스토리가 호평인 이벤트</h2>
   <p class="bonus-lead">
-    스토리 라인에 포함되지 않아 본편 이해에 영향은 없지만, 단독 감상으로 추천받는
+    메인 스토리 흐름과는 큰 관련이 없어 본편 이해에 영향은 적지만, 단독 감상으로 추천받는
     이벤트들.
   </p>
   <div class="notes-grid">
@@ -20,10 +20,12 @@ import { bonusCards } from '../data/bonus';
                 <li set:html={b} />
               ))}
             </ul>
-            <div class="rel-nikke">
-              <span class="rl">관련 {card.related.type === 'squad' ? '스쿼드' : '니케'}</span>
-              {card.related.value}
-            </div>
+            {card.related && (
+              <div class="rel-nikke">
+                <span class="rl">관련 {card.related.type === 'squad' ? '스쿼드' : '니케'}</span>
+                {card.related.value}
+              </div>
+            )}
           </div>
         </div>
       ))
