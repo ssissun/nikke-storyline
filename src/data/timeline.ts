@@ -138,7 +138,7 @@ export const timeline: TimelineItem[] = [
         name: 'ROUTE 1',
         path: '31 → 32 막보 전 → OLD TALES → 32 막보',
         description:
-          '주요 인물의 배경을 모른 채 진행하다 <strong>보스전 클리어 전에 OLD TALES를 감상</strong>. 이어서 곧바로 보스전과 남은 메인을 보는 것을 추천. <strong>개인적으로 가장 추천하는 루트.</strong>',
+          '주요 인물의 배경을 모른 채 진행하다 <strong>보스전 클리어 전에 OLD TALES를 감상</strong>. OLD TALES 감상 후 바로 이어서 보스전 후의 스토리를 감상하는 것을 추천. <strong>개인적으로 가장 추천하는 루트.</strong>',
         best: true,
       },
       {
@@ -342,7 +342,7 @@ export const timeline: TimelineItem[] = [
   },
   {
     type: 'card',
-    title: 'ARK RAGNER',
+    title: 'ARK RANGER',
     category: 'event',
     required: true,
   },
