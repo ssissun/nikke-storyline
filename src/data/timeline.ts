@@ -136,27 +136,28 @@ export const timeline: TimelineItem[] = [
     routes: [
       {
         name: 'ROUTE 1',
-        path: '31 → OLD TALES → 32',
+        path: '31 → 32 막보 전 → OLD TALES → 32 막보',
         description:
-          '<strong>특정 인물의 정체</strong>를 모르고 어느 정도 진행한 뒤 감상.',
+          '주요 인물의 배경을 모른 채 진행하다 <strong>보스전 클리어 전에 OLD TALES를 감상</strong>. 이어서 곧바로 보스전과 남은 메인을 보는 것을 추천. <strong>개인적으로 가장 추천하는 루트.</strong>',
+        best: true,
       },
       {
         name: 'ROUTE 2',
-        path: '31 → 32 막보 전 → OLD TALES → 32 막보',
+        path: '31 → OLD TALES → 32',
         description:
-          '궁금증이 <strong>극에 달할 때까지</strong> 참았다가 감상.',
-        best: true,
+          '<strong>주요 인물의 배경을 먼저 이해</strong>한 뒤 메인을 진행 — 스토리 이해가 더 잘 될 수 있음.',
       },
       {
         name: 'ROUTE 3',
         path: '31 → 32 → OLD TALES',
         description:
-          '릴리즈 순서 그대로. 다만 OLD TALES 감상 전에 <strong>도파민이 덜할 수 있어 추천도는 낮음</strong>.',
+          '릴리즈 순서 그대로 — 주요 인물의 배경을 모른 채 보스전 이후 메인까지 진행. <strong>공식이 추천하는 순서이자 개발진이 의도한 감상 순서.</strong>',
       },
       {
         name: 'ROUTE 4',
         path: 'OLD TALES → 31 → 32',
-        description: 'MZ픽. 27 — 30 지역이 너무 지루하게 느껴진다면 선택.',
+        description:
+          '기본적으로는 <strong>비추천</strong>. 다만 27 — 30 지역이 너무 지루해 이후 스토리에 손이 안 갈 정도라면 조건부로 추천.',
       },
     ],
     innerNote:
@@ -338,5 +339,11 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: true,
     anniversary: '3.5주년',
+  },
+  {
+    type: 'card',
+    title: 'ARK RAGNER',
+    category: 'event',
+    required: true,
   },
 ];
