@@ -9,6 +9,7 @@ export interface StoryCard {
   category: Category;
   required: boolean;
   importance?: Importance; // 선택(opt) 카드일 때 의미
+  important?: boolean; // '중요' 뱃지 표시 여부 (선택이지만 관람 권장)
   noDub?: boolean;
   noArchive?: boolean;
   anniversary?: string; // 주년·신년 마커 (예: '0.5주년', '24 신년')

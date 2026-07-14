@@ -250,8 +250,10 @@ export const timeline: TimelineItem[] = [
     type: 'card',
     title: 'LORD FOR JUSTICE',
     category: 'event',
-    required: true,
+    required: false,
+    importance: 'high',
     noDub: true,
+    important: true,
   },
   {
     type: 'card',
@@ -310,6 +312,7 @@ export const timeline: TimelineItem[] = [
     importance: 'high',
     noArchive: true,
     noDub: true,
+    annotations: ['E.H. 의 과거'],
   },
   {
     type: 'card',
@@ -319,7 +322,7 @@ export const timeline: TimelineItem[] = [
     importance: 'high',
     noArchive: true,
     noDub: true,
-    annotations: ['선택이지만 <em>중요도 높음</em>.'],
+    important: true,
   },
   {
     type: 'card',

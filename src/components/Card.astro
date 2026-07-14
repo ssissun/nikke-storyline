@@ -39,11 +39,11 @@ const categoryLabel: Record<StoryCard['category'], string> = {
     <div class="meta-row">
       <span class={`badge cat-${card.category}`}>{categoryLabel[card.category]}</span>
       {card.anniversary && <span class="badge anniv">{card.anniversary}</span>}
-      {card.noArchive && <span class="badge no-archive">아카이브X</span>}
       {card.noDub && <span class="badge no-dub">더빙X</span>}
       <span class={`badge ${card.required ? 'req' : 'opt'}`}>
         {card.required ? '필수' : '선택'}
       </span>
+      {card.important && <span class="badge important">중요</span>}
       <Stars required={card.required} importance={card.importance} />
     </div>
     {

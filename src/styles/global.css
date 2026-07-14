@@ -403,8 +403,9 @@ body {
 .badge.cat-event    { color: var(--steel);  background: rgba(181, 148, 232, 0.15); }
 .badge.cat-side     { color: var(--moss);   background: rgba(79, 207, 174, 0.15); }
 .badge.cat-affinity { color: var(--gold);   background: rgba(242, 198, 116, 0.15); }
-.badge.req          { color: var(--ink);    background: rgba(234, 241, 250, 0.08); }
-.badge.opt          { color: var(--warn);   background: rgba(226, 165, 85, 0.14); border-style: dashed; }
+.badge.req          { color: #FFD93D;       background: rgba(255, 217, 61, 0.16); }
+.badge.opt          { color: var(--ink);    background: rgba(234, 241, 250, 0.08); }
+.badge.important    { color: #FFD93D;       background: rgba(255, 217, 61, 0.16); }
 .badge.no-dub       { color: var(--ink-3);  background: rgba(234, 241, 250, 0.06); border-style: dotted; }
 .badge.no-archive   { color: var(--ink-3);  background: rgba(234, 241, 250, 0.06); border-style: dotted; }
 .badge.anniv        { color: #FFD93D;       background: rgba(255, 217, 61, 0.16); }
@@ -894,8 +895,9 @@ body {
 :root[data-theme="light"] .badge.cat-event    { background: rgba(107, 63, 160, 0.10); }
 :root[data-theme="light"] .badge.cat-side     { background: rgba(74, 107, 47, 0.07); }
 :root[data-theme="light"] .badge.cat-affinity { background: rgba(184, 134, 46, 0.07); }
-:root[data-theme="light"] .badge.req          { background: var(--paper-2); }
-:root[data-theme="light"] .badge.opt          { background: rgba(138, 106, 31, 0.06); }
+:root[data-theme="light"] .badge.req          { color: #A37418; background: rgba(163, 116, 24, 0.10); }
+:root[data-theme="light"] .badge.opt          { background: var(--paper-2); }
+:root[data-theme="light"] .badge.important    { color: #A37418; background: rgba(163, 116, 24, 0.10); }
 :root[data-theme="light"] .badge.no-dub,
 :root[data-theme="light"] .badge.no-archive   { background: var(--paper-2); }
 :root[data-theme="light"] .badge.anniv        { color: #A37418; background: rgba(163, 116, 24, 0.10); }
