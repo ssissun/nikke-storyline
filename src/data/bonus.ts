@@ -29,7 +29,7 @@ export const bonusCards: BonusCard[] = [
     bullets: [
       '현재 <strong>아카이브 미포함</strong>.',
       '<strong>미연시</strong> 형식의 이벤트.',
-      '감상 전 <em>아르카나 호감도 스토리</em> 감상 권장 (캐릭터 파악).',
+      '감상 전 <em>아르카나 호감도 스토리</em> 또는 <em>ARCHANE ARCHIVE</em>감상 권장 (캐릭터 파악).',
     ],
     related: { type: 'nikke', value: '아르카나 · 프리바티' },
   },
