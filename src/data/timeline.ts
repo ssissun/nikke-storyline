@@ -209,7 +209,7 @@ export const timeline: TimelineItem[] = [
     category: 'side',
     required: true,
     annotations: [
-      '24지 직후에 봐도 무방하지만 <strong>스토리 연결성</strong> 때문에 이곳에 배치.',
+      '24지 후를 추천하기도 하지만 RED ASH - 메인 스토리의 맥이 끊길 수 있으므로 여기서 감상 추천',
     ],
   },
   {
@@ -254,9 +254,8 @@ export const timeline: TimelineItem[] = [
     title: 'LORD FOR JUSTICE',
     category: 'event',
     required: false,
-    importance: 'high',
+    importance: 'medium',
     noDub: true,
-    important: true,
   },
   {
     type: 'card',
@@ -312,7 +311,7 @@ export const timeline: TimelineItem[] = [
     title: 'ENTER HEAVEN',
     category: 'event',
     required: false,
-    importance: 'high',
+    importance: 'medium',
     noArchive: true,
     noDub: true,
     annotations: ['E.H. 의 과거'],
@@ -368,6 +367,7 @@ export const timeline: TimelineItem[] = [
     required: false,
     importance: 'high',
     noDub: true,
+    annotations: ['미미르 부속고등학교'],
   },
   {
     type: 'card',
@@ -376,6 +376,7 @@ export const timeline: TimelineItem[] = [
     required: false,
     importance: 'medium',
     noDub: true,
+    annotations: ['미미르 부속고등학교'],
   },
   {
     type: 'card',
