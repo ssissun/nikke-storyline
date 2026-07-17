@@ -21,8 +21,12 @@ export const settingStoryGroups: SettingStoryCard[] = [
     setting: '지휘관',
     events: ['WISDOM SPRING', 'GOOD WORLD'],
   },
-  {
+    {
     setting: '퍼펙트',
     events: ['NEW FLAVOR'],
+  },
+  {
+    setting: '미미르 부속고등학교',
+    events: ['SCHOOL OF LOCK', 'JUVENILE DAYS' ,'COLOR LESS', '나가 호감도 스토리', 'WAVE TO YOU'],
   },
 ];
