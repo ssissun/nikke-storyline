@@ -259,6 +259,14 @@ export const timeline: TimelineItem[] = [
   },
   {
     type: 'card',
+    title: 'OVER THE HORIZON',
+    category: 'event',
+    required: false,
+    importance: 'medium',
+    noDub: true
+  },
+  {
+    type: 'card',
     title: 'BOOM THE GHOST',
     category: 'event',
     required: true,
@@ -269,6 +277,7 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 39 — 40',
     category: 'main',
     required: true,
+    annotations: ['선행으로 WISDOM SPRING 감상 추천'],
   },
   {
     type: 'card',
@@ -305,6 +314,7 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 43 — 44',
     category: 'main',
     required: true,
+    annotations: ['선행으로 더티백야드 감상 추천하나 선택존'],
   },
   {
     type: 'card',
@@ -331,12 +341,14 @@ export const timeline: TimelineItem[] = [
     title: 'PRETTY STAR',
     category: 'side',
     required: true,
+    annotations: ['선행으로 ARCHANE ARCHIVE 감상 추천'],
   },
   {
     type: 'card',
     title: 'Chapter 45 — 46',
     category: 'main',
     required: true,
+    annotations: ['46지 선행으로 BOOD THE GHOST 감상 추천'],
   },
   {
     type: 'card',
@@ -350,6 +362,7 @@ export const timeline: TimelineItem[] = [
     title: 'ARK RANGER',
     category: 'event',
     required: true,
+    annotations: ['46지 선행으로 OVER THE HORIZON 감상 추천'],
   },
   {
     type: 'card',
