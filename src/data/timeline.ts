@@ -88,7 +88,7 @@ export const timeline: TimelineItem[] = [
     category: 'side',
     required: true,
     annotations: [
-      '14지 이후 추천 의견이 다수지만, <strong>특정 인물들의 성격 파악</strong> 후가 더 효과적이라 이곳 배치.',
+      '14지 이후를 추천하기도 하나, 특정 인물들의 성격 파악 후 감상 추천.',
     ],
   },
   {
@@ -314,7 +314,7 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 43 — 44',
     category: 'main',
     required: true,
-    annotations: ['선행으로 더티백야드 감상 추천하나 선택존'],
+    annotations: ['44지 선행으로 세르반 관련 서브퀘스트, DIRTY BACK YARD도 감상 추천하나 선택존'],
   },
   {
     type: 'card',
