@@ -112,7 +112,7 @@ export const timeline: TimelineItem[] = [
     type: 'optional-events',
     title: '선택적 감상 이벤트 스토리',
     description:
-      '다 보기를 추천하지만 시간이 부족하다면 — 메인 연관성 가장 높은 것은 <strong>DIRTY BACKYARD</strong>. 취사 선택은 본인 판단.',
+      '',
     items: [
       { title: 'DIRTY BACKYARD', meta: '이벤트 · 더빙X · 메인 연관 ↑ · 목단' },
       { title: 'L.T.K — LICENSE TO KILL', meta: '이벤트 · 더빙X · 시지 패러리스' },
@@ -133,7 +133,7 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 31 — 32 · OLD TALES',
     anniversary: '2주년',
     description:
-      '<em>본 가이드의 가장 중요한 구간.</em> 여기까지만 순서 신경 쓰면 이후로는 릴리즈 순서만 따라가도 됨. 4가지 루트 중 본인 취향대로 선택.',
+      '<em>본 가이드의 가장 중요한 구간.</em> 4가지 루트 중 본인 취향대로 선택.',
     routes: [
       {
         name: 'ROUTE 1',
@@ -163,10 +163,6 @@ export const timeline: TimelineItem[] = [
     ],
     innerNote:
       '<strong>OLD TALES 내부:</strong> 기억의 크리스털 · 유실물 · 숨겨진 아지랑이 감상 추천.',
-  },
-  {
-    type: 'divider',
-    text: '※ 여기서부터는 릴리즈 순서만 따라가도 됨',
   },
   {
     type: 'card',
