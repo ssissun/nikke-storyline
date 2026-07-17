@@ -10,15 +10,19 @@ export const settingStoryGroups: SettingStoryCard[] = [
     events: ["BOOM'S DAY", 'D.ARK HERO', 'GOOD WORLD'],
   },
   {
-    setting: '퍼펙트',
-    events: ['NEW FLAVOR'],
-  },
-  {
     setting: '저지스 / 시지 패러리스',
     events: ['L.T.K — LICENSE TO KILL', 'KILL THE LORD', 'LORD FOR JUSTICE'],
   },
   {
     setting: '방주 의료기술',
     events: ['FOR REST', 'MEMORIES TELLER'],
+  },
+  {
+    setting: '지휘관의 과거',
+    events: ['WISDOM SPRING', 'GOOD WORLD'],
+  },
+  {
+    setting: '퍼펙트',
+    events: ['NEW FLAVOR'],
   },
 ];
