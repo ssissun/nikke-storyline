@@ -70,6 +70,11 @@ export interface BonusCard {
   };
 }
 
+export interface SettingStoryCard {
+  setting: string; // 주요 설정 테마 (카드 제목)
+  events: string[]; // 해당 설정을 다루는 이벤트 이름 목록
+}
+
 export interface LegendCategory {
   category: Category;
   label: string;

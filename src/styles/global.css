@@ -620,12 +620,14 @@ body {
 }
 
 /* ===== Bonus section (호평 이벤트) ===== */
-.bonus {
+.bonus,
+.setting-stories {
   margin-top: 56px;
   padding-top: 28px;
   border-top: 1px dashed var(--line-strong);
 }
-.bonus h2 {
+.bonus h2,
+.setting-stories h2 {
   font-size: 21px;
   border-bottom: none;
   padding-bottom: 4px;
@@ -711,7 +713,8 @@ body {
   .notes h2 { font-size: 20px; }
   .notes-grid { grid-template-columns: 1fr; }
   .bonus-lead { margin: 0 0 14px; }
-  .bonus h2 { font-size: 18px; }
+  .bonus h2,
+  .setting-stories h2 { font-size: 18px; }
 
   .timeline-header .tag { font-size: 26px; }
   .timeline::before { left: 22px; }
@@ -777,7 +780,8 @@ body {
   .route .rp { font-size: 12.5px; }
   .route .rd { font-size: 11.5px; }
 
-  .bonus h2 { font-size: 17px; }
+  .bonus h2,
+  .setting-stories h2 { font-size: 17px; }
   .bonus-list li { font-size: 13px; }
 
   .arc-divider span { font-size: 12.5px; padding: 4px 14px; }
