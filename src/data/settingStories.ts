@@ -27,6 +27,6 @@ export const settingStoryGroups: SettingStoryCard[] = [
   },
   {
     setting: '미미르 부속고등학교',
-    events: ['SCHOOL OF LOCK', 'JUVENILE DAYS' ,'COLOR LESS', '나가 호감도 스토리', 'WAVE TO YOU'],
+    events: ['SCHOOL OF LOCK', 'COLOR LESS', '나가 호감도 스토리', 'WAVE TO YOU'],
   },
 ];
