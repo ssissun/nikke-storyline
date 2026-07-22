@@ -115,11 +115,11 @@ export const timeline: TimelineItem[] = [
       '',
     items: [
       { title: 'DIRTY BACKYARD', meta: '이벤트 · 더빙X · 메인 연관 ↑ · 목단' },
-      { title: 'L.T.K — LICENSE TO KILL', meta: '이벤트 · 더빙X · 시지 패러리스' },
+      { title: 'L.T.K — LICENSE TO KILL', meta: '이벤트 · 더빙X · KILL THE LORD로 이어짐 · 시지 패러리스' },
       { title: 'KILL THE LORD', meta: '이벤트 · 더빙X · 시지 패러리스' },
-      { title: "BOOM'S DAY", meta: '이벤트 · 더빙X · 일렉트로닉 쇼크' },
-      { title: 'D.ARK HERO', meta: '이벤트 · 더빙X · ICE DRAGON SAGA 로 이어짐 · 일렉트로닉 쇼크 · 익스터너' },
-      { title: 'ICE DRAGON SAGA', meta: '이벤트 · D.ARK HERO 후속 · 익스터너' },
+      { title: "BOOM'S DAY", meta: '이벤트 · 더빙X · D.ARK HERO로 이어짐 · 일렉트로닉 쇼크' },
+      { title: 'D.ARK HERO', meta: '이벤트 · 더빙X · ICE DRAGON SAGA로 이어짐 · 일렉트로닉 쇼크 · 메이든' },
+      { title: 'ICE DRAGON SAGA', meta: '이벤트 · 더빙O · 익스터너' },
     ],
   },
   {
