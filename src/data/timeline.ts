@@ -192,6 +192,7 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: true,
     noDub: true,
+    annotations: ['39지 전까지 감상 추천'],
   },
   {
     type: 'card',
@@ -244,6 +245,7 @@ export const timeline: TimelineItem[] = [
     required: true,
     noArchive: true,
     noDub: true,
+    annotations: ['PREETY STAR 전까지 감상 추천'],
   },
   {
     type: 'card',
@@ -258,8 +260,9 @@ export const timeline: TimelineItem[] = [
     title: 'OVER THE HORIZON',
     category: 'event',
     required: false,
-    importance: 'medium',
-    noDub: true
+    importance: 'high',
+    noDub: true,
+    annotations: ['ARK RANGER 전까지 감상 추천'],
   },
   {
     type: 'card',
@@ -267,13 +270,14 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: true,
     noArchive: true,
+    annotations: ['46지 전까지 감상 추천'],
   },
   {
     type: 'card',
     title: 'Chapter 39 — 40',
     category: 'main',
     required: true,
-    annotations: ['선행으로 WISDOM SPRING 감상 추천'],
+    annotations: ['WISDOM SPRING 선행 감상 추천'],
   },
   {
     type: 'card',
@@ -337,14 +341,14 @@ export const timeline: TimelineItem[] = [
     title: 'PRETTY STAR',
     category: 'side',
     required: true,
-    annotations: ['선행으로 ARCHANE ARCHIVE 감상 추천'],
+    annotations: ['ARCHANE ARCHIVE 선행 감상 추천'],
   },
   {
     type: 'card',
     title: 'Chapter 45 — 46',
     category: 'main',
     required: true,
-    annotations: ['46지 선행으로 BOOD THE GHOST 감상 추천'],
+    annotations: ['BOOD THE GHOST 선행 감상 추천'],
   },
   {
     type: 'card',
@@ -358,7 +362,7 @@ export const timeline: TimelineItem[] = [
     title: 'ARK RANGER',
     category: 'event',
     required: true,
-    annotations: ['선행으로 OVER THE HORIZON 감상 추천'],
+    annotations: ['OVER THE HORIZON 선행 감상 추천'],
   },
   {
     type: 'card',
@@ -366,6 +370,6 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: false,
     importance: 'medium',
-    annotations: ['선행으로 SCHOOL OF LOCK 감상 필수', '선행으로 나가 호감스 및 COLOR LESS 는 선택'],
+    annotations: ['SCHOOL OF LOCK 선행 감상 필수', '나가 인연스 및 COLOR LESS는 선행 감상 선택'],
   },
 ];
