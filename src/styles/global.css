@@ -68,14 +68,6 @@ body {
 .masthead h1 .accent {
   text-shadow: 0 0 24px rgba(93, 194, 240, 0.44), 0 0 8px rgba(93, 194, 240, 0.32);
 }
-.masthead .eyebrow {
-  font-family: var(--serif-en);
-  font-style: italic;
-  font-size: 14px;
-  color: var(--ink-3);
-  letter-spacing: 0.05em;
-  margin-bottom: 8px;
-}
 .masthead h1 {
   font-family: var(--kor);
   font-size: 48px;
