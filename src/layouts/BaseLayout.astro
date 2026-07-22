@@ -62,9 +62,11 @@ const versionUrl = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/version.json`
 
     <!--
       새 배포 자동 반영.
-      GitHub Pages는 HTML 문서에 max-age=600을 붙이므로 재방문 시 캐시된
-      옛 페이지가 뜬다. version.json을 캐시 없이 조회해 빌드가 바뀌었으면
-      스스로 reload한다 (reload는 문서를 재검증하므로 수동 새로고침과 동일).
+      오래 열어둔 탭이나 bfcache로 복원된 페이지는 새 요청을 아예 보내지
+      않아 옛 버전에 머문다 (새로 진입하는 경우는 max-age=600 만료 후
+      재검증되지만, 그 전까지도 최대 10분은 캐시된 문서가 뜬다).
+      version.json을 캐시 없이 조회해 빌드가 바뀌었으면 스스로 reload한다
+      (reload는 문서를 재검증하므로 수동 새로고침과 동일).
     -->
     <script is:inline define:vars={{ buildId: BUILD_ID, versionUrl }}>
       (function () {
@@ -89,6 +91,10 @@ const versionUrl = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/version.json`
 
         check();
         document.addEventListener('visibilitychange', check);
+        // bfcache 복원 시 visibilitychange를 신뢰할 수 없는 브라우저 대비
+        window.addEventListener('pageshow', function (e) {
+          if (e.persisted) check();
+        });
         setInterval(check, CHECK_INTERVAL);
       })();
     </script>
