@@ -93,6 +93,14 @@ export const timeline: TimelineItem[] = [
   },
   {
     type: 'card',
+    title: 'FIRST AFFECTION',
+    category: 'event',
+    required: false,
+    importance: 'low',
+    annotations: ['감상한다면 SECOND AFFECTION 이후', '공식 유튜브 애니메이션 [전초기지 오늘은 쉽니다] 마리안 편으로 이어짐'],
+  },
+  {
+    type: 'card',
     title: '킬로',
     titleScript: 'kor',
     category: 'affinity',
@@ -237,6 +245,7 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 37 — 38',
     category: 'main',
     required: true,
+    annotations: ['여유가 된다면 BRAND NEW YEAR, SEA YOU AGAIN 선행감상 고려'],
   },
   {
     type: 'card',
@@ -370,6 +379,12 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: false,
     importance: 'medium',
-    annotations: ['SCHOOL OF LOCK 선행 감상 필수', '나가 인연스 및 COLOR LESS는 선행 감상 선택'],
+    annotations: ['SCHOOL OF LOCK/COLOR LESS/나가 인연스 중 최소 하나 선행 감상 필수'],
+  },
+  {
+    type: 'card',
+    title: 'PROJECT MATIS',
+    category: 'event',
+    required: true,
   },
 ];
