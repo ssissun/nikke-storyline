@@ -186,6 +186,13 @@ export const timeline: TimelineItem[] = [
     anniversary: '25 신년',
   },
   {
+    type: 'optional-events',
+    title: '출시되는 이벤스의 메인스 연관성이 높아지는 기점',
+    description:
+      '에그후드 인터뷰에서 이벤스와 메인스가 연관이 없으면 픽업 니케의 존재 가치가 떨어지기 때문에 소형 이벤트라도 메인스와 연관성을 주는 기조로 진행하게 되었다고 함',
+    items: [],
+  },
+  {
     type: 'card',
     title: '에테르',
     titleScript: 'kor',
@@ -200,7 +207,6 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: true,
     noDub: true,
-    annotations: ['39지 전까지 감상 추천'],
   },
   {
     type: 'card',
@@ -254,7 +260,6 @@ export const timeline: TimelineItem[] = [
     required: true,
     noArchive: true,
     noDub: true,
-    annotations: ['PREETY STAR 전까지 감상 추천'],
   },
   {
     type: 'card',
@@ -268,10 +273,8 @@ export const timeline: TimelineItem[] = [
     type: 'card',
     title: 'OVER THE HORIZON',
     category: 'event',
-    required: false,
-    importance: 'high',
+    required: true,
     noDub: true,
-    annotations: ['ARK RANGER 전까지 감상 추천'],
   },
   {
     type: 'card',
@@ -279,7 +282,6 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: true,
     noArchive: true,
-    annotations: ['46지 전까지 감상 추천'],
   },
   {
     type: 'card',
@@ -323,7 +325,7 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 43 — 44',
     category: 'main',
     required: true,
-    annotations: ['44지 선행으로 세르반 관련 서브퀘스트, DIRTY BACK YARD도 감상 추천하나 선택존'],
+    annotations: ['세르반 서브퀘스트, DIRTY BACK YARD도 선행 감상 추천하나 선택', '세르반 서브퀘스트는 아카이브 없음'],
   },
   {
     type: 'card',
@@ -333,7 +335,7 @@ export const timeline: TimelineItem[] = [
     importance: 'medium',
     noArchive: true,
     noDub: true,
-    annotations: ['E.H. 의 과거'],
+    annotations: ['E.H. 과거'],
   },
   {
     type: 'card',
@@ -386,5 +388,12 @@ export const timeline: TimelineItem[] = [
     title: 'PROJECT MATIS',
     category: 'event',
     required: true,
+  },
+  {
+    type: 'card',
+    title: 'Chapter 47 — 48',
+    category: 'main',
+    required: true,
+    annotations: ['ARK RANGER 선행 감상 추천'],
   },
 ];
