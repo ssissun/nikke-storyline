@@ -18,7 +18,7 @@ export const settingStoryGroups: SettingStoryCard[] = [
     events: ['FOR REST', 'MEMORIES TELLER'],
   },
   {
-    setting: '지휘관',
+    setting: '지휘관(주인공)',
     events: ['WISDOM SPRING', 'GOOD WORLD'],
   },
     {
