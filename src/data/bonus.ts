@@ -20,7 +20,7 @@ export const bonusCards: BonusCard[] = [
     bullets: [
       '<strong>스텔라 블레이드</strong> 콜라보 이벤트.',
       '<strong>정사(스토리 라인)에 편입</strong>됨.',
-      '감상 전 <em>롬(수집 로봇) 관련 서브퀘스트</em> 완료 권장.',
+      '<em>롬(수집 로봇) 관련 서브퀘스트</em> 선행 감상 권장하나 아카이브 없음.',
     ],
   },
   {
