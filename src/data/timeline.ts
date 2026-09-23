@@ -3,13 +3,39 @@ import type { TimelineItem } from './types';
 export const timeline: TimelineItem[] = [
   {
     type: 'card',
-    title: 'Chapter 1 — 20',
+    title: 'Chapter 1 — 14',
     category: 'main',
     required: true,
     annotations: [
       '본편의 도입과 1차 세계관 정립.',
-      '16지 이후로는 <strong>2챕터씩 묶어서</strong> 한번에 보는 게 호흡에 맞음.',
-      '이 구간에서 <em>라피 · 아니스(SR) 호감도</em>도 같이 소화하면 떡밥 이해 ↑.',
+      '<em>라피(SR) · 아니스(SR) 호감도</em>스토리도 보면 세계관 이해도 ↑.',
+    ],
+  },
+  {
+    type: 'card',
+    title: 'SECOND AFFECTION',
+    category: 'side',
+    required: true,
+    annotations: [
+      '26지 이후를 추천하기도 함. 어느 시점에 볼지는 본인 선택',
+    ],
+  },
+  {
+    type: 'card',
+    title: 'FIRST AFFECTION',
+    category: 'event',
+    required: false,
+    importance: 'low',
+    annotations: [
+      '감상한다면 SECOND AFFECTION 이후에',
+  },
+  {
+    type: 'card',
+    title: 'Chapter 15 — 20',
+    category: 'main',
+    required: true,
+    annotations: [
+      '16챕터 이후로는 <strong>2챕터씩 묶어서</strong> 보는 것을 일반적으로 추천',
     ],
   },
   {
@@ -19,8 +45,7 @@ export const timeline: TimelineItem[] = [
     required: true,
     anniversary: '0.5주년',
     annotations: [
-      '21지 이후 추천 의견도 있으나, <strong>특정 인물의 인상 변화</strong>가 이 시점에서 중요하다고 판단.',
-      '미니게임 <em>WHITE MEMORY 필수</em>.',
+      '미니게임 <em>WHITE MEMORY</em> 에서 나오는 스토리 감상 추천.',
     ],
   },
   {
@@ -31,18 +56,9 @@ export const timeline: TimelineItem[] = [
     importance: 'low',
     noDub: true,
     annotations: [
-      '스토리 라인에 포함된 이벤트는 아님 — 넘어가도 무방하지만 보면 좋음.',
-      '언더월드 퀸과 지휘관의 접점.',
+      '스토리 라인에 포함된 이벤트 아님 — 넘어가도 무방',
+      '언더월드 퀸',
     ],
-  },
-  {
-    type: 'card',
-    title: '디젤',
-    titleScript: 'kor',
-    category: 'affinity',
-    required: false,
-    importance: 'low',
-    annotations: ['본편 직결 약함. 캐릭터 보유 시 가볍게.'],
   },
   {
     type: 'card',
@@ -64,7 +80,7 @@ export const timeline: TimelineItem[] = [
   },
   {
     type: 'divider',
-    text: '※ 26지 진입 전 — 서브퀘스트 [랩칠리언] 클리어 확인',
+    text: '※ 26지 진입 전 — 서브퀘스트 [랩칠리언] 스토리 감상 추천',
   },
   {
     type: 'card',
@@ -72,7 +88,7 @@ export const timeline: TimelineItem[] = [
     category: 'main',
     required: true,
     annotations: [
-      '본 구간 진입 전 <em>서브퀘스트 [블라블라 → 랩칠리언] 필수</em>.',
+      '본 구간 진입 전 <em>서브퀘스트 [블라블라 → 랩칠리언] 감상 추천</em>.',
     ],
   },
   {
@@ -84,30 +100,13 @@ export const timeline: TimelineItem[] = [
   },
   {
     type: 'card',
-    title: 'SECOND AFFECTION',
-    category: 'side',
-    required: true,
-    annotations: [
-      '14지 이후를 추천하기도 하나, 특정 인물들의 성격 파악 후 감상 추천.',
-    ],
-  },
-  {
-    type: 'card',
-    title: 'FIRST AFFECTION',
-    category: 'event',
-    required: false,
-    importance: 'low',
-    annotations: ['감상한다면 SECOND AFFECTION 이후', '공식 유튜브 애니메이션 [전초기지 오늘은 쉽니다] 마리안 편으로 이어짐'],
-  },
-  {
-    type: 'card',
     title: '킬로',
     titleScript: 'kor',
     category: 'affinity',
     required: false,
     noDub: true,
     importance: 'medium',
-    annotations: ['중요도 중간. 여유 있으면 LAST KINGDOM 이전에.'],
+    annotations: ['여유가 있다면 LAST KINGDOM 이전에'],
   },
   {
     type: 'card',
@@ -115,10 +114,11 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: true,
     anniversary: '1.5주년',
+    annotations: ['공식 순서는 30지 이후지만, 29~32 지역이 이어지는 스토리라서 이곳에 배치'],
   },
   {
     type: 'optional-events',
-    title: '선택적 감상 이벤트 스토리',
+    title: '선택 감상 이벤트 스토리',
     description:
       '',
     items: [
@@ -126,8 +126,8 @@ export const timeline: TimelineItem[] = [
       { title: 'L.T.K — LICENSE TO KILL', meta: '이벤트 · 더빙X · KILL THE LORD로 이어짐 · 시지 패러리스' },
       { title: 'KILL THE LORD', meta: '이벤트 · 더빙X · 시지 패러리스' },
       { title: "BOOM'S DAY", meta: '이벤트 · 더빙X · D.ARK HERO로 이어짐 · 일렉트로닉 쇼크' },
-      { title: 'D.ARK HERO', meta: '이벤트 · 더빙X · ICE DRAGON SAGA로 이어짐 · 일렉트로닉 쇼크 · 메이든' },
-      { title: 'ICE DRAGON SAGA', meta: '이벤트 · 더빙O · 익스터너' },
+      { title: 'D.ARK HERO', meta: '이벤트 · 더빙X · 일렉트로닉 쇼크 · 메이든' },
+      { title: 'ICE DRAGON SAGA', meta: '이벤트 · 더빙O · D.ARK HERO를 선행으로 감상 추천 · 메인 연관 ↓ · 익스터너' },
     ],
   },
   {
@@ -141,13 +141,13 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 31 — 32 · OLD TALES',
     anniversary: '2주년',
     description:
-      '<em>본 가이드의 가장 중요한 구간.</em> 4가지 루트 중 본인 취향대로 선택.',
+      '감상 순서 의견이 가장 다양함. <em>4가지 루트 중 취향껏 선택.</em>',
     routes: [
       {
         name: 'ROUTE 1',
         path: '31 → 32 막보 전 → OLD TALES → 32 막보',
         description:
-          '주요 인물의 배경을 모른 채 진행하다 <strong>보스전 클리어 전에 OLD TALES를 감상</strong>. OLD TALES 감상 후 바로 이어서 보스전 후의 스토리를 감상하는 것을 추천. <strong>개인적으로 가장 추천하는 루트.</strong>',
+          '스토리 흐름을 고려한 씽크빅 루트. <strong>32 보스 클리어 전에 OLD TALES를 감상</strong>. 올테 감상 후 바로 이어서 보스전 이후 감상 추천. <strong>개인적으로 가장 추천하는 루트.</strong>',
         best: true,
       },
       {
@@ -160,13 +160,13 @@ export const timeline: TimelineItem[] = [
         name: 'ROUTE 3',
         path: '31 → 32 → OLD TALES',
         description:
-          '릴리즈 순서 그대로 — 주요 인물의 배경을 모른 채 보스전 이후 메인까지 진행. <strong>공식이 추천하는 순서이자 개발진이 의도한 감상 순서.</strong>',
+          '릴리즈 순서 그대로 — 주요 인물의 배경을 모른 채 보스전 이후 메인까지 진행. <strong>공식 스토리라인 릴리즈 순서.</strong>',
       },
       {
         name: 'ROUTE 4',
         path: 'OLD TALES → 31 → 32',
         description:
-          '기본적으로는 <strong>비추천</strong>. 다만 27 — 30 지역이 너무 지루해 이후 스토리에 손이 안 갈 정도라면 조건부로 추천.',
+          '기본적으로는 <strong>비추</strong>. 다만 27 — 30 지역이 너무 지루해 이후 스토리에 손이 안 갈 정도라면 조건부로 추천.',
       },
     ],
     innerNote:
@@ -189,7 +189,7 @@ export const timeline: TimelineItem[] = [
     type: 'optional-events',
     title: '출시되는 이벤스의 메인스 연관성이 높아지는 기점',
     description:
-      '에그후드 인터뷰에서 이벤스와 메인스가 연관이 없으면 픽업 니케의 존재 가치가 떨어지기 때문에 소형 이벤트라도 메인스와 연관성을 주는 기조로 진행하게 되었다고 함',
+      '스작 인터뷰에서 이벤스와 메인스가 연관이 없으면 픽업 니케의 존재 가치가 떨어지기 때문에 소형 이벤트라도 메인스와 연관성을 주는 기조로 진행하게 되었다고 함',
     items: [],
   },
   {
@@ -220,7 +220,8 @@ export const timeline: TimelineItem[] = [
     category: 'side',
     required: true,
     annotations: [
-      '24지 후를 추천하기도 하지만 RED ASH - 메인 스토리의 맥이 끊길 수 있으므로 여기서 감상 추천',
+      '26지 후를 추천하기도 하는데, 그 근처에 이미 배치된 이벤스가 많아서 이곳에 배치',
+      '취향껏 선택'
     ],
   },
   {
@@ -251,7 +252,7 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 37 — 38',
     category: 'main',
     required: true,
-    annotations: ['여유가 된다면 BRAND NEW YEAR, SEA YOU AGAIN 선행감상 고려'],
+    annotations: ['여유가 된다면 BRAND NEW YEAR 나 SEA YOU AGAIN 선행감상도 추천은 함'],
   },
   {
     type: 'card',
@@ -273,7 +274,8 @@ export const timeline: TimelineItem[] = [
     type: 'card',
     title: 'OVER THE HORIZON',
     category: 'event',
-    required: true,
+    required: false,
+    importance: 'medium',
     noDub: true,
   },
   {
@@ -282,6 +284,7 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: true,
     noArchive: true,
+    annotations: ['메인 연관 스토리만 이해하려면 PART 1 마지막 에피소드와, PART 2 떠오르는 [기억] 에피소드부터 끝까지만 감상해도 됨'],
   },
   {
     type: 'card',
