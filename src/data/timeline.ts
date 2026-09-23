@@ -28,6 +28,7 @@ export const timeline: TimelineItem[] = [
     importance: 'low',
     annotations: [
       '감상한다면 SECOND AFFECTION 이후에',
+    ],
   },
   {
     type: 'card',
