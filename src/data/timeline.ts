@@ -400,4 +400,11 @@ export const timeline: TimelineItem[] = [
     required: true,
     annotations: ['ARK RANGER 선행 감상 추천'],
   },
+  {
+    type: 'card',
+    title: 'COIN RUSH SHOWDOWN',
+    category: 'event',
+    required: false,
+    importance: 'low',
+  }
 ];
