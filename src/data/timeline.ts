@@ -377,7 +377,7 @@ export const timeline: TimelineItem[] = [
     title: 'ARK RANGER',
     category: 'event',
     required: true,
-    annotations: ['OVER THE HORIZON 선행 감상 추천'],
+    annotations: ['OVER THE HORIZON 선행 감상 추천하나, 필수는 아님'],
   },
   {
     type: 'card',
