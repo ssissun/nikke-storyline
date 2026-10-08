@@ -148,7 +148,7 @@ export const timeline: TimelineItem[] = [
         name: 'ROUTE 1',
         path: '31 → 32 막보 전 → OLD TALES → 32 막보',
         description:
-          '스토리 흐름을 고려한 씽크빅 루트. <strong>32 보스 클리어 전에 OLD TALES를 감상</strong>. 올테 감상 후 바로 이어서 보스전 이후 감상 추천. <strong>개인적으로 가장 추천하는 루트.</strong>',
+          '흐름을 고려한 씽크빅 루트. <strong>32 보스 전(`되찾아 오길: A` 에피소드 전)에 OLD TALES를 감상.</strong>. <strong>개인적으로 가장 추천함</strong>',
         best: true,
       },
       {
@@ -329,7 +329,7 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 43 — 44',
     category: 'main',
     required: true,
-    annotations: ['세르반 서브퀘스트, DIRTY BACK YARD도 선행 감상 추천하나 선택', '세르반 서브퀘스트는 아카이브 없음'],
+    annotations: ['세르반 서브퀘, DIRTY BACK YARD도 선행 감상 추천하나 선택', '단, 세르반 서브퀘는 아카이브 없음'],
   },
   {
     type: 'card',
@@ -385,7 +385,7 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: false,
     importance: 'medium',
-    annotations: ['SCHOOL OF LOCK/COLOR LESS/나가 인연스 중 최소 하나 선행 감상 필수'],
+    annotations: ['SCHOOL OF LOCK/COLOR LESS/나가 인연스 중 최소 하나 선행 감상 추천'],
   },
   {
     type: 'card',
@@ -407,5 +407,12 @@ export const timeline: TimelineItem[] = [
     required: false,
     importance: 'low',
     annotations: ['바니걸 감상 목적만으로도 볼 가치는 있다.'],
-  }
+  },
+  {
+    type: 'card',
+    title: 'GINGERBREAD HOUSE',
+    category: 'side',
+    required: true,
+    annotations: ['WAVE TO YOU에서 있었던 일이 단편적으로 언급됨', '많이 거슬리면 보고 오는 것을 추천'],
+  },
 ];
