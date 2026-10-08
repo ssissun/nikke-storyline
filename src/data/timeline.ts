@@ -406,7 +406,7 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: false,
     importance: 'low',
-    annotations: ['바니걸 감상 목적만으로도 볼 가치는 있다.'],
+    annotations: ['바니걸만으로도 볼 가치는 있다.'],
   },
   {
     type: 'card',
