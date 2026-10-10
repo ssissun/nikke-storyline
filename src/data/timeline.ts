@@ -158,13 +158,13 @@ export const timeline: TimelineItem[] = [
           '1번 루트로 진행하는 데 애로사항이 있으면 추천. <strong>주요 인물의 배경을 먼저 이해</strong>한 뒤 메인을 진행하게 됨',
       },
       {
-        name: 'ROUTE 4',
+        name: 'ROUTE 3',
         path: 'OLD TALES → 31 → 32',
         description:
           '기본 비추. 단, 27 — 30 지역이 너무 지루해 이후 스토리에 손이 안 갈 정도라면 조건부로 추천.',
       },
       {
-        name: 'ROUTE 3',
+        name: 'ROUTE 4',
         path: '31 → 32 → OLD TALES',
         description:
           '기본 비추. 단, 이것이 <strong>공식 스토리라인 릴리즈 순서.</strong>임',
