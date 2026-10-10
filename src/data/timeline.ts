@@ -148,7 +148,7 @@ export const timeline: TimelineItem[] = [
         name: 'ROUTE 1',
         path: '31 → 32 막보 전 → OLD TALES → 32 막보',
         description:
-          '흐름을 고려한 씽크빅 루트. <strong>32 보스 전(`되찾아 오길: A` 에피소드 전)에 OLD TALES를 감상.</strong>. <strong>개인적으로 가장 추천함</strong>',
+          '흐름을 고려한 씽크빅 루트. <strong>32 보스 전(`되찾아 오길: A` 에피소드 전)에 OLD TALES를 감상.</strong> <strong>개인적으로 가장 추천함</strong>',
         best: true,
       },
       {
