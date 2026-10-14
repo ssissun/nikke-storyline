@@ -15,13 +15,16 @@ import { legendCategories } from '../data/legend';
 </div>
 
 <div class="legend-importance">
-  <div><span class="imp-key">필수</span> 메인 줄기와 직결 (금색)</div>
-  <div><span class="imp-key">선택</span> 본편과 직결 약함 (흰색)</div>
-  <div><span class="imp-key">중요</span> 선택이지만 중요도 높음 (금색)</div>
+  <div><span class="badge req">필수</span> 메인 줄기와 직결</div>
+  <div><span class="badge opt">선택</span> 중요도에 따라 메인 연관도가 다름</div>
+  <div><span class="badge important">중요</span> 선택이지만 중요도 높음</div>
   <div>
     <span class="imp-key">중요도</span>
     <span class="stars">★★★</span> 높음 ·
     <span class="stars">★★</span><span class="stars-dim">☆</span> 중간 ·
     <span class="stars">★</span><span class="stars-dim">☆☆</span> 낮음
+  </div>
+  <div class="imp-note">
+    중요도 중간 이상의 선택 스토리는 미감상 시 한 번씩 거슬리는 미싱링크가 생길 수 있음 (지휘관이 이걸 왜 알지? 등)
   </div>
 </div>

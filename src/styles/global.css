@@ -12,7 +12,7 @@
   --coral:        #5DC2F0;        /* primary accent — electric cyan (메인) */
   --steel:        #B594E8;        /* 이벤트 — lavender purple */
   --moss:         #4FCFAE;        /* 사이드 — teal */
-  --gold:         #F2C674;        /* 호감도 — gold */
+  --gold:         #F2C674;        /* 인연 스토리 — gold */
   --warn:         #E2A555;        /* amber */
   --pale:         #5E7196;        /* 흐린 보조 */
   --line:         rgba(234, 241, 250, 0.12);
@@ -187,6 +187,12 @@ body {
   font-weight: 600;
   color: var(--ink);
   margin-right: 6px;
+}
+.legend-importance .badge { margin-right: 6px; }
+.legend-importance .imp-note {
+  flex-basis: 100%;
+  font-size: 12.5px;
+  color: var(--ink-3);
 }
 .stars { color: var(--gold); letter-spacing: 1px; }
 .stars-dim { color: var(--ink-4); letter-spacing: 1px; }

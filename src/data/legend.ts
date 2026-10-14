@@ -4,21 +4,21 @@ export const legendCategories: LegendCategory[] = [
   {
     category: 'main',
     label: '메인 스토리',
-    description: 'Chapter 1 ~ 46. 본편 줄기. 모두 필수.',
+    description: '작전출격. 모두 필수',
   },
   {
     category: 'event',
     label: '이벤트 스토리',
-    description: '주년 · 신년 스토리는 필수, 그 외에는 대부분 선택.',
+    description: '로비 더보기 → 스토리라인 또는 커맨드센터 → 회상 → 아카이브',
   },
   {
     category: 'side',
     label: '사이드 스토리',
-    description: '전부 필수. 인물 · 진영 보강이 본편 이해에 직결.',
+    description: '로비 더보기 → 스토리라인 또는 커맨드센터 → 사이드 스토리',
   },
   {
     category: 'affinity',
-    label: '호감도 스토리',
-    description: '후속 이해에 도움. 필수 아님.',
+    label: '인연 스토리',
+    description: '커맨드센터 → 상담',
   },
 ];

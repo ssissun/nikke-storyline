@@ -2,15 +2,14 @@ import type { BonusCard } from './types';
 
 /**
  * 메인 줄기와 무관하지만 단독 감상으로 호평인 이벤트
- * 순서: MIRACLE SNOW · MEMORIES TELLER · 2X2 LOVE · BLANK TICKET · TERMINUS TICKET
+ * 순서: MIRACLE SNOW · MEMORIES TELLER · ICE DRAGON SAGA · 2X2 LOVE · BLANK TICKET · TERMINUS TICKET
  */
 export const bonusCards: BonusCard[] = [
   {
     tag: '아카이브 O',
     title: 'MIRACLE SNOW',
     bullets: [
-      '스토리 라인 미포함 이벤트 중 <strong>보통 1위로 꼽힘</strong>.',
-      '감상 전 <em>N102 · 루피 호감도 스토리</em> 감상 권장.',
+      '감상 전 <em>N102 · 루피 인연 스토리</em> 감상 권장.',
     ],
     related: { type: 'nikke', value: 'N102 · 루피' },
   },
@@ -19,9 +18,17 @@ export const bonusCards: BonusCard[] = [
     title: 'MEMORIES TELLER',
     bullets: [
       '<strong>스텔라 블레이드</strong> 콜라보 이벤트.',
-      '<strong>정사(스토리 라인)에 편입</strong>됨.',
+      '<strong>스토리 라인에 편입</strong>되어 있음.',
       '<em>롬(수집 로봇) 관련 서브퀘스트</em> 선행 감상 권장하나 아카이브 없음.',
     ],
+  },
+  {
+    tag: '아카이브 O',
+    title: 'ICE DRAGON SAGA',
+    bullets: [
+      "BOOM'S DAY → D.ARK HERO → ICE DRAGON SAGA 로 이어지는 스토리",
+    ],
+    related: { type: 'squad', value: '익스터너' },
   },
   {
     tag: '아카이브 X',
@@ -29,7 +36,7 @@ export const bonusCards: BonusCard[] = [
     bullets: [
       '현재 <strong>아카이브 미포함</strong>.',
       '<strong>미연시</strong> 형식의 이벤트.',
-      '감상 전 <em>아르카나 호감도 스토리</em> 또는 <em>ARCHANE ARCHIVE</em>감상 권장 (캐릭터 파악).',
+      '감상 전 <em>아르카나 인연 스토리</em> 또는 <em>ARCHANE ARCHIVE</em>감상 권장 (캐릭터 파악).',
     ],
     related: { type: 'nikke', value: '아르카나 · 프리바티' },
   },

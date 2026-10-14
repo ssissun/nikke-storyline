@@ -71,7 +71,7 @@ export interface BonusCard {
 }
 
 export interface SettingStoryCard {
-  setting: string; // 주요 설정 테마 (카드 제목)
+  setting: string; // 주요 설정 테마 (카드 태그)
   events: string[]; // 해당 설정을 다루는 이벤트 이름 목록
 }
 
@@ -82,7 +82,7 @@ export interface LegendCategory {
 }
 
 /**
- * 좌·우 lane 결정 규칙: 메인·사이드는 우측, 이벤트·호감도는 좌측
+ * 좌·우 lane 결정 규칙: 메인·사이드는 우측, 이벤트·인연 스토리는 좌측
  */
 export function laneFor(category: Category): 'left' | 'right' {
   return category === 'main' || category === 'side' ? 'right' : 'left';

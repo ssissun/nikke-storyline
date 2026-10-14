@@ -11,8 +11,7 @@ import { settingStoryGroups } from '../data/settingStories';
     {
       settingStoryGroups.map((group) => (
         <div class="note">
-          <span class="tag">주요 설정</span>
-          <div class="ttl">{group.setting}</div>
+          <span class="tag">{group.setting}</span>
           <div class="body">
             <ul class="bonus-list">
               {group.events.map((event) => (

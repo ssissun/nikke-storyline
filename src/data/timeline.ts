@@ -8,7 +8,7 @@ export const timeline: TimelineItem[] = [
     required: true,
     annotations: [
       '본편의 도입과 1차 세계관 정립.',
-      '<em>라피(SR) · 아니스(SR) 호감도</em>스토리도 보면 세계관 이해도 ↑.',
+      '<em>라피(SR) · 아니스(SR) 인연</em> 스토리도 보면 세계관 이해도 ↑.',
     ],
   },
   {
@@ -35,9 +35,6 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 15 — 20',
     category: 'main',
     required: true,
-    annotations: [
-      '16챕터 이후로는 <strong>2챕터씩 묶어서</strong> 보는 것을 일반적으로 추천',
-    ],
   },
   {
     type: 'card',
@@ -89,7 +86,7 @@ export const timeline: TimelineItem[] = [
     category: 'main',
     required: true,
     annotations: [
-      '본 구간 진입 전 <em>서브퀘스트 [블라블라 → 랩칠리언] 감상 추천</em>.',
+      '서브퀘스트 [랩칠리언] 선행 감상 추천.',
     ],
   },
   {
@@ -118,18 +115,31 @@ export const timeline: TimelineItem[] = [
     annotations: ['공식 순서는 30지 이후지만, 29~32 지역이 이어지는 스토리라서 이곳에 배치'],
   },
   {
-    type: 'optional-events',
-    title: '선택 감상 이벤트 스토리',
-    description:
-      '',
-    items: [
-      { title: 'DIRTY BACKYARD', meta: '이벤트 · 더빙X · 메인 연관 ↑ · 목단' },
-      { title: 'L.T.K — LICENSE TO KILL', meta: '이벤트 · 더빙X · KILL THE LORD로 이어짐 · 시지 패러리스' },
-      { title: 'KILL THE LORD', meta: '이벤트 · 더빙X · 시지 패러리스' },
-      { title: "BOOM'S DAY", meta: '이벤트 · 더빙X · D.ARK HERO로 이어짐 · 일렉트로닉 쇼크' },
-      { title: 'D.ARK HERO', meta: '이벤트 · 더빙X · 일렉트로닉 쇼크 · 메이든' },
-      { title: 'ICE DRAGON SAGA', meta: '이벤트 · 더빙O · D.ARK HERO를 선행으로 감상 추천 · 메인 연관 ↓ · 익스터너' },
-    ],
+    type: 'card',
+    title: 'DIRTY BACKYARD',
+    category: 'event',
+    required: false,
+    importance: 'high',
+    noDub: true,
+    annotations: ['본다면 늦어도 43지 이전에 감상'],
+  },
+  {
+    type: 'card',
+    title: "BOOM'S DAY",
+    category: 'event',
+    required: false,
+    importance: 'medium',
+    noDub: true,
+    annotations: ['D.ARK HERO로 이어짐'],
+  },
+  {
+    type: 'card',
+    title: 'D.ARK HERO',
+    category: 'event',
+    required: false,
+    importance: 'medium',
+    noDub: true,
+    annotations: ['일단 선택으로 놓았으나 필수급 떡밥을 투척', '미감상시 미싱링크 다수 발생'],
   },
   {
     type: 'card',
@@ -253,7 +263,7 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 37 — 38',
     category: 'main',
     required: true,
-    annotations: ['여유가 된다면 BRAND NEW YEAR 나 SEA YOU AGAIN 선행감상도 추천은 함'],
+    annotations: ['스토리를 접시 바닥까지 핥아 먹고 싶다면 BRAND NEW YEAR 나 SEA YOU AGAIN 선행 감상 추천'],
   },
   {
     type: 'card',
@@ -270,6 +280,10 @@ export const timeline: TimelineItem[] = [
     required: false,
     importance: 'medium',
     noDub: true,
+    annotations: [
+      '아직 메인과 접점은 없으나 중요도 높은 떡밥 존재',
+      'L.T.K → KILL THE LORD → LORD FOR JUSTICE 순서로 이어지는 스토리',
+    ],
   },
   {
     type: 'card',
@@ -345,11 +359,10 @@ export const timeline: TimelineItem[] = [
     type: 'card',
     title: 'GOOD WORLD',
     category: 'event',
-    required: false,
-    importance: 'high',
+    required: true,
     noArchive: true,
     noDub: true,
-    important: true,
+    annotations: ['백학이 예쁨'],
   },
   {
     type: 'card',
@@ -413,6 +426,6 @@ export const timeline: TimelineItem[] = [
     title: 'GINGERBREAD HOUSE',
     category: 'side',
     required: true,
-    annotations: ['WAVE TO YOU에서 있었던 일이 단편적으로 언급됨', '많이 거슬리면 보고 오는 것을 추천'],
+    annotations: ['WAVE TO YOU에서 있었던 일이 단편적으로 언급됨', '미싱링크가 거슬리면 WAVE TO YOU 선행 감상 추천'],
   },
 ];
