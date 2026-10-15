@@ -1,7 +1,9 @@
-// 방문 분석(Umami Cloud) 식별자. HTML에 그대로 노출되는 공개 값이라 비밀이 아니다.
-// 비어 있으면 분석 스크립트가 페이지에 삽입되지 않는다.
-// cloud.umami.is › Settings › Websites › Website ID
+// 방문 분석 식별자. HTML에 그대로 노출되는 공개 값이라 비밀이 아니다.
+// 비어 있으면 해당 도구는 페이지에 삽입되지 않는다.
+// - Umami: cloud.umami.is › Settings › Websites › Website ID
+// - Clarity: clarity.microsoft.com › Settings › Overview › Project ID
 export const UMAMI_WEBSITE_ID = '75cae5c5-1727-486b-b78d-99de89a67d3d';
+export const CLARITY_PROJECT_ID = 'yxzvhldnaf';
 
 // 같은 Website를 다른 사이트와 함께 쓸 때 대시보드에서 이 사이트만 거르는 태그.
 export const UMAMI_TAG = 'storyline';
