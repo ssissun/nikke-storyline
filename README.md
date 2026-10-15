@@ -62,7 +62,7 @@ https://ssissun.github.io/nikke-storyline/data.json
 
 - 다른 도메인에서 `fetch`로 바로 불러올 수 있습니다 (CORS 허용).
 - 배포 후 최대 10분 안에 새 내용이 반영됩니다 (GitHub Pages 캐시).
-- 출처 표기와 원본 링크(`source`)를 함께 남겨 주세요.
+- 형태를 바꾸거나 일부만 골라 자유롭게 커스텀해서 쓰셔도 됩니다.
 
 ```js
 const res = await fetch('https://ssissun.github.io/nikke-storyline/data.json');
