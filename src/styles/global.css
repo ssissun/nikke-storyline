@@ -804,115 +804,143 @@ body {
   }
 }
 
-/* ===== Light Theme (Editorial Paper) ===== */
+/* ===== Light Theme (Daylight Recon Chart) =====
+   다크가 방주 밖 밤하늘이라면, 라이트는 같은 세계의 낮 — 지상 작전 지도.
+   별 → 측량 십자, 성운 → 등고선과 햇빛 번짐, glow → 카테고리 색 halo 그림자,
+   선택 카드의 어두운 면 → 지도의 '부차 구역' 빗금. */
 :root[data-theme="light"] {
-  --paper:        #F4EDE2;
-  --paper-2:      #EBE2D2;
-  --paper-3:      #E2D7C2;
-  --paper-bright: #F4EDE2;
-  --ink:          #1F1A14;
-  --ink-2:        #3C342A;
-  --ink-3:        #6B5E4E;
-  --ink-4:        #9A8C76;
-  --coral:        #C9532D;
-  --steel:        #6B3FA0;
-  --moss:         #4A6B2F;
-  --gold:         #B8862E;
-  --warn:         #8A6A1F;
-  --pale:         #BDB1A0;
-  --line:         rgba(31, 26, 20, 0.18);
-  --line-strong:  rgba(31, 26, 20, 0.35);
+  --paper:        #E3E9EC;        /* survey fog — 차가운 측량지 */
+  --paper-2:      #F8FAFB;        /* chart white — 카드 면 */
+  --paper-3:      #EDF3F7;        /* hover 면 */
+  --paper-bright: #EBF0F2;        /* 선택 카드 & ROUTE 카드 */
+  --ink:          #13233F;        /* navy ink */
+  --ink-2:        #33445F;
+  --ink-3:        #5D6C84;
+  --ink-4:        #8995A8;
+  --coral:        #0A74B8;        /* 메인 — cerulean */
+  --steel:        #7444C9;        /* 이벤트 — violet */
+  --moss:         #0B8A6B;        /* 사이드 — viridian */
+  --gold:         #B97A06;        /* 인연 스토리 — ochre */
+  --warn:         #A86A00;
+  --pale:         #AAB5C4;
+  --line:         rgba(19, 35, 63, 0.14);
+  --line-strong:  rgba(19, 35, 63, 0.30);
+  --hatch:        repeating-linear-gradient(135deg, rgba(19, 35, 63, 0.055) 0 1px, transparent 1px 7px);
 }
 
 :root[data-theme="light"] body {
   background: var(--paper);
-  background-image: none;
+  background-image:
+    radial-gradient(ellipse at 18% 0%, rgba(10, 116, 184, 0.12), transparent 55%),
+    radial-gradient(ellipse at 85% 30%, rgba(116, 68, 201, 0.07), transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(11, 138, 107, 0.07), transparent 60%),
+    linear-gradient(rgba(19, 35, 63, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(19, 35, 63, 0.045) 1px, transparent 1px),
+    /* public 파일은 CSS에서 base 경로가 자동으로 붙지 않아 직접 적는다 */
+    url('/nikke-storyline/assets/bg-survey.svg'),
+    url('/nikke-storyline/assets/bg-topo.svg');
+  background-size: 100% 100%, 100% 100%, 100% 100%,
+                   64px 64px, 64px 64px,
+                   640px 640px, 720px 720px;
 }
 
-:root[data-theme="light"] .masthead {
-  border-top: 4px solid var(--ink);
-}
 :root[data-theme="light"] .masthead h1 .accent,
 :root[data-theme="light"] .timeline-header .tag {
   text-shadow: none;
 }
 
-:root[data-theme="light"] .legend-card,
-:root[data-theme="light"] .note {
-  background: var(--paper);
-}
-
-:root[data-theme="light"] .arc-divider span {
-  background: var(--paper);
-  color: var(--ink-3);
+:root[data-theme="light"] .intro {
+  box-shadow: 0 14px 30px -20px rgba(10, 116, 184, 0.45);
 }
 
 :root[data-theme="light"] .group ul.glist li {
-  background: var(--paper);
+  background: var(--paper-bright);
 }
 
-:root[data-theme="light"] .route {
-  background: var(--paper);
-  border: 1px solid var(--line);
-}
-
+/* 작전 경로: 색이 이어지는 점선 */
 :root[data-theme="light"] .timeline::before {
   background: linear-gradient(
     to bottom,
     transparent 0,
-    var(--ink) 18px,
-    var(--ink) calc(100% - 18px),
+    var(--coral) 18px,
+    var(--steel) 50%,
+    var(--moss) calc(100% - 18px),
     transparent 100%
   );
+  -webkit-mask: repeating-linear-gradient(to bottom, #000 0 9px, transparent 9px 15px);
+          mask: repeating-linear-gradient(to bottom, #000 0 9px, transparent 9px 15px);
   box-shadow: none;
 }
 
+/* 카드: 카테고리 색이 은은히 비치는 halo 그림자 (다크의 glow 대응) */
 :root[data-theme="light"] .card {
-  background: var(--paper);
-  border: 1.5px solid var(--ink);
-  box-shadow: 0 1px 0 var(--paper-3);
-}
-:root[data-theme="light"] .card:hover {
+  --halo: 10, 116, 184;
   background: var(--paper-2);
-  border-color: var(--coral);
-  transform: translateY(-2px);
-  box-shadow: 0 3px 0 var(--paper-3), 0 4px 12px rgba(31, 26, 20, 0.12);
+  border-color: var(--line);
+  border-left-color: rgb(var(--halo));
+  box-shadow:
+    0 1px 0 rgba(19, 35, 63, 0.05),
+    0 14px 28px -16px rgba(var(--halo), 0.55);
+}
+:root[data-theme="light"] .card[data-cat="event"]    { --halo: 116, 68, 201; }
+:root[data-theme="light"] .card[data-cat="side"]     { --halo: 11, 138, 107; }
+:root[data-theme="light"] .card[data-cat="affinity"] { --halo: 185, 122, 6; }
+:root[data-theme="light"] .card:hover {
+  background: var(--paper-3);
+  border-color: rgba(var(--halo), 0.55);
+  border-left-color: rgb(var(--halo));
+  box-shadow:
+    0 1px 0 rgba(19, 35, 63, 0.05),
+    0 18px 34px -16px rgba(var(--halo), 0.7);
+}
+
+/* 선택 스토리: 지도의 '부차 구역' 빗금 + 점선 (다크의 어두운 면 + 점선 대응) */
+:root[data-theme="light"] .card[data-req="opt"] {
+  background: var(--hatch), var(--paper-bright);
+  border-color: var(--line-strong);
+  border-left-color: rgba(var(--halo), 0.85);
+  box-shadow: 0 10px 22px -18px rgba(var(--halo), 0.5);
+}
+:root[data-theme="light"] .card[data-req="opt"]:hover {
+  background: var(--hatch), var(--paper-3);
 }
 
 :root[data-theme="light"] .node[data-side="left"]  .card.left::after,
 :root[data-theme="light"] .node[data-side="right"] .card.right::after {
-  border-top: none;
-  height: 2px;
-  background: var(--ink-3);
+  border-top-color: var(--ink-4);
   box-shadow: none;
 }
 
-:root[data-theme="light"] .node[data-cat="main"]     .marker .dot { box-shadow: none; }
-:root[data-theme="light"] .node[data-cat="main"]     .marker .dot::after { background: #fff; }
-:root[data-theme="light"] .node[data-cat="event"]    .marker .dot { box-shadow: none; }
-:root[data-theme="light"] .node[data-cat="side"]     .marker .dot { box-shadow: none; }
-:root[data-theme="light"] .node[data-cat="affinity"] .marker .dot { box-shadow: none; }
+/* 경로 위 웨이포인트: glow 대신 색 링 */
+:root[data-theme="light"] .node .marker .dot { background: var(--paper-2); }
+:root[data-theme="light"] .node[data-cat="main"]     .marker .dot { background: var(--coral); box-shadow: 0 0 0 4px rgba(10, 116, 184, 0.18); }
+:root[data-theme="light"] .node[data-cat="main"]     .marker .dot::after { background: var(--paper-2); }
+:root[data-theme="light"] .node[data-cat="event"]    .marker .dot { box-shadow: 0 0 0 3px rgba(116, 68, 201, 0.16); }
+:root[data-theme="light"] .node[data-cat="side"]     .marker .dot { box-shadow: 0 0 0 3px rgba(11, 138, 107, 0.16); }
+:root[data-theme="light"] .node[data-cat="affinity"] .marker .dot { box-shadow: 0 0 0 3px rgba(185, 122, 6, 0.18); }
+:root[data-theme="light"] .node[data-req="opt"] .marker .dot { background: var(--paper-bright); box-shadow: none; }
 
-:root[data-theme="light"] .badge.cat-main     { background: rgba(201, 83, 45, 0.06); }
-:root[data-theme="light"] .badge.cat-event    { background: rgba(107, 63, 160, 0.10); }
-:root[data-theme="light"] .badge.cat-side     { background: rgba(74, 107, 47, 0.07); }
-:root[data-theme="light"] .badge.cat-affinity { background: rgba(184, 134, 46, 0.07); }
-:root[data-theme="light"] .badge.req          { color: #A37418; background: rgba(163, 116, 24, 0.10); }
+:root[data-theme="light"] .badge.cat-main     { background: rgba(10, 116, 184, 0.09); }
+:root[data-theme="light"] .badge.cat-event    { background: rgba(116, 68, 201, 0.09); }
+:root[data-theme="light"] .badge.cat-side     { background: rgba(11, 138, 107, 0.09); }
+:root[data-theme="light"] .badge.cat-affinity { background: rgba(185, 122, 6, 0.10); }
+/* 필수·중요·주년: 형광펜 */
+:root[data-theme="light"] .badge.req,
+:root[data-theme="light"] .badge.important,
+:root[data-theme="light"] .badge.anniv        { color: #7A4F00; background: rgba(255, 210, 63, 0.55); border-color: rgba(168, 106, 0, 0.45); }
 :root[data-theme="light"] .badge.opt          { background: var(--paper-2); }
-:root[data-theme="light"] .badge.important    { color: #A37418; background: rgba(163, 116, 24, 0.10); }
 :root[data-theme="light"] .badge.no-dub,
-:root[data-theme="light"] .badge.no-archive   { background: var(--paper-2); }
-:root[data-theme="light"] .badge.anniv        { color: #A37418; background: rgba(163, 116, 24, 0.10); }
+:root[data-theme="light"] .badge.no-archive   { background: var(--paper-bright); }
 
 :root[data-theme="light"] .note .tag {
-  background: rgba(201, 83, 45, 0.08);
+  background: rgba(10, 116, 184, 0.10);
 }
 
 :root[data-theme="light"] .timeline-end .endcap {
   background: var(--ink);
-  color: var(--paper);
-  border: none;
-  box-shadow: none;
+  color: var(--paper-2);
+  border-color: var(--ink);
+  box-shadow: 0 14px 28px -14px rgba(19, 35, 63, 0.6);
 }
 
 /* ===== Theme Switch ===== */
