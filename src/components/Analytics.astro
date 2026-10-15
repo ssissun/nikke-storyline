@@ -70,7 +70,8 @@ import { UMAMI_WEBSITE_ID, CLARITY_PROJECT_ID, UMAMI_TAG, ANALYTICS_HOST } from 
     });
 
     // 체류 시간: 탭이 보이는 동안만 누적해 구간 도달 시 1회씩 보낸다.
-    // 이벤트가 이어지므로 Umami의 '방문 시간' 지표도 실제에 가까워진다.
+    // Umami의 '방문 시간'은 페이지 조회만으로 계산돼 한 페이지 사이트에선 0에 가까우므로 이 이벤트로 본다.
+    // 커스텀 이벤트가 있는 방문은 이탈(bounce)로 세지 않는다.
     var TICK_SEC = 5;
     var milestones = [[30, '30초'], [60, '1분'], [180, '3분'], [300, '5분'], [600, '10분']];
     var activeSec = 0;
