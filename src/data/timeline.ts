@@ -137,7 +137,7 @@ export const timeline: TimelineItem[] = [
     title: 'D.ARK HERO',
     category: 'event',
     required: false,
-    importance: 'medium',
+    importance: 'high',
     noDub: true,
     annotations: ['일단 선택으로 놓았으나 필수급 떡밥을 투척', '미감상시 미싱링크 다수 발생'],
   },
