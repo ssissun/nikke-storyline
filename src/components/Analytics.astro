@@ -1,0 +1,83 @@
+---
+// Umami 방문 분석 + 구간 도달·체류 시간 이벤트.
+// 개인정보 비수집 원칙: 쿠키·식별자·세션 녹화 없음, 입력값 없음,
+// 브라우저의 Do Not Track 존중, URL의 쿼리·해시 제외.
+import { UMAMI_WEBSITE_ID, UMAMI_TAG, ANALYTICS_HOST } from '../analytics';
+---
+
+{
+  UMAMI_WEBSITE_ID && (
+    <>
+      <script
+        is:inline
+        defer
+        src="https://cloud.umami.is/script.js"
+        data-website-id={UMAMI_WEBSITE_ID}
+        data-tag={UMAMI_TAG}
+        data-domains={ANALYTICS_HOST}
+        data-do-not-track="true"
+        data-exclude-search="true"
+        data-exclude-hash="true"
+      />
+
+      <script is:inline define:vars={{ host: ANALYTICS_HOST }}>
+        (function () {
+          if (location.hostname !== host) return;
+
+          function track(name, props) {
+            if (window.umami) window.umami.track(name, props);
+          }
+
+          // 어디까지 읽었는지: 타임라인 25/50/75% 지점, 끝, 하단 두 섹션.
+          // 페이지 로드당 구간별 1회만 보낸다.
+          document.addEventListener('DOMContentLoaded', function () {
+            var targets = [];
+            var nodes = document.querySelectorAll('.timeline .node');
+            [25, 50, 75].forEach(function (pct) {
+              var el = nodes[Math.floor((nodes.length * pct) / 100)];
+              if (el) targets.push([el, '타임라인 ' + pct + '%']);
+            });
+            [
+              ['.timeline-end', '타임라인 끝'],
+              ['.setting-stories', '설정 스토리'],
+              ['.bonus', '호평 이벤트'],
+            ].forEach(function (pair) {
+              var el = document.querySelector(pair[0]);
+              if (el) targets.push([el, pair[1]]);
+            });
+
+            var labels = new Map(targets);
+            var observer = new IntersectionObserver(function (entries) {
+              entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                track('reach', { section: labels.get(entry.target) });
+                observer.unobserve(entry.target);
+              });
+            });
+            labels.forEach(function (_, el) { observer.observe(el); });
+          });
+
+          // 체류 시간: 탭이 보이는 동안만 누적해 구간 도달 시 1회씩 보낸다.
+          // 이벤트가 이어지므로 Umami의 '방문 시간' 지표도 실제에 가까워진다.
+          var TICK_SEC = 5;
+          var milestones = [[30, '30초'], [60, '1분'], [180, '3분'], [300, '5분'], [600, '10분']];
+          var activeSec = 0;
+          var timer = setInterval(function () {
+            if (document.visibilityState !== 'visible') return;
+            activeSec += TICK_SEC;
+            while (milestones.length && activeSec >= milestones[0][0]) {
+              track('stay', { over: milestones.shift()[1] });
+            }
+            if (!milestones.length) clearInterval(timer);
+          }, TICK_SEC * 1000);
+
+          // ThemeSwitch 자체 핸들러가 먼저 실행된 뒤라 바뀐 테마가 읽힌다.
+          document.addEventListener('click', function (e) {
+            if (!e.target.closest('[data-theme-switch]')) return;
+            track('theme', { to: document.documentElement.getAttribute('data-theme') });
+          });
+        })();
+      </script>
+    </>
+  )
+}

@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { BUILD_ID } from '../buildId';
+import Analytics from '../components/Analytics.astro';
 
 interface Props {
   title: string;
@@ -61,6 +62,8 @@ const versionUrl = `${base}/version.json`;
         }
       })();
     </script>
+
+    <Analytics />
   </head>
   <body>
     <slot />
