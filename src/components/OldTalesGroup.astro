@@ -1,6 +1,9 @@
 ---
 import type { OldTalesGroup } from '../data/types';
 import { anchorId } from '../anchors';
+import { oldTalesFilterAttrs } from '../timelineFilter';
+import { thumbnailsFor } from '../thumbnails';
+import Thumb from './Thumb.astro';
 
 interface Props {
   group: OldTalesGroup;
@@ -9,14 +12,16 @@ interface Props {
 
 const { group, order } = Astro.props;
 const orderStr = String(order).padStart(2, '0');
+const thumbs = thumbnailsFor(group.title);
 ---
 
-<div class="node">
+<div class="node" {...oldTalesFilterAttrs(group)}>
   <div
-    class="group"
+    class:list={['group', { 'has-thumb': thumbs.length > 0 }]}
     id={anchorId('story', group.title)}
     data-anniv={group.anniversary ? '' : undefined}
   >
+    <Thumb title={group.title} />
     <div class="gh">
       <span class="order">{orderStr}</span>{group.title}
     </div>

@@ -3,13 +3,10 @@ import type { TimelineItem } from './types';
 export const timeline: TimelineItem[] = [
   {
     type: 'card',
-    title: 'Chapter 1 — 14',
+    title: 'Chapter 0 — 14',
     category: 'main',
     required: true,
-    annotations: [
-      '본편의 도입과 1차 세계관 정립.',
-      '<em>라피(SR) · 아니스(SR) 인연</em> 스토리도 보면 세계관 이해도 ↑.',
-    ],
+    annotations: ['SR 라피 · 아니스 인연스토리에서 세계관 기초 설명'],
   },
   {
     type: 'card',
@@ -181,7 +178,7 @@ export const timeline: TimelineItem[] = [
       },
     ],
     innerNote:
-      '<strong>OLD TALES 내부:</strong> 기억의 크리스털 · 유실물 · 숨겨진 아지랑이 감상 추천.',
+      '<strong>이벤트 맵에서 크리스탈 · 유실물 · 아지랑이 감상 추천.</strong>',
   },
   {
     type: 'card',

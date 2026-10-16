@@ -11,12 +11,16 @@ export const updates: UpdateLogEntry[] = [
   {
     date: '2026-10-16',
     items: [
+      '[기능] 스토리라인 필터 추가',
       '[기능] 업데이트 로그 추가',
       '[기능] 스포일러 가리기 추가',
+      '[디자인] 스토리 썸네일 추가',
       '[디자인] 주년 · 신년 카드 강조',
-      { text: '[외부 분기] 블라블라 → 세르반 추가', to: '블라블라 → 세르반' },
-      '[외부 분기] 전초기지(지하 1층) · 방주(지하 2층) 삭제',
-      { text: '[이벤트] GODDESS FALL · 설명 추가', to: 'GODDESS FALL' },
+      { text: '[스토리라인 밖] 블라블라 → 세르반 추가', to: '블라블라 → 세르반' },
+      '[스토리라인 밖] 전초기지(지하 1층) · 방주(지하 2층) 삭제',
+      '[스토리라인 밖] 섹션 이름 외부 분기 → 스토리라인 밖에서 챙길 스토리',
+      { text: '[메인] Chapter 1 — 14 → Chapter 0 — 14, 설명 수정', to: 'Chapter 0 — 14' },
+      '[설명] 타임라인 2곳 수정',
     ],
   },
   {
@@ -82,7 +86,7 @@ export const updates: UpdateLogEntry[] = [
     items: [
       {
         text: '[메인] Chapter 1 — 20 → Chapter 1 — 14 / Chapter 15 — 20 분할',
-        to: 'Chapter 1 — 14',
+        to: 'Chapter 0 — 14',
       },
       {
         text: '[사이드] SECOND AFFECTION · 위치 이동 (Chapter 1 — 14 다음), 설명 수정',

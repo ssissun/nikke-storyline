@@ -1,0 +1,199 @@
+---
+// 스토리라인 필터. 필터 버튼을 누르면 메뉴가 열린다.
+// 중요도 · 종류 · 더빙 세 축을 모두 만족하는 카드만 보여 주고, 중요도 · 더빙은 고르지 않으면 전체다.
+// 카드의 data-rank / data-kinds / data-dub 속성은 src/timelineFilter.ts에서 붙인다.
+// 구분선과 안내 박스는 필터와 상관없이 항상 보인다.
+
+// 중요도: 별 개수 기준 '이상'(누적). 메인/주년/사이드는 누적과 무관한 별도 기준이라 구분선 뒤에 둔다.
+const LEVELS = [
+  { value: 'medium', label: '★★', summary: '★★ 이상', hint: '별 2개 이상 (중간 · 높음 · 필수)', cumulative: true },
+  { value: 'high', label: '★★★', summary: '★★★ 이상', hint: '별 3개 이상 (높음 · 필수)', cumulative: true },
+  { value: 'required', label: '필수', summary: '필수', hint: '필수 스토리만', cumulative: true },
+  { value: 'main-anniv-side', label: '메인/주년/사이드', summary: '메인/주년/사이드', hint: '메인 · 주년(신년) · 사이드 스토리만', cumulative: false },
+];
+const KINDS = [
+  { value: 'main', label: '메인' },
+  { value: 'anniv', label: '주년' },
+  { value: 'side', label: '사이드' },
+  { value: 'event', label: '일반 이벤트' },
+  { value: 'affinity', label: '인연 스토리' },
+];
+const DUBS = [
+  { value: 'y', label: '더빙 O' },
+  { value: 'n', label: '더빙 X' },
+];
+---
+
+<form class="timeline-filter" id="timeline-filter" data-timeline-filter aria-label="스토리라인 필터">
+  <div class="tf-bar">
+    <span class="tf-summary" aria-live="polite" data-filter-summary></span>
+    <button class="tf-reset" type="reset" hidden data-filter-reset>초기화</button>
+    <button
+      class="tf-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="timeline-filter-panel"
+      data-filter-toggle
+    >
+      <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+        <path d="M2 3h12l-4.5 5.5V13l-3 1.5V8.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path>
+      </svg>
+      필터
+      <span class="tf-badge" hidden data-filter-badge></span>
+    </button>
+  </div>
+
+  <div class="tf-panel" id="timeline-filter-panel" hidden data-filter-panel>
+    <fieldset class="tf-row" data-single>
+      <legend class="tf-label">중요도</legend>
+      <div class="tf-options">
+        {
+          LEVELS.map(({ value, label, summary, hint, cumulative }) => (
+            <label
+              class:list={['tf-opt', 'tf-level', { 'tf-separate': !cumulative }]}
+              title={hint}
+              data-cumulative={cumulative ? '' : undefined}
+            >
+              <input type="checkbox" name="level" value={value} data-summary={summary} />
+              <span class:list={{ 'tf-stars': label.startsWith('★') }}>{label}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+    <fieldset class="tf-row">
+      <legend class="tf-label">종류</legend>
+      <div class="tf-options">
+        {
+          KINDS.map(({ value, label }) => (
+            <label class="tf-opt tf-kind" data-kind={value}>
+              <input type="checkbox" name="kind" value={value} data-summary={label} checked />
+              <span>{label}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+    <fieldset class="tf-row" data-single>
+      <legend class="tf-label">더빙</legend>
+      <div class="tf-options">
+        {
+          DUBS.map(({ value, label }) => (
+            <label class="tf-opt">
+              <input type="checkbox" name="dub" value={value} data-summary={label} />
+              <span>{label}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+  </div>
+</form>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-timeline-filter]');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-filter-toggle]');
+  const panel = document.querySelector<HTMLElement>('[data-filter-panel]');
+  const badge = document.querySelector<HTMLElement>('[data-filter-badge]');
+  const summary = document.querySelector('[data-filter-summary]');
+  const resetButton = document.querySelector<HTMLButtonElement>('[data-filter-reset]');
+  const empty = document.querySelector<HTMLElement>('[data-filter-empty]');
+  const items = [...document.querySelectorAll<HTMLElement>('[data-filter-item]')];
+  const levelOptions = [...document.querySelectorAll<HTMLElement>('.tf-level')];
+
+  const MIN_RANK: Record<string, number> = { medium: 1, high: 2, required: 3 };
+
+  const checkedIn = (name: string) =>
+    [...(form?.querySelectorAll<HTMLInputElement>(`[name="${name}"]`) ?? [])].filter((input) => input.checked);
+
+  const matchesLevel = (level: string | undefined, rank: number, kinds: string[]) => {
+    if (!level) return true;
+    if (level === 'main-anniv-side') return ['main', 'anniv', 'side'].some((kind) => kinds.includes(kind));
+    return rank >= MIN_RANK[level];
+  };
+
+  // 종류 요약: 끈 것이 적으면 '사이드 제외', 아니면 켠 것만 나열
+  const kindSummary = (checked: HTMLInputElement[]) => {
+    const all = [...(form?.querySelectorAll<HTMLInputElement>('[name="kind"]') ?? [])];
+    if (checked.length === all.length) return undefined;
+    if (checked.length === 0) return '종류 없음';
+    const off = all.filter((input) => !input.checked);
+    const names = (inputs: HTMLInputElement[]) => inputs.map((input) => input.dataset.summary).join(', ');
+    return off.length <= checked.length ? `${names(off)} 제외` : names(checked);
+  };
+
+  const apply = () => {
+    if (!form) return;
+    const levelInput = checkedIn('level')[0];
+    const dubInput = checkedIn('dub')[0];
+    const kindInputs = checkedIn('kind');
+    const level = levelInput?.value;
+    const kinds = new Set(kindInputs.map((input) => input.value));
+
+    let shown = 0;
+    for (const item of items) {
+      const itemKinds = (item.dataset.kinds ?? '').split(' ');
+      const visible =
+        matchesLevel(level, Number(item.dataset.rank), itemKinds) &&
+        itemKinds.some((kind) => kinds.has(kind)) &&
+        (!dubInput || item.dataset.dub === dubInput.value);
+      item.hidden = !visible;
+      if (visible) shown += 1;
+    }
+
+    // 별 기준은 누적이라, 고른 단계보다 위 단계도 '포함됨'으로 옅게 표시한다
+    const pickedIndex = levelOptions.findIndex((option) => option.querySelector('input')?.checked);
+    levelOptions.forEach((option, index) => {
+      const included =
+        option.hasAttribute('data-cumulative') &&
+        levelOptions[pickedIndex]?.hasAttribute('data-cumulative') &&
+        index > pickedIndex;
+      option.classList.toggle('is-included', Boolean(included));
+    });
+
+    const parts = [levelInput?.dataset.summary, kindSummary(kindInputs), dubInput?.dataset.summary].filter(Boolean);
+
+    if (summary) {
+      summary.textContent = parts.length
+        ? `${parts.join(' · ')} — ${items.length}개 중 ${shown}개`
+        : `전체 ${items.length}개`;
+    }
+    if (badge) {
+      badge.hidden = parts.length === 0;
+      badge.textContent = String(parts.length);
+    }
+    if (resetButton) resetButton.hidden = parts.length === 0;
+    if (empty) empty.hidden = shown > 0;
+  };
+
+  // 중요도 · 더빙은 하나만 고르고, 고른 것을 다시 누르면 해제(= 전체)
+  form?.addEventListener('change', (event) => {
+    const input = event.target as HTMLInputElement;
+    if (input.checked && input.closest('[data-single]')) {
+      form
+        .querySelectorAll<HTMLInputElement>(`[name="${input.name}"]`)
+        .forEach((other) => other !== input && (other.checked = false));
+    }
+    apply();
+  });
+  // reset 이벤트는 값이 되돌아가기 전에 오므로 한 틱 뒤에 다시 계산한다
+  form?.addEventListener('reset', () => window.setTimeout(apply));
+
+  const setOpen = (open: boolean) => {
+    if (!panel || !toggle) return;
+    panel.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+  };
+  toggle?.addEventListener('click', () => setOpen(Boolean(panel?.hidden)));
+  // 메뉴 바깥을 누르거나 Esc를 누르면 닫는다
+  document.addEventListener('click', (event) => {
+    if (panel && !panel.hidden && !form?.contains(event.target as Node)) setOpen(false);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || !panel || panel.hidden) return;
+    setOpen(false);
+    toggle?.focus();
+  });
+
+  apply();
+</script>

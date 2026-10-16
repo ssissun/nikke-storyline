@@ -1,6 +1,8 @@
 ---
 import { settingStoryGroups } from '../data/settingStories';
 import { anchorId } from '../anchors';
+import { thumbnailsFor } from '../thumbnails';
+import Thumb from './Thumb.astro';
 ---
 
 <section class="notes setting-stories">
@@ -16,7 +18,8 @@ import { anchorId } from '../anchors';
           <div class="body">
             <ul class="bonus-list">
               {group.events.map((event) => (
-                <li>
+                <li class:list={{ 'has-mini': thumbnailsFor(event).length > 0 }}>
+                  <Thumb title={event} size="mini" />
                   <strong>{event}</strong>
                 </li>
               ))}

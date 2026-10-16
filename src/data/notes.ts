@@ -1,7 +1,7 @@
 import type { NoteCard } from './types';
 
 /**
- * 외부 분기 — 본편 외부에서 챙겨야 할 인연 스토리·서브퀘스트·돌발 스토리 등
+ * 스토리라인 밖에서 챙길 스토리 — 본편 외부에서 챙겨야 할 인연 스토리·서브퀘스트·돌발 스토리 등
  */
 export const externalNotes: NoteCard[] = [
   {

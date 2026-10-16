@@ -3,6 +3,9 @@ import type { StoryCard } from '../data/types';
 import { laneFor } from '../data/types';
 import Stars from './Stars.astro';
 import { anchorId } from '../anchors';
+import { cardFilterAttrs } from '../timelineFilter';
+import { thumbnailsFor } from '../thumbnails';
+import Thumb from './Thumb.astro';
 
 interface Props {
   card: StoryCard;
@@ -15,6 +18,7 @@ const lane = laneFor(card.category);
 const dataReq = card.required ? 'req' : 'opt';
 const orderStr = String(order).padStart(2, '0');
 const ttlClass = card.titleScript === 'kor' ? 'ttl kor' : 'ttl';
+const thumbs = thumbnailsFor(card.title);
 
 const categoryLabel: Record<StoryCard['category'], string> = {
   main: '메인',
@@ -29,16 +33,18 @@ const categoryLabel: Record<StoryCard['category'], string> = {
   data-cat={card.category}
   data-req={dataReq}
   data-side={lane}
+  {...cardFilterAttrs(card)}
 >
   {lane === 'right' && <div class="marker"><div class="dot"></div></div>}
 
   <div
-    class={`card ${lane}`}
+    class:list={['card', lane, { 'has-thumb': thumbs.length > 0 }]}
     id={anchorId('story', card.title)}
     data-cat={card.category}
     data-req={dataReq}
     data-anniv={card.anniversary ? '' : undefined}
   >
+    <Thumb title={card.title} />
     <div class="head">
       <span class="order">{orderStr}</span>
       <span class={ttlClass}>{card.title}</span>

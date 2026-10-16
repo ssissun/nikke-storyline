@@ -1,0 +1,141 @@
+---
+// 썸네일 크게 보기. Thumb 버튼의 data-viewer(이미지 목록)를 받아 한 장씩 보여 준다.
+// 여러 장이면 좌우 버튼 · 방향키 · 밀어 넘기기 · 아래 작은 썸네일로 넘긴다.
+// 버튼은 이미지를 가리지 않도록 위(제목 · 닫기)와 아래(이전 · 장 번호 · 다음)에 둔다.
+---
+
+<dialog class="viewer motion-dialog" aria-label="썸네일 크게 보기" data-viewer-dialog>
+  <div class="viewer-head">
+    <span class="viewer-caption" data-viewer-caption></span>
+    <button class="viewer-close" type="button" aria-label="닫기" data-dialog-close>×</button>
+  </div>
+  <figure class="viewer-stage" data-viewer-stage>
+    <img data-viewer-img alt="" />
+  </figure>
+  <div class="viewer-nav">
+    <button class="viewer-step" type="button" aria-label="이전" data-viewer-step="-1">‹</button>
+    <span class="viewer-count" data-viewer-count></span>
+    <button class="viewer-step" type="button" aria-label="다음" data-viewer-step="1">›</button>
+  </div>
+  <div class="viewer-strip" data-viewer-strip></div>
+</dialog>
+
+<script>
+  import { bindDialogMotion, closeDialog } from '../dialogMotion';
+
+  interface ThumbView {
+    src: string;
+    caption: string;
+    logo?: string;
+    logoRatio?: number;
+    logoScale?: number;
+  }
+
+  const SWIPE_PX = 40;
+  const SLIDE_PX = 28;
+  const SLIDE_MS = 220;
+  const dialog = document.querySelector<HTMLDialogElement>('[data-viewer-dialog]');
+  const image = document.querySelector<HTMLImageElement>('[data-viewer-img]');
+  const caption = document.querySelector('[data-viewer-caption]');
+  const count = document.querySelector('[data-viewer-count]');
+  const strip = document.querySelector<HTMLElement>('[data-viewer-strip]');
+  const stage = document.querySelector<HTMLElement>('[data-viewer-stage]');
+
+  let views: ThumbView[] = [];
+  let current = 0;
+
+  // direction: 1이면 오른쪽에서, -1이면 왼쪽에서 밀려 들어온다. 0이면 애니메이션 없이 바꾼다
+  const show = async (index: number, direction = 0) => {
+    if (!image || views.length === 0) return;
+    current = (index + views.length) % views.length;
+    const view = views[current];
+    image.src = view.src;
+    image.alt = view.caption;
+    if (caption) {
+      // 이벤트는 제목 대신 로고(alt에 제목)
+      if (view.logo) {
+        const logo = document.createElement('img');
+        logo.className = 'viewer-logo';
+        logo.src = view.logo;
+        logo.style.setProperty('--ratio', String(view.logoRatio ?? 2));
+        logo.style.setProperty('--scale', String(view.logoScale ?? 1));
+        logo.alt = view.caption;
+        caption.replaceChildren(logo);
+      } else {
+        caption.textContent = view.caption;
+      }
+    }
+    if (count) count.textContent = `${current + 1} / ${views.length}`;
+    strip?.querySelectorAll('button').forEach((button, i) => {
+      button.setAttribute('aria-current', String(i === current));
+      if (i === current) button.scrollIntoView({ block: 'nearest', inline: 'center' });
+    });
+
+    if (direction === 0 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    await image.decode().catch(() => undefined);
+    image.animate(
+      [
+        { opacity: 0, transform: `translateX(${direction * SLIDE_PX}px)` },
+        { opacity: 1, transform: 'none' },
+      ],
+      { duration: SLIDE_MS, easing: 'cubic-bezier(0.2, 0.7, 0.3, 1)' },
+    );
+  };
+
+  const step = (by: number) => show(current + by, by);
+
+  const open = (list: ThumbView[]) => {
+    if (!dialog || !strip) return;
+    views = list;
+    dialog.classList.toggle('is-multi', views.length > 1);
+    strip.replaceChildren(
+      ...(views.length > 1
+        ? views.map((view, i) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.setAttribute('aria-label', view.caption);
+            button.innerHTML = `<img src="${view.src}" alt="" loading="lazy">`;
+            button.addEventListener('click', () => i !== current && show(i, Math.sign(i - current)));
+            return button;
+          })
+        : []),
+    );
+    dialog.classList.remove('is-closing');
+    dialog.showModal();
+    show(0);
+  };
+
+  if (dialog) bindDialogMotion(dialog);
+
+  document.addEventListener('click', (event) => {
+    const trigger = (event.target as Element).closest<HTMLElement>('[data-viewer]');
+    if (trigger?.dataset.viewer) open(JSON.parse(trigger.dataset.viewer));
+  });
+
+  dialog?.addEventListener('click', (event) => {
+    if (event.target === dialog) {
+      closeDialog(dialog); // 창 바깥(backdrop)을 누르면 닫는다
+      return;
+    }
+    const button = (event.target as Element).closest<HTMLElement>('[data-viewer-step]');
+    if (button) step(Number(button.dataset.viewerStep));
+  });
+
+  dialog?.addEventListener('keydown', (event) => {
+    if (views.length < 2) return;
+    if (event.key === 'ArrowLeft') step(-1);
+    if (event.key === 'ArrowRight') step(1);
+  });
+
+  // 터치로 좌우로 밀어 넘기기
+  let startX: number | null = null;
+  stage?.addEventListener('pointerdown', (event) => {
+    startX = event.clientX;
+  });
+  stage?.addEventListener('pointerup', (event) => {
+    if (startX === null || views.length < 2) return;
+    const dx = event.clientX - startX;
+    startX = null;
+    if (Math.abs(dx) >= SWIPE_PX) step(dx < 0 ? 1 : -1);
+  });
+</script>

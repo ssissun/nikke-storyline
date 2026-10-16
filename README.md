@@ -9,7 +9,7 @@ src/
 │   ├── timeline.ts   # 38 카드 + dividers + groups
 │   ├── intro.ts      # "먼저 알아둘 점" bullets
 │   ├── legend.ts     # 4 카테고리 + 중요도 설명
-│   ├── notes.ts      # 외부 분기 카드
+│   ├── notes.ts      # 스토리라인 밖에서 챙길 스토리 카드
 │   ├── bonus.ts      # 호평 이벤트 카드
 │   └── meta.ts       # 최종 갱신일 (LAST_UPDATED)
 ├── components/       # 재사용 컴포넌트

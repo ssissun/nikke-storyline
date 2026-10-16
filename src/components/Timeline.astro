@@ -4,6 +4,7 @@ import Card from './Card.astro';
 import OptionalEventsGroup from './OptionalEventsGroup.astro';
 import OldTalesGroup from './OldTalesGroup.astro';
 import ArcDivider from './ArcDivider.astro';
+import TimelineFilter from './TimelineFilter.astro';
 
 /**
  * Order numbering: dividers는 카운트하지 않음. 그 외 항목(card / group)은 순서대로 1, 2, 3...
@@ -21,6 +22,8 @@ const itemsWithOrder = timeline.map((item) => {
 <div class="timeline-header">
   <span class="tag">— The Storyline —</span>
 </div>
+
+<TimelineFilter />
 
 <div class="timeline">
   {
@@ -40,6 +43,11 @@ const itemsWithOrder = timeline.map((item) => {
       return null;
     })
   }
+
+  <p class="timeline-empty" hidden data-filter-empty>
+    조건에 맞는 스토리가 없습니다.
+    <button type="reset" form="timeline-filter">필터 초기화</button>
+  </p>
 
   <div class="timeline-end">
     <div class="endcap">— To be Continued —</div>

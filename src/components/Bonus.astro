@@ -1,6 +1,8 @@
 ---
 import { bonusCards } from '../data/bonus';
 import { anchorId } from '../anchors';
+import { thumbnailsFor } from '../thumbnails';
+import Thumb from './Thumb.astro';
 ---
 
 <section class="notes bonus">
@@ -12,7 +14,11 @@ import { anchorId } from '../anchors';
   <div class="notes-grid">
     {
       bonusCards.map((card) => (
-        <div class="note" id={anchorId('bonus', card.title)}>
+        <div
+          class:list={['note', { 'has-thumb': thumbnailsFor(card.title).length > 0 }]}
+          id={anchorId('bonus', card.title)}
+        >
+          <Thumb title={card.title} />
           <span class="tag">{card.tag}</span>
           <div class="ttl">{card.title}</div>
           <div class="body">

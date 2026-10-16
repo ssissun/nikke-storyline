@@ -64,12 +64,10 @@ const recent = updates.slice(0, RECENT_COUNT).map(({ date, items }) => ({
   <span class="update-line-open">전체 보기</span>
 </button>
 
-<dialog class="update-log" aria-labelledby="update-log-title" data-update-log>
+<dialog class="update-log motion-dialog" aria-labelledby="update-log-title" data-update-log>
   <div class="update-log-head">
     <h2 id="update-log-title">업데이트 로그</h2>
-    <form method="dialog">
-      <button class="update-log-close" type="submit" aria-label="닫기">×</button>
-    </form>
+    <button class="update-log-close" type="button" aria-label="닫기" data-dialog-close>×</button>
   </div>
   <div class="update-log-body">
     {
@@ -101,15 +99,21 @@ const recent = updates.slice(0, RECENT_COUNT).map(({ date, items }) => ({
 </dialog>
 
 <script>
+  import { bindDialogMotion, closeDialog } from '../dialogMotion';
+
   const FLASH_MS = 1800;
   const dialog = document.querySelector<HTMLDialogElement>('[data-update-log]');
 
-  document.querySelector('[data-update-open]')?.addEventListener('click', () => dialog?.showModal());
+  if (dialog) bindDialogMotion(dialog);
+  document.querySelector('[data-update-open]')?.addEventListener('click', () => {
+    dialog?.classList.remove('is-closing');
+    dialog?.showModal();
+  });
 
-  dialog?.addEventListener('click', (event) => {
+  dialog?.addEventListener('click', async (event) => {
     // 창 바깥(backdrop)을 누르면 닫는다
     if (event.target === dialog) {
-      dialog.close();
+      closeDialog(dialog);
       return;
     }
     const link = (event.target as Element).closest<HTMLAnchorElement>('[data-jump]');
@@ -117,12 +121,22 @@ const recent = updates.slice(0, RECENT_COUNT).map(({ date, items }) => ({
     if (!link || !target) return;
 
     event.preventDefault();
-    dialog.close();
+    await closeDialog(dialog); // 닫힌 뒤 포커스가 되돌아간 다음에 이동해야 스크롤이 튀지 않는다
+    // 스토리라인 필터에 가려진 카드면 필터를 풀고(다음 틱에 반영) 이동한다
+    if (target.closest('[hidden]')) {
+      document.querySelector<HTMLFormElement>('[data-timeline-filter]')?.reset();
+      window.setTimeout(() => jumpTo(target));
+    } else {
+      jumpTo(target);
+    }
+  });
+
+  function jumpTo(target: HTMLElement) {
     const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
     target.classList.remove('jump-flash');
     void target.offsetWidth; // 같은 카드를 연달아 눌러도 다시 깜빡이도록
     target.classList.add('jump-flash');
     window.setTimeout(() => target.classList.remove('jump-flash'), FLASH_MS);
-  });
+  }
 </script>

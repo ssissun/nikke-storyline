@@ -1,0 +1,33 @@
+---
+// 정사각형 썸네일 버튼. 여러 장이면 뒤 장이 오른쪽 위로 살짝 비치게 겹친다.
+// 누르면 ThumbViewer가 크게 보여 준다(메인 묶음은 범위 안 모든 챕터를 넘겨 볼 수 있다).
+// 제목이 바로 옆에 있으므로 이미지는 장식으로 두고(alt=""), 버튼 이름으로 설명한다.
+import { galleryFor, thumbnailsFor } from '../thumbnails';
+
+interface Props {
+  title: string;
+  size?: 'card' | 'mini';
+}
+
+const MAX_LAYERS = 3;
+const { title, size = 'card' } = Astro.props;
+const layers = (size === 'mini' ? thumbnailsFor(title).slice(0, 1) : thumbnailsFor(title)).slice(0, MAX_LAYERS);
+const gallery = galleryFor(title);
+const label = `${title} 썸네일 크게 보기${gallery.length > 1 ? ` (${gallery.length}장)` : ''}`;
+---
+
+{
+  layers.length > 0 && (
+    <button
+      type="button"
+      class:list={['thumb', `thumb-${size}`]}
+      style={`--layers: ${layers.length}`}
+      aria-label={label}
+      data-viewer={JSON.stringify(gallery)}
+    >
+      {layers.map(({ src }, index) => (
+        <img src={src} alt="" loading="lazy" decoding="async" style={`--i: ${index}`} />
+      ))}
+    </button>
+  )
+}
