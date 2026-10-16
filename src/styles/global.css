@@ -139,25 +139,37 @@ body {
 /* ===== Update log ===== */
 .update-line {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 12px;
-  width: 100%;
   margin: -16px 0 24px;
   padding: 9px 14px;
-  font: inherit;
-  text-align: left;
   color: var(--ink-2);
   background: color-mix(in srgb, var(--paper-2) 70%, transparent);
   border: 1px dashed var(--line-strong);
   border-radius: 2px;
-  cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 .update-line:hover {
   background: color-mix(in srgb, var(--paper-2) 70%, var(--coral) 8%);
   border-color: var(--coral);
 }
-.update-line:focus-visible,
+/* 라벨 · 날짜 · 첫 줄을 누르면 업데이트 로그 창 */
+.update-line-main {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.update-line-main:focus-visible,
+.update-line-action:focus-visible,
 .update-log-close:focus-visible {
   outline: 2px solid var(--coral);
   outline-offset: 2px;
@@ -170,7 +182,6 @@ body {
   padding: 1px 8px;
   border-radius: 2px;
 }
-.update-line-date,
 .update-day-date {
   flex: none;
   font-size: 13px;
@@ -189,12 +200,21 @@ body {
   margin-left: 6px;
   color: var(--ink-3);
 }
-.update-line-open {
+/* 바로가기 · 전체 보기 */
+.update-line-action {
   flex: none;
+  padding: 2px 4px;
+  font: inherit;
   font-size: 12px;
   color: var(--ink-3);
+  background: none;
+  border: none;
+  border-radius: 2px;
+  text-decoration: none;
+  cursor: pointer;
 }
-.update-line:hover .update-line-open { color: var(--coral); }
+.update-line-action:hover { color: var(--coral); }
+a.update-line-action { color: var(--coral); text-decoration: underline; text-underline-offset: 3px; }
 
 .update-tag {
   margin-right: 2px;
@@ -679,6 +699,83 @@ body {
   border-radius: 9px;
 }
 .tf-badge[hidden] { display: none; }
+/* 챕터 바로가기 (ChapterJumps.astro). 남는 폭을 차지하고, 버튼은 라벨과 함께 줄바꿈된다 */
+.tf-jumps {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.tf-jump-list { display: contents; }
+.tf-jumps[data-label-break] .tf-jumps-label { flex-basis: 100%; }
+.tf-jumps[data-mode="ten"] .tf-jump:not([data-ten]) { display: none; }
+.tf-jumps-toggle { display: none; }
+
+/* menu 모드: 버튼 하나로 접고 누르면 5의 배수 전부를 펼친다 */
+.tf-jumps[data-mode="menu"] .tf-jumps-label { display: none; }
+.tf-jumps[data-mode="menu"] .tf-jumps-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--coral);
+  background: color-mix(in srgb, var(--coral) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--coral) 55%, transparent);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.tf-jumps-toggle:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
+.tf-jumps[data-mode="menu"] .tf-jump-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 21;
+  display: none;
+  grid-template-columns: repeat(5, auto);
+  gap: 6px;
+  padding: 10px;
+  background: var(--paper-2);
+  border: 1px solid var(--line-strong);
+  border-top: 2px solid var(--coral);
+  border-radius: 4px;
+  box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.7);
+}
+.tf-jumps[data-mode="menu"].is-open .tf-jump-list {
+  display: grid;
+  animation: tf-open 0.14s ease-out;
+}
+.tf-jumps-label {
+  margin-right: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+/* 필터 버튼과 같은 무게로 보이게 */
+.tf-jump {
+  min-width: 42px;
+  padding: 6px 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--coral);
+  text-decoration: none;
+  background: color-mix(in srgb, var(--coral) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--coral) 55%, transparent);
+  border-radius: 3px;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.tf-jump:hover {
+  border-color: var(--coral);
+  background: color-mix(in srgb, var(--coral) 20%, transparent);
+}
+.tf-jump:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
 .tf-summary {
   font-size: 13px;
   color: var(--ink-3);

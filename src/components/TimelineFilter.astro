@@ -3,6 +3,8 @@
 // 중요도 · 종류 · 더빙 세 축을 모두 만족하는 카드만 보여 주고, 중요도 · 더빙은 고르지 않으면 전체다.
 // 카드의 data-rank / data-kinds / data-dub 속성은 src/timelineFilter.ts에서 붙인다.
 // 구분선과 안내 박스는 필터와 상관없이 항상 보인다.
+// 왼쪽에는 긴 스토리라인을 위한 챕터 바로가기(ChapterJumps)를 둔다.
+import ChapterJumps from './ChapterJumps.astro';
 
 // 중요도: 별 개수 기준 '이상'(누적). 메인/주년/사이드는 누적과 무관한 별도 기준이라 구분선 뒤에 둔다.
 const LEVELS = [
@@ -26,6 +28,7 @@ const DUBS = [
 
 <form class="timeline-filter" id="timeline-filter" data-timeline-filter aria-label="스토리라인 필터">
   <div class="tf-bar">
+    <ChapterJumps />
     <span class="tf-summary" aria-live="polite" data-filter-summary></span>
     <button class="tf-reset" type="reset" hidden data-filter-reset>초기화</button>
     <button
