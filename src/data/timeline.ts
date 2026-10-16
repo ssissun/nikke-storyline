@@ -260,7 +260,7 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 37 — 38',
     category: 'main',
     required: true,
-    annotations: ['스토리를 접시 바닥까지 핥아 먹고 싶다면 BRAND NEW YEAR 나 SEA YOU AGAIN 선행 감상 추천'],
+    annotations: ['<span class="spoiler">헬름과의 만남이 궁금하면 BRAND NEW YEAR 나 SEA YOU AGAIN 감상 추천</span>'],
   },
   {
     type: 'card',
