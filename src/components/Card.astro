@@ -2,6 +2,7 @@
 import type { StoryCard } from '../data/types';
 import { laneFor } from '../data/types';
 import Stars from './Stars.astro';
+import { anchorId } from '../anchors';
 
 interface Props {
   card: StoryCard;
@@ -31,7 +32,13 @@ const categoryLabel: Record<StoryCard['category'], string> = {
 >
   {lane === 'right' && <div class="marker"><div class="dot"></div></div>}
 
-  <div class={`card ${lane}`} data-cat={card.category} data-req={dataReq}>
+  <div
+    class={`card ${lane}`}
+    id={anchorId('story', card.title)}
+    data-cat={card.category}
+    data-req={dataReq}
+    data-anniv={card.anniversary ? '' : undefined}
+  >
     <div class="head">
       <span class="order">{orderStr}</span>
       <span class={ttlClass}>{card.title}</span>

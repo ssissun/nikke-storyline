@@ -55,7 +55,7 @@ export const timeline: TimelineItem[] = [
     noDub: true,
     annotations: [
       '스토리 라인에 포함된 이벤트 아님 — 넘어가도 무방',
-      '언더월드 퀸',
+      '<span class="spoiler">언더월드 퀸</span>',
     ],
   },
   {
@@ -328,6 +328,7 @@ export const timeline: TimelineItem[] = [
     anniversary: '3주년',
     annotations: [
       '미니게임 <strong>REBUILD EDEN</strong> 스토리 감상 추천 — 다만 <em>미니게임 진행에 시간 상당히 소요</em>됨.',
+      '<span class="spoiler">나유타들이 궁금하면 유튜브에서 <strong>XXX명의 나유타</strong> 감상 추천</span>',
     ],
   },
   {
@@ -353,7 +354,7 @@ export const timeline: TimelineItem[] = [
     importance: 'medium',
     noArchive: true,
     noDub: true,
-    annotations: ['E.H. 과거'],
+    annotations: ['<span class="spoiler">E.H. 과거</span>'],
   },
   {
     type: 'card',

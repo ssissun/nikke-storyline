@@ -1,5 +1,6 @@
 ---
 import { externalNotes } from '../data/notes';
+import { anchorId } from '../anchors';
 ---
 
 <section class="notes">
@@ -7,7 +8,7 @@ import { externalNotes } from '../data/notes';
   <div class="notes-grid">
     {
       externalNotes.map((note) => (
-        <div class="note">
+        <div class="note" id={anchorId('note', note.title)}>
           <span class="tag">{note.tag}</span>
           <div class="ttl">{note.title}</div>
           <div class="body" set:html={note.body} />

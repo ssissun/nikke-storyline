@@ -1,5 +1,6 @@
 ---
 import type { OldTalesGroup } from '../data/types';
+import { anchorId } from '../anchors';
 
 interface Props {
   group: OldTalesGroup;
@@ -11,7 +12,11 @@ const orderStr = String(order).padStart(2, '0');
 ---
 
 <div class="node">
-  <div class="group">
+  <div
+    class="group"
+    id={anchorId('story', group.title)}
+    data-anniv={group.anniversary ? '' : undefined}
+  >
     <div class="gh">
       <span class="order">{orderStr}</span>{group.title}
     </div>

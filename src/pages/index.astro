@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ThemeSwitch from '../components/ThemeSwitch.astro';
 import Masthead from '../components/Masthead.astro';
+import UpdateLog from '../components/UpdateLog.astro';
 import Intro from '../components/Intro.astro';
 import Legend from '../components/Legend.astro';
 import Notes from '../components/Notes.astro';
@@ -13,9 +14,26 @@ import { LAST_UPDATED } from '../data/meta';
 
 const SITE_URL = 'https://ssissun.github.io/nikke-storyline/';
 const OG_IMAGE = `${SITE_URL}assets/og-thumbnail.jpg`;
-const TITLE = 'NIKKE 스토리 감상 순서 가이드';
+const TITLE = '니케 스토리 감상 순서 | NIKKE';
 const DESCRIPTION =
-  'NIKKE(니케) 스토리 감상 순서 가이드 — 메인 · 이벤트 · 사이드 · 인연 스토리를 이야기 흐름 기준으로 정리한 타임라인.';
+  '니케(NIKKE: 승리의 여신) 스토리 감상 순서와 보는 순서를 정리한 가이드. 메인 · 이벤트 · 사이드 · 인연 스토리를 릴리즈 순이 아닌 이야기 흐름 기준으로 배치한 타임라인.';
+
+// 검색 엔진용 구조화 데이터: 이 페이지가 무엇에 대한 것이고 언제 갱신됐는지
+const STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: TITLE,
+  description: DESCRIPTION,
+  url: SITE_URL,
+  image: OG_IMAGE,
+  inLanguage: 'ko',
+  dateModified: LAST_UPDATED,
+  about: {
+    '@type': 'VideoGame',
+    name: '승리의 여신: 니케',
+    alternateName: ['니케', 'NIKKE', 'GODDESS OF VICTORY: NIKKE'],
+  },
+};
 ---
 
 <BaseLayout
@@ -24,9 +42,11 @@ const DESCRIPTION =
   ogImage={OG_IMAGE}
   pageUrl={SITE_URL}
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(STRUCTURED_DATA)} />
   <ThemeSwitch />
   <div class="page">
     <Masthead lastUpdated={LAST_UPDATED} />
+    <UpdateLog />
     <Intro />
     <Legend />
     <Notes />

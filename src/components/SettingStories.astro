@@ -1,5 +1,6 @@
 ---
 import { settingStoryGroups } from '../data/settingStories';
+import { anchorId } from '../anchors';
 ---
 
 <section class="notes setting-stories">
@@ -10,7 +11,7 @@ import { settingStoryGroups } from '../data/settingStories';
   <div class="notes-grid">
     {
       settingStoryGroups.map((group) => (
-        <div class="note">
+        <div class="note" id={anchorId('setting', group.setting)}>
           <span class="tag">{group.setting}</span>
           <div class="body">
             <ul class="bonus-list">

@@ -26,6 +26,7 @@ const versionUrl = `${base}/version.json`;
       content="JZyY8BnHt9RerWgT0XoRhuso9yhA_ud8AJwvKKZQ5s8"
     />
     <title>{title}</title>
+    <link rel="canonical" href={pageUrl} />
 
     <link rel="icon" href={`${base}/favicon.ico`} sizes="48x48" />
     <link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml" />
@@ -46,6 +47,7 @@ const versionUrl = `${base}/version.json`;
     <meta property="og:image:height" content="1166" />
     <meta property="og:url" content={pageUrl} />
     <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content="니케 스토리 감상 순서" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -63,10 +65,18 @@ const versionUrl = `${base}/version.json`;
       })();
     </script>
 
+    <slot name="head" />
     <Analytics />
   </head>
   <body>
     <slot />
+
+    <script>
+      // 스포일러(.spoiler)는 흐리게 가려 두고, 마우스를 올리면 잠깐 · 누르면 계속 보인다.
+      document.querySelectorAll<HTMLElement>('.spoiler').forEach((el) => {
+        el.addEventListener('click', () => el.classList.toggle('is-revealed'));
+      });
+    </script>
 
     <!--
       새 배포 자동 반영.

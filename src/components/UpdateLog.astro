@@ -1,0 +1,128 @@
+---
+// Masthead 아래 최신 업데이트 한 줄. 누르면 최근 업데이트 로그 창이 열린다.
+// 로그의 줄이 특정 카드를 가리키면(to) 누를 때 창을 닫고 그 위치로 이동한다.
+import { updates } from '../data/updates';
+import { timeline } from '../data/timeline';
+import { bonusCards } from '../data/bonus';
+import { externalNotes } from '../data/notes';
+import { settingStoryGroups } from '../data/settingStories';
+import type { UpdateLogItem } from '../data/types';
+import { anchorId } from '../anchors';
+
+const RECENT_COUNT = 10; // 창에 보여줄 최근 업데이트 날짜 수
+
+// 분류 꼬리표 색은 카드 카테고리 색을 따른다. 섹션 · 기능 등 꼬리표는 기본색.
+const TAG_CATEGORY: Record<string, string> = {
+  메인: 'main',
+  이벤트: 'event',
+  사이드: 'side',
+  '인연 스토리': 'affinity',
+};
+
+// 제목 → 요소 id. 이름이 바뀌거나 지워진 카드를 가리키면 링크 없이 보여 준다.
+const targets = new Map<string, string>();
+const register = (kind: Parameters<typeof anchorId>[0], title: string) => {
+  if (!targets.has(title)) targets.set(title, anchorId(kind, title));
+};
+timeline.forEach((item) => item.type !== 'divider' && register('story', item.title));
+bonusCards.forEach((card) => register('bonus', card.title));
+externalNotes.forEach((note) => register('note', note.title));
+settingStoryGroups.forEach((group) => register('setting', group.setting));
+
+const parseItem = (item: UpdateLogItem) => {
+  const line = typeof item === 'string' ? item : item.text;
+  const to = typeof item === 'string' ? undefined : item.to;
+  const target = to ? targets.get(to) : undefined;
+  if (to && !target) console.warn(`[update-log] 이동할 위치를 찾지 못함: ${to}`);
+  const match = line.match(/^\[([^\]]+)\]\s*(.*)$/);
+  return {
+    tag: match ? match[1] : '',
+    text: match ? match[2] : line,
+    target,
+  };
+};
+
+const formatDate = (date: string) => date.replaceAll('-', '.');
+
+const [latest] = updates;
+const headline = parseItem(latest.items[0]);
+const moreCount = latest.items.length - 1;
+const recent = updates.slice(0, RECENT_COUNT).map(({ date, items }) => ({
+  date,
+  lines: items.map(parseItem),
+}));
+---
+
+<button class="update-line" type="button" aria-haspopup="dialog" data-update-open>
+  <span class="update-line-label">업데이트</span>
+  <time class="update-line-date" datetime={latest.date}>{formatDate(latest.date)}</time>
+  <span class="update-line-text">
+    {headline.tag && <span class={`update-tag ${TAG_CATEGORY[headline.tag] ?? ''}`}>[{headline.tag}]</span>}
+    {headline.text}
+    {moreCount > 0 && <span class="update-line-more">외 {moreCount}건</span>}
+  </span>
+  <span class="update-line-open">전체 보기</span>
+</button>
+
+<dialog class="update-log" aria-labelledby="update-log-title" data-update-log>
+  <div class="update-log-head">
+    <h2 id="update-log-title">업데이트 로그</h2>
+    <form method="dialog">
+      <button class="update-log-close" type="submit" aria-label="닫기">×</button>
+    </form>
+  </div>
+  <div class="update-log-body">
+    {
+      recent.map(({ date, lines }) => (
+        <section class="update-day">
+          <time class="update-day-date" datetime={date}>{formatDate(date)}</time>
+          <ul>
+            {lines.map(({ tag, text, target }) => {
+              const tagEl = tag && (
+                <span class={`update-tag ${TAG_CATEGORY[tag] ?? ''}`}>[{tag}]</span>
+              );
+              return (
+                <li>
+                  {target ? (
+                    <a class="update-jump" href={`#${target}`} data-jump={target}>
+                      {tagEl} {text}
+                    </a>
+                  ) : (
+                    <>{tagEl} {text}</>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+</dialog>
+
+<script>
+  const FLASH_MS = 1800;
+  const dialog = document.querySelector<HTMLDialogElement>('[data-update-log]');
+
+  document.querySelector('[data-update-open]')?.addEventListener('click', () => dialog?.showModal());
+
+  dialog?.addEventListener('click', (event) => {
+    // 창 바깥(backdrop)을 누르면 닫는다
+    if (event.target === dialog) {
+      dialog.close();
+      return;
+    }
+    const link = (event.target as Element).closest<HTMLAnchorElement>('[data-jump]');
+    const target = link && document.getElementById(link.dataset.jump ?? '');
+    if (!link || !target) return;
+
+    event.preventDefault();
+    dialog.close();
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+    target.classList.remove('jump-flash');
+    void target.offsetWidth; // 같은 카드를 연달아 눌러도 다시 깜빡이도록
+    target.classList.add('jump-flash');
+    window.setTimeout(() => target.classList.remove('jump-flash'), FLASH_MS);
+  });
+</script>

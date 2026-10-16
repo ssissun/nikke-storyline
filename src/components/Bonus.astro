@@ -1,5 +1,6 @@
 ---
 import { bonusCards } from '../data/bonus';
+import { anchorId } from '../anchors';
 ---
 
 <section class="notes bonus">
@@ -11,7 +12,7 @@ import { bonusCards } from '../data/bonus';
   <div class="notes-grid">
     {
       bonusCards.map((card) => (
-        <div class="note">
+        <div class="note" id={anchorId('bonus', card.title)}>
           <span class="tag">{card.tag}</span>
           <div class="ttl">{card.title}</div>
           <div class="body">
@@ -23,7 +24,7 @@ import { bonusCards } from '../data/bonus';
             {card.related && (
               <div class="rel-nikke">
                 <span class="rl">관련 {card.related.type === 'squad' ? '스쿼드' : '니케'}</span>
-                {card.related.value}
+                <span class="spoiler">{card.related.value}</span>
               </div>
             )}
           </div>

@@ -75,6 +75,17 @@ export interface SettingStoryCard {
   events: string[]; // 해당 설정을 다루는 이벤트 이름 목록
 }
 
+/**
+ * 업데이트 로그 한 줄. '[분류] 대상 · 변경' 형식. 작성 규칙은 .claude/skills/update-log 참고.
+ * to: 누르면 이동할 카드 · 묶음 · 노트 · 설정 스토리의 제목 (화면에 보이는 제목 그대로)
+ */
+export type UpdateLogItem = string | { text: string; to: string };
+
+export interface UpdateLogEntry {
+  date: string; // 'YYYY-MM-DD' (KST)
+  items: UpdateLogItem[];
+}
+
 export interface LegendCategory {
   category: Category;
   label: string;

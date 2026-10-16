@@ -1,5 +1,6 @@
 ---
 import type { OptionalEventsGroup } from '../data/types';
+import { anchorId } from '../anchors';
 
 interface Props {
   group: OptionalEventsGroup;
@@ -11,7 +12,7 @@ const orderStr = String(order).padStart(2, '0');
 ---
 
 <div class="node">
-  <div class="group">
+  <div class="group" id={anchorId('story', group.title)}>
     <div class="gh">
       <span class="order">{orderStr}</span>{group.title}
     </div>
