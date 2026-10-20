@@ -24,6 +24,11 @@ const DUBS = [
   { value: 'y', label: '더빙 O' },
   { value: 'n', label: '더빙 X' },
 ];
+// 감상 기록(WatchProgress)에 따라: 고르지 않으면 전체
+const WATCHES = [
+  { value: 'unwatched', label: '안 본 것' },
+  { value: 'watched', label: '본 것' },
+];
 ---
 
 <form class="timeline-filter" id="timeline-filter" data-timeline-filter aria-label="스토리라인 필터">
@@ -90,10 +95,25 @@ const DUBS = [
         }
       </div>
     </fieldset>
+    <fieldset class="tf-row" data-single>
+      <legend class="tf-label">감상</legend>
+      <div class="tf-options">
+        {
+          WATCHES.map(({ value, label }) => (
+            <label class="tf-opt">
+              <input type="checkbox" name="watch" value={value} data-summary={label} />
+              <span>{label}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
   </div>
 </form>
 
 <script>
+  import { WATCHED_CHANGE } from '../watched';
+
   const form = document.querySelector<HTMLFormElement>('[data-timeline-filter]');
   const toggle = document.querySelector<HTMLButtonElement>('[data-filter-toggle]');
   const panel = document.querySelector<HTMLElement>('[data-filter-panel]');
@@ -129,6 +149,7 @@ const DUBS = [
     if (!form) return;
     const levelInput = checkedIn('level')[0];
     const dubInput = checkedIn('dub')[0];
+    const watchInput = checkedIn('watch')[0];
     const kindInputs = checkedIn('kind');
     const level = levelInput?.value;
     const kinds = new Set(kindInputs.map((input) => input.value));
@@ -139,7 +160,8 @@ const DUBS = [
       const visible =
         matchesLevel(level, Number(item.dataset.rank), itemKinds) &&
         itemKinds.some((kind) => kinds.has(kind)) &&
-        (!dubInput || item.dataset.dub === dubInput.value);
+        (!dubInput || item.dataset.dub === dubInput.value) &&
+        (!watchInput || (watchInput.value === 'watched') === item.hasAttribute('data-watched'));
       item.hidden = !visible;
       if (visible) shown += 1;
     }
@@ -154,7 +176,7 @@ const DUBS = [
       option.classList.toggle('is-included', Boolean(included));
     });
 
-    const parts = [levelInput?.dataset.summary, kindSummary(kindInputs), dubInput?.dataset.summary].filter(Boolean);
+    const parts = [levelInput?.dataset.summary, kindSummary(kindInputs), dubInput?.dataset.summary, watchInput?.dataset.summary].filter(Boolean);
 
     if (summary) {
       summary.textContent = parts.length
@@ -181,6 +203,8 @@ const DUBS = [
   });
   // reset 이벤트는 값이 되돌아가기 전에 오므로 한 틱 뒤에 다시 계산한다
   form?.addEventListener('reset', () => window.setTimeout(apply));
+  // 감상 체크가 바뀌면 '안 본 것' · '본 것' 필터 결과도 다시 계산한다
+  document.addEventListener(WATCHED_CHANGE, apply);
 
   const setOpen = (open: boolean) => {
     if (!panel || !toggle) return;

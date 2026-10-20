@@ -9,6 +9,10 @@ import type { UpdateLogEntry } from './types';
  */
 export const updates: UpdateLogEntry[] = [
   {
+    date: '2026-10-20',
+    items: ['[기능] 감상 체크 · 진행률 추가'],
+  },
+  {
     date: '2026-10-16',
     items: [
       '[기능] 스토리라인 필터 추가',

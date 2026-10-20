@@ -5,6 +5,7 @@ import OptionalEventsGroup from './OptionalEventsGroup.astro';
 import OldTalesGroup from './OldTalesGroup.astro';
 import ArcDivider from './ArcDivider.astro';
 import TimelineFilter from './TimelineFilter.astro';
+import WatchProgress from './WatchProgress.astro';
 
 /**
  * Order numbering: dividers는 카운트하지 않음. 그 외 항목(card / group)은 순서대로 1, 2, 3...
@@ -23,6 +24,7 @@ const itemsWithOrder = timeline.map((item) => {
   <span class="tag">— The Storyline —</span>
 </div>
 
+<WatchProgress />
 <TimelineFilter />
 
 <div class="timeline">

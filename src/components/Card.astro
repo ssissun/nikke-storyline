@@ -6,6 +6,7 @@ import { anchorId } from '../anchors';
 import { cardFilterAttrs } from '../timelineFilter';
 import { thumbnailsFor } from '../thumbnails';
 import Thumb from './Thumb.astro';
+import WatchToggle from './WatchToggle.astro';
 
 interface Props {
   card: StoryCard;
@@ -45,6 +46,7 @@ const categoryLabel: Record<StoryCard['category'], string> = {
     data-anniv={card.anniversary ? '' : undefined}
   >
     <Thumb title={card.title} />
+    <WatchToggle id={anchorId('story', card.title)} title={card.title} />
     <div class="head">
       <span class="order">{orderStr}</span>
       <span class={ttlClass}>{card.title}</span>

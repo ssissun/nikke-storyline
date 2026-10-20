@@ -649,6 +649,93 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
   text-shadow: 0 0 24px rgba(93, 194, 240, 0.44), 0 0 8px rgba(93, 194, 240, 0.32);
 }
 
+/* ===== Watch progress (감상 체크 · 진행률) ===== */
+.watch-progress {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+.watch-progress-label { font-weight: 600; color: var(--ink-2); }
+.watch-progress-bar {
+  position: relative;
+  flex: 0 1 220px;
+  height: 6px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+  border-radius: 3px;
+}
+.watch-progress-bar > span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  background: var(--moss);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+.watch-progress-count { font-variant-numeric: tabular-nums; }
+.watch-progress-action {
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 12.5px;
+  color: var(--ink-3);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.watch-progress-action[hidden] { display: none; }
+.watch-progress-action:hover { color: var(--coral); }
+.watch-progress-action.is-primary {
+  font-weight: 600;
+  color: var(--moss);
+  border-color: color-mix(in srgb, var(--moss) 55%, transparent);
+  background: color-mix(in srgb, var(--moss) 10%, transparent);
+}
+.watch-progress-action.is-primary:hover { background: color-mix(in srgb, var(--moss) 20%, transparent); }
+.watch-progress-action:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
+
+/* 카드 오른쪽 위 체크 */
+.watch-toggle {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  color: var(--ink-4);
+  background: color-mix(in srgb, var(--paper-2) 80%, transparent);
+  border: 1.5px solid var(--line-strong);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.watch-toggle:hover { color: var(--moss); border-color: var(--moss); }
+.watch-toggle[aria-pressed="true"] {
+  color: var(--paper);
+  background: var(--moss);
+  border-color: var(--moss);
+}
+.watch-toggle:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
+.card .head,
+.group .gh { padding-right: 34px; } /* 체크 버튼 자리 */
+
+/* 본 카드는 흐리게, 마우스를 올리거나 이동해 오면 원래대로 */
+.node[data-watched] > .card,
+.node[data-watched] > .group {
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+}
+.node[data-watched] > .card:hover,
+.node[data-watched] > .group:hover,
+.node[data-watched] > .jump-flash { opacity: 1; }
+
 /* ===== Timeline filter ===== */
 .timeline-filter {
   position: relative;
