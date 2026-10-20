@@ -112,7 +112,7 @@ const WATCHES = [
 </form>
 
 <script>
-  import { WATCHED_CHANGE } from '../watched';
+  import { TIMELINE_FILTERED, WATCHED_CHANGE } from '../watched';
 
   const form = document.querySelector<HTMLFormElement>('[data-timeline-filter]');
   const toggle = document.querySelector<HTMLButtonElement>('[data-filter-toggle]');
@@ -189,6 +189,7 @@ const WATCHES = [
     }
     if (resetButton) resetButton.hidden = parts.length === 0;
     if (empty) empty.hidden = shown > 0;
+    document.dispatchEvent(new CustomEvent(TIMELINE_FILTERED));
   };
 
   // 중요도 · 더빙은 하나만 고르고, 고른 것을 다시 누르면 해제(= 전체)

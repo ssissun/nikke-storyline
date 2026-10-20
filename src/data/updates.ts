@@ -13,6 +13,10 @@ export const updates: UpdateLogEntry[] = [
     items: ['[기능] 감상 체크 · 진행률 추가'],
   },
   {
+    date: '2026-10-17',
+    items: [{ text: '[메인] Chapter 37 — 38 · 설명 수정', to: 'Chapter 37 — 38' }],
+  },
+  {
     date: '2026-10-16',
     items: [
       '[기능] 스토리라인 필터 추가',

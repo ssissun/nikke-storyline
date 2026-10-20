@@ -3,6 +3,7 @@
 const STORAGE_KEY = 'nikke-watched';
 
 export const WATCHED_CHANGE = 'watched:change'; // 기록이 바뀌면 document에 보내는 이벤트
+export const TIMELINE_FILTERED = 'timeline:filtered'; // 필터 결과가 바뀌면 TimelineFilter가 보내는 이벤트
 
 // 진행률에서 카드 하나가 차지하는 몫. 메인 스토리는 챕터 하나를 1로 센다:
 // 'Chapter 0 — 14' → 15, 'Chapter 31 — 32 · OLD TALES' → 챕터 2 + OLD TALES 1 = 3, 그 밖의 카드는 1
