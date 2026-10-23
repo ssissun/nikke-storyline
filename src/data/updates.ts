@@ -9,6 +9,23 @@ import type { UpdateLogEntry } from './types';
  */
 export const updates: UpdateLogEntry[] = [
   {
+    date: '2026-10-23',
+    items: [
+      {
+        text: '[메인] Chapter 0 — 14 → Chapter 0 — 1 / Chapter 2 — 6 / Chapter 7 — 14 분할, 설명 수정',
+        to: 'Chapter 0 — 1',
+      },
+      {
+        text: '[사이드] SECOND AFFECTION · 위치 이동 (NEW YEAR, NEW SWORD 다음), 설명 수정',
+        to: 'SECOND AFFECTION',
+      },
+      {
+        text: '[이벤트] FIRST AFFECTION · 위치 이동 (SECOND AFFECTION 다음)',
+        to: 'FIRST AFFECTION',
+      },
+    ],
+  },
+  {
     date: '2026-10-20',
     items: ['[기능] 감상 체크 · 진행률 추가'],
   },
@@ -28,7 +45,7 @@ export const updates: UpdateLogEntry[] = [
       { text: '[스토리라인 밖] 블라블라 → 세르반 추가', to: '블라블라 → 세르반' },
       '[스토리라인 밖] 전초기지(지하 1층) · 방주(지하 2층) 삭제',
       '[스토리라인 밖] 섹션 이름 외부 분기 → 스토리라인 밖에서 챙길 스토리',
-      { text: '[메인] Chapter 1 — 14 → Chapter 0 — 14, 설명 수정', to: 'Chapter 0 — 14' },
+      { text: '[메인] Chapter 1 — 14 → Chapter 0 — 14, 설명 수정', to: 'Chapter 0 — 1' },
       '[설명] 타임라인 2곳 수정',
     ],
   },
@@ -95,7 +112,7 @@ export const updates: UpdateLogEntry[] = [
     items: [
       {
         text: '[메인] Chapter 1 — 20 → Chapter 1 — 14 / Chapter 15 — 20 분할',
-        to: 'Chapter 0 — 14',
+        to: 'Chapter 0 — 1',
       },
       {
         text: '[사이드] SECOND AFFECTION · 위치 이동 (Chapter 1 — 14 다음), 설명 수정',

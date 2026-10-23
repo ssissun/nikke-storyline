@@ -3,29 +3,23 @@ import type { TimelineItem } from './types';
 export const timeline: TimelineItem[] = [
   {
     type: 'card',
-    title: 'Chapter 0 — 14',
+    title: 'Chapter 0 — 1',
     category: 'main',
     required: true,
-    annotations: ['SR 라피 · 아니스 인연스토리에서 세계관 기초 설명'],
+    annotations: ['프롤로그'],
   },
   {
     type: 'card',
-    title: 'SECOND AFFECTION',
-    category: 'side',
+    title: 'Chapter 2 — 6',
+    category: 'main',
     required: true,
-    annotations: [
-      '26지 이후를 추천하기도 함. 어느 시점에 볼지는 본인 선택',
-    ],
+    annotations: ['6챕터까지 클리어 시 스토리모드 해금'],
   },
   {
     type: 'card',
-    title: 'FIRST AFFECTION',
-    category: 'event',
-    required: false,
-    importance: 'low',
-    annotations: [
-      '감상한다면 SECOND AFFECTION 이후에',
-    ],
+    title: 'Chapter 7 — 14',
+    category: 'main',
+    required: true,
   },
   {
     type: 'card',
@@ -92,6 +86,25 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: true,
     anniversary: '24 신년',
+  },
+  {
+    type: 'card',
+    title: 'SECOND AFFECTION',
+    category: 'side',
+    required: true,
+    annotations: [
+      '14지 이후를 추천하기도 함. 어느 시점에 볼지는 본인 선택',
+    ],
+  },
+  {
+    type: 'card',
+    title: 'FIRST AFFECTION',
+    category: 'event',
+    required: false,
+    importance: 'low',
+    annotations: [
+      '감상한다면 SECOND AFFECTION 이후에',
+    ],
   },
   {
     type: 'card',
