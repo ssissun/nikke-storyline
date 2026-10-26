@@ -699,7 +699,14 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
 .watch-progress-action:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
 
 /* ===== NIKKE Portal 안내 토스트 ===== */
+/* 페이지의 푸른 톤과 구분되도록 테마와 상관없이 라이트 테마 색(베이지 바탕 + 남색 글자)으로 고정한다 */
 .portal-toast {
+  --ink: #13233F;
+  --ink-2: #33445F;
+  --ink-3: #5D6C84;
+  --coral: #0A74B8;
+  --toast-gold: #B97A06;
+  --toast-button: #F09A2C;
   position: fixed;
   right: 20px;
   bottom: 20px;
@@ -712,8 +719,8 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
   font-size: 13.5px;
   line-height: 1.55;
   color: var(--ink-2);
-  background: var(--paper-2);
-  border: 1px solid var(--line-strong);
+  background: color-mix(in srgb, var(--toast-gold) 20%, #F8FAFB);
+  border: 1px solid color-mix(in srgb, var(--toast-gold) 70%, transparent);
   border-radius: 6px;
   box-shadow: 0 14px 32px -12px rgba(0, 0, 0, 0.45);
   animation: portal-toast-in 0.3s ease;
@@ -736,11 +743,11 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
 .portal-toast-action:hover { color: var(--coral); }
 .portal-toast-action.is-primary {
   font-weight: 600;
-  color: var(--coral);
-  border-color: color-mix(in srgb, var(--coral) 55%, transparent);
-  background: color-mix(in srgb, var(--coral) 10%, transparent);
+  color: var(--ink);
+  background: var(--toast-button);
+  border-color: var(--toast-button);
 }
-.portal-toast-action.is-primary:hover { background: color-mix(in srgb, var(--coral) 20%, transparent); }
+.portal-toast-action.is-primary:hover { color: var(--ink); background: color-mix(in srgb, var(--toast-button) 88%, #000); }
 .portal-toast-close {
   margin-left: auto;
   padding: 0 6px;
