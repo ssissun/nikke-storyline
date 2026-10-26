@@ -113,6 +113,7 @@ const WATCHES = [
 
 <script>
   import { TIMELINE_FILTERED, WATCHED_CHANGE } from '../watched';
+  import { track } from '../track';
 
   const form = document.querySelector<HTMLFormElement>('[data-timeline-filter]');
   const toggle = document.querySelector<HTMLButtonElement>('[data-filter-toggle]');
@@ -201,9 +202,12 @@ const WATCHES = [
         .forEach((other) => other !== input && (other.checked = false));
     }
     apply();
+    track('filter', { group: input.name, value: input.value, on: input.checked ? 'on' : 'off' });
   });
   // reset 이벤트는 값이 되돌아가기 전에 오므로 한 틱 뒤에 다시 계산한다
   form?.addEventListener('reset', () => window.setTimeout(apply));
+  // 카드로 이동하며 필터를 푸는 경우(jumpTo)와 구분하려고 초기화 버튼을 누른 것만 센다
+  resetButton?.addEventListener('click', () => track('filter', { group: 'reset' }));
   // 감상 체크가 바뀌면 '안 본 것' · '본 것' 필터 결과도 다시 계산한다
   document.addEventListener(WATCHED_CHANGE, apply);
 

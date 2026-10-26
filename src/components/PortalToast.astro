@@ -23,11 +23,9 @@ const PORTAL_URL = 'https://ssissun.github.io/nikke-portal/#story-ssissun';
   const STORAGE_KEY = 'nikke-portal-toast:storyline';
   const SHOW_DELAY_MS = 3000;
 
-  const toast = document.querySelector<HTMLElement>('[data-portal-toast]');
+  import { track } from '../track';
 
-  type Umami = { track: (event: string, data: Record<string, string>) => void };
-  const track = (action: 'open' | 'never') =>
-    (window as Window & { umami?: Umami }).umami?.track('portal-toast', { action });
+  const toast = document.querySelector<HTMLElement>('[data-portal-toast]');
 
   const dismissed = () => {
     try {
@@ -51,12 +49,12 @@ const PORTAL_URL = 'https://ssissun.github.io/nikke-portal/#story-ssissun';
     setTimeout(() => (toast.hidden = false), SHOW_DELAY_MS);
     toast.querySelector('[data-portal-toast-close]')?.addEventListener('click', hide);
     toast.querySelector('[data-portal-toast-never]')?.addEventListener('click', () => {
-      track('never');
+      track('portal-toast', { action: 'never' });
       dismissForever();
       hide();
     });
     toast.querySelector('[data-portal-toast-open]')?.addEventListener('click', () => {
-      track('open');
+      track('portal-toast', { action: 'open' });
       dismissForever();
       hide();
     });

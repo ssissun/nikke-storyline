@@ -52,6 +52,7 @@ const jumps = Array.from({ length: Math.max(0, Math.floor((lastChapter - FIRST_C
 
 <script>
   import { jumpTo } from '../jump';
+  import { track } from '../track';
 
   const MAX_BUTTON_LINES = 2;
   const nav = document.querySelector<HTMLElement>('[data-chapter-jumps]');
@@ -112,6 +113,7 @@ const jumps = Array.from({ length: Math.max(0, Math.floor((lastChapter - FIRST_C
     if (!link) return;
     event.preventDefault();
     setOpen(false);
+    track('jump', { via: 'chapter', card: link.dataset.jump ?? '' });
     jumpTo(link.dataset.jump ?? '');
   });
   toggle?.addEventListener('click', () => setOpen(!nav?.classList.contains('is-open')));

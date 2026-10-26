@@ -22,6 +22,7 @@
 
 <script>
   import { bindDialogMotion, closeDialog } from '../dialogMotion';
+  import { track } from '../track';
 
   interface ThumbView {
     src: string;
@@ -109,7 +110,9 @@
 
   document.addEventListener('click', (event) => {
     const trigger = (event.target as Element).closest<HTMLElement>('[data-viewer]');
-    if (trigger?.dataset.viewer) open(JSON.parse(trigger.dataset.viewer));
+    if (!trigger?.dataset.viewer) return;
+    open(JSON.parse(trigger.dataset.viewer));
+    track('viewer', { card: trigger.closest('[id]')?.id ?? '' });
   });
 
   dialog?.addEventListener('click', (event) => {

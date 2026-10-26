@@ -16,6 +16,7 @@
 <script>
   import { loadWatched, saveWatched, TIMELINE_FILTERED, WATCHED_CHANGE } from '../watched';
   import { jumpTo } from '../jump';
+  import { track } from '../track';
 
   const REQUIRED_RANK = 3; // timelineFilter.ts의 data-rank: 필수
 
@@ -75,16 +76,20 @@
     else watched.add(id);
     saveWatched(watched);
     render();
+    track('watch', { action: watched.has(id) ? 'check' : 'uncheck', card: id });
   });
 
   continueButton?.addEventListener('click', () => {
-    const { target } = continueTarget();
-    if (target?.dataset.watch) jumpTo(target.dataset.watch); // 보이는 카드라 필터는 그대로 둔다
+    const { target, started } = continueTarget();
+    if (!target?.dataset.watch) return;
+    track('jump', { via: started ? 'continue' : 'start', card: target.dataset.watch });
+    jumpTo(target.dataset.watch); // 보이는 카드라 필터는 그대로 둔다
   });
   document.addEventListener(TIMELINE_FILTERED, updateContinue);
 
   resetButton?.addEventListener('click', () => {
     if (!window.confirm('감상 기록을 모두 지울까요?')) return;
+    track('watch', { action: 'reset' });
     watched.clear();
     saveWatched(watched);
     render();
