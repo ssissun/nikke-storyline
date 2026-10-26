@@ -77,7 +77,7 @@ export const timeline: TimelineItem[] = [
     category: 'main',
     required: true,
     annotations: [
-      '서브퀘스트 [랩칠리언] 선행 감상 추천.',
+      '서브퀘스트 [랩칠리언] 선감상 추천.',
     ],
   },
   {
@@ -316,7 +316,7 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 39 — 40',
     category: 'main',
     required: true,
-    annotations: ['WISDOM SPRING 선행 감상 추천'],
+    annotations: ['WISDOM SPRING 선감상 추천'],
   },
   {
     type: 'card',
@@ -354,7 +354,7 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 43 — 44',
     category: 'main',
     required: true,
-    annotations: ['세르반 서브퀘, DIRTY BACK YARD도 선행 감상 추천하나 선택', '단, 세르반 서브퀘는 아카이브 없음'],
+    annotations: ['세르반 서브퀘, DIRTY BACK YARD도 선감상 추천하나 선택', '단, 세르반 서브퀘는 아카이브 없음'],
   },
   {
     type: 'card',
@@ -380,14 +380,14 @@ export const timeline: TimelineItem[] = [
     title: 'PRETTY STAR',
     category: 'side',
     required: true,
-    annotations: ['ARCHANE ARCHIVE 선행 감상 추천'],
+    annotations: ['ARCHANE ARCHIVE 선감상 추천'],
   },
   {
     type: 'card',
     title: 'Chapter 45 — 46',
     category: 'main',
     required: true,
-    annotations: ['BOOD THE GHOST 선행 감상 추천'],
+    annotations: ['BOOD THE GHOST 선감상 추천'],
   },
   {
     type: 'card',
@@ -401,7 +401,7 @@ export const timeline: TimelineItem[] = [
     title: 'ARK RANGER',
     category: 'event',
     required: true,
-    annotations: ['OVER THE HORIZON 선행 감상 추천하나, 필수는 아님'],
+    annotations: ['OVER THE HORIZON 선감상 추천'],
   },
   {
     type: 'card',
@@ -409,7 +409,7 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: false,
     importance: 'medium',
-    annotations: ['SCHOOL OF LOCK/COLOR LESS/나가 인연스 중 최소 하나 선행 감상 추천'],
+    annotations: ['SCHOOL OF LOCK/COLOR LESS/나가 인연스 중 최소 하나 선감상 추천'],
   },
   {
     type: 'card',
@@ -422,7 +422,7 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 47 — 48',
     category: 'main',
     required: true,
-    annotations: ['ARK RANGER 선행 감상 추천'],
+    annotations: ['ARK RANGER 선감상 추천'],
   },
   {
     type: 'card',
@@ -437,6 +437,6 @@ export const timeline: TimelineItem[] = [
     title: 'GINGERBREAD HOUSE',
     category: 'side',
     required: true,
-    annotations: ['WAVE TO YOU에서 있었던 일이 단편적으로 언급됨', '미싱링크가 거슬리면 WAVE TO YOU 선행 감상 추천'],
+    annotations: ['WAVE TO YOU에서 있었던 일이 단편적으로 언급', '거슬리면 WAVE TO YOU 선감상 추천'],
   },
 ];
