@@ -698,6 +698,72 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
 .watch-progress-action.is-primary:hover { background: color-mix(in srgb, var(--moss) 20%, transparent); }
 .watch-progress-action:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
 
+/* ===== NIKKE Portal 안내 토스트 ===== */
+.portal-toast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(360px, calc(100vw - 32px));
+  padding: 14px 16px 12px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  background: var(--paper-2);
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  box-shadow: 0 14px 32px -12px rgba(0, 0, 0, 0.45);
+  animation: portal-toast-in 0.3s ease;
+}
+.portal-toast[hidden] { display: none; }
+.portal-toast-text { word-break: keep-all; }
+.portal-toast-text b { color: var(--ink); }
+.portal-toast-actions { display: flex; align-items: center; gap: 6px; }
+.portal-toast-action {
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 12.5px;
+  color: var(--ink-3);
+  text-decoration: none;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.portal-toast-action:hover { color: var(--coral); }
+.portal-toast-action.is-primary {
+  font-weight: 600;
+  color: var(--coral);
+  border-color: color-mix(in srgb, var(--coral) 55%, transparent);
+  background: color-mix(in srgb, var(--coral) 10%, transparent);
+}
+.portal-toast-action.is-primary:hover { background: color-mix(in srgb, var(--coral) 20%, transparent); }
+.portal-toast-close {
+  margin-left: auto;
+  padding: 0 6px;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--ink-3);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.portal-toast-close:hover { color: var(--ink); }
+.portal-toast-action:focus-visible,
+.portal-toast-close:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
+@keyframes portal-toast-in {
+  from { opacity: 0; transform: translateY(8px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portal-toast { animation: none; }
+}
+@media (max-width: 480px) {
+  .portal-toast { right: 16px; bottom: 16px; }
+}
+
 /* 카드 오른쪽 위 체크 */
 .watch-toggle {
   position: absolute;
