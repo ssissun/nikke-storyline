@@ -789,7 +789,10 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
   cursor: pointer;
   transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
 }
-.watch-toggle:hover { color: var(--moss); border-color: var(--moss); }
+/* 누르기 전 미리보기는 마우스가 있는 기기에서만. 터치 기기는 손가락이 닿은 뒤 hover가 남아 체크된 것처럼 보인다 */
+@media (hover: hover) {
+  .watch-toggle:hover { color: var(--moss); border-color: var(--moss); }
+}
 .watch-toggle[aria-pressed="true"] {
   color: var(--paper);
   background: var(--moss);
@@ -799,14 +802,16 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
 .card .head,
 .group .gh { padding-right: 34px; } /* 체크 버튼 자리 */
 
-/* 본 카드는 흐리게, 마우스를 올리거나 이동해 오면 원래대로 */
+/* 본 카드는 흐리게, 마우스를 올리거나(마우스가 있는 기기) 이동해 오면 원래대로 */
 .node[data-watched] > .card,
 .node[data-watched] > .group {
   opacity: 0.55;
   transition: opacity 0.2s ease;
 }
-.node[data-watched] > .card:hover,
-.node[data-watched] > .group:hover,
+@media (hover: hover) {
+  .node[data-watched] > .card:hover,
+  .node[data-watched] > .group:hover { opacity: 1; }
+}
 .node[data-watched] > .jump-flash { opacity: 1; }
 
 /* ===== Timeline filter ===== */
