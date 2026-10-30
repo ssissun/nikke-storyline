@@ -439,4 +439,17 @@ export const timeline: TimelineItem[] = [
     required: true,
     annotations: ['WAVE TO YOU에서 있었던 일이 단편적으로 언급', '거슬리면 WAVE TO YOU 선감상 추천'],
   },
+  {
+    type: 'card',
+    title: 'Chapter 49 — 50',
+    category: 'main',
+    required: true,
+  },
+  {
+    type: 'card',
+    title: 'MARIA-n',
+    category: 'event',
+    required: true,
+    anniversary: '4주년',
+  },
 ];

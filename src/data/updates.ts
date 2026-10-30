@@ -9,6 +9,21 @@ import type { UpdateLogEntry } from './types';
  */
 export const updates: UpdateLogEntry[] = [
   {
+    date: '2026-10-30',
+    items: [
+      { text: '[메인] Chapter 49 — 50 추가', to: 'Chapter 49 — 50' },
+      { text: '[이벤트] MARIA-n 추가', to: 'MARIA-n' },
+    ],
+  },
+  {
+    date: '2026-10-27',
+    items: [{ text: '[메인] Chapter 37 — 38 · 설명 수정', to: 'Chapter 37 — 38' }],
+  },
+  {
+    date: '2026-10-26',
+    items: ['[설명] 타임라인 9곳 수정'],
+  },
+  {
     date: '2026-10-23',
     items: [
       {
