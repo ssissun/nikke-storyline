@@ -1,0 +1,50 @@
+name: Sync wiki images
+
+# 위키에 새로 올라온 썸네일 · 로고를 매일 확인해서 있으면 커밋하고 배포한다 (scripts/sync-wiki-images.mjs)
+on:
+  schedule:
+    - cron: '0 3 * * *' # 매일 12:00 KST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: sync-wiki-images
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch new images from the wiki
+        run: node scripts/sync-wiki-images.mjs > sync.log && cat sync.log
+
+      # GITHUB_TOKEN으로 push한 커밋은 deploy.yml(push 트리거)을 실행하지 않으므로 직접 실행한다
+      - name: Commit and deploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add src/assets scripts/wiki-image-placeholders.json
+          if git diff --cached --quiet; then
+            echo 'No new images'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -q -m 'Add story images from the wiki' -m "$(cat sync.log)"
+          git push
+          gh workflow run deploy.yml --ref main
