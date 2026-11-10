@@ -338,7 +338,7 @@ export const timeline: TimelineItem[] = [
     anniversary: '3주년',
     annotations: [
       '미니게임 스토리 감상 추천 <span class="spoiler">(에덴 멤버들의 과거)</span> — 다만 <em>미니게임 진행에 시간 상당히 소요</em>됨.',
-      '<span class="spoiler">나유타들이 궁금하면 유튜브에서 <strong>XXX명의 나유타</strong> 감상 추천</span>',
+      '<span class="spoiler">나유타들에 대해 궁금하면 유튜브 <strong>XXX명의 나유타</strong> 감상 추천</span>',
     ],
   },
   {
@@ -354,7 +354,7 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 43 — 44',
     category: 'main',
     required: true,
-    annotations: ['세르반 서브퀘, DIRTY BACK YARD도 선감상 추천하나 선택', '단, 세르반 서브퀘는 아카이브 없음'],
+    annotations: ['세르반 서브퀘, DIRTY BACK YARD도 선감상 추천', '단, 세르반 서브퀘는 아카이브 없음'],
   },
   {
     type: 'card',
@@ -410,7 +410,7 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: false,
     importance: 'medium',
-    annotations: ['SCHOOL OF LOCK/COLOR LESS/나가 인연스 중 최소 하나 선감상 추천'],
+    annotations: ['SCHOOL OF LOCK/COLOR LESS/나가 인연스 중 최소 하나 이상 선감상 추천'],
   },
   {
     type: 'card',
