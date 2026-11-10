@@ -62,7 +62,7 @@ export const timeline: TimelineItem[] = [
     required: true,
     anniversary: '1주년',
     annotations: [
-      '하드 스테이지 <strong>좌측 상단 테이프 · 빨간 버튼</strong> 이스터에그.',
+      '하드 스테이지 <em>좌측 상단 테이프 · 빨간 버튼</em> 이스터에그.',
       '<em>유실물 스토리</em> 감상 추천.',
       '미니게임 <strong>M.O.G</strong> — 소소한 떡밥은 있지만 안 봐도 무방.',
     ],
@@ -337,7 +337,7 @@ export const timeline: TimelineItem[] = [
     required: true,
     anniversary: '3주년',
     annotations: [
-      '미니게임 스토리 감상 추천 <span class="spoiler">(에덴 멤버들의 과거)</span> — 다만 <em>미니게임 진행에 시간 상당히 소요</em>됨.',
+      '<em>미니게임 스토리 감상 추천</em> <span class="spoiler">(에덴 멤버들의 과거)</span> — 단, 미니게임 진행에 시간 상당히 소요됨.',
       '<span class="spoiler">나유타들에 대해 궁금하면 유튜브 <strong>XXX명의 나유타</strong> 감상 추천</span>',
     ],
   },
@@ -395,7 +395,7 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: true,
     anniversary: '3.5주년',
-    annotations: ['맵 변화 감상 추천', '무대 중앙쪽 카메라 상호작용 가능'],
+    annotations: ['<em>맵 변화</em> 감상 추천', '무대 중앙쪽 카메라 상호작용 가능'],
   },
   {
     type: 'card',
@@ -452,6 +452,6 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: true,
     anniversary: '4주년',
-    annotations: ['맵 변화 감상 추천,  맵 변화마다 생겨나는 금색 빛무리 감상 추천'],
+    annotations: ['<em>맵 변화</em> 감상 추천,  맵 변화마다 생겨나는 <em>금색 빛무리</em> 감상 추천'],
   },
 ];
