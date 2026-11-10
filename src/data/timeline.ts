@@ -454,4 +454,9 @@ export const timeline: TimelineItem[] = [
     anniversary: '4주년',
     annotations: ['<em>맵 변화</em> 감상 추천,  맵 변화마다 생겨나는 <em>금색 빛무리</em> 감상 추천'],
   },
+  {
+    type: 'divider',
+    text: '메인 스토리 1부 完',
+    spoiler: true,
+  },
 ];

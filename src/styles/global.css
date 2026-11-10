@@ -1510,7 +1510,7 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
   position: relative;
   z-index: 2;
 }
-.arc-divider span {
+.arc-divider > span {
   background: var(--paper-2);
   border: 1px solid var(--line-strong);
   padding: 4px 18px;
@@ -1717,7 +1717,7 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
   .setting-stories h2 { font-size: 17px; }
   .bonus-list li { font-size: 13px; }
 
-  .arc-divider span { font-size: 12.5px; padding: 4px 14px; }
+  .arc-divider > span { font-size: 12.5px; padding: 4px 14px; }
 
   /* Theme switch — smaller on small phones */
   .theme-switch { top: 12px; right: 12px; padding: 3px; }

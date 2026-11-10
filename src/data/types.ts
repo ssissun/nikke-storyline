@@ -22,6 +22,7 @@ export interface StoryCard {
 export interface ArcDividerItem {
   type: 'divider';
   text: string;
+  spoiler?: boolean;
 }
 
 export interface OptionalEventsGroup {

@@ -1,8 +1,9 @@
 ---
 interface Props {
   text: string;
+  spoiler?: boolean;
 }
-const { text } = Astro.props;
+const { text, spoiler = false } = Astro.props;
 ---
 
-<div class="arc-divider"><span>{text}</span></div>
+<div class="arc-divider"><span>{spoiler ? <span class="spoiler">{text}</span> : text}</span></div>

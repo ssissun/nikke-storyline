@@ -31,7 +31,7 @@ const itemsWithOrder = timeline.map((item) => {
   {
     itemsWithOrder.map(({ item, order }) => {
       if (item.type === 'divider') {
-        return <ArcDivider text={item.text} />;
+        return <ArcDivider text={item.text} spoiler={item.spoiler} />;
       }
       if (item.type === 'card') {
         return <Card card={item} order={order!} />;

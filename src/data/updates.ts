@@ -9,10 +9,28 @@ import type { UpdateLogEntry } from './types';
  */
 export const updates: UpdateLogEntry[] = [
   {
+    date: '2026-11-10',
+    items: [
+      '[타임라인] 마지막에 스포일러 구분선 추가',
+      '[설명] 타임라인 8곳 수정',
+    ],
+  },
+  {
+    date: '2026-11-04',
+    items: ['[디자인] Chapter 49 — 50 · 스토리 썸네일 추가'],
+  },
+  {
     date: '2026-10-30',
     items: [
       { text: '[메인] Chapter 49 — 50 추가', to: 'Chapter 49 — 50' },
       { text: '[이벤트] MARIA-n 추가', to: 'MARIA-n' },
+    ],
+  },
+  {
+    date: '2026-10-29',
+    items: [
+      '[기능] NIKKE Portal 안내 · 타임라인 25% 지점에서 표시',
+      '[디자인] 감상 체크 · 마우스 미리보기를 터치 기기에서 제외',
     ],
   },
   {
