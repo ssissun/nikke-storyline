@@ -191,7 +191,7 @@ export const timeline: TimelineItem[] = [
       },
     ],
     innerNote:
-      '<strong>이벤트 맵에서 크리스탈 · 유실물 · 아지랑이 감상 추천.</strong>',
+      '<strong>이벤트 맵에서 크리스탈(가능하면 맵 변화마다 바로 감상 추천) · 유실물 · 아지랑이 감상 추천.</strong>',
   },
   {
     type: 'card',
@@ -337,7 +337,7 @@ export const timeline: TimelineItem[] = [
     required: true,
     anniversary: '3주년',
     annotations: [
-      '미니게임 <strong>REBUILD EDEN</strong> 스토리 감상 추천 — 다만 <em>미니게임 진행에 시간 상당히 소요</em>됨.',
+      '미니게임 스토리 감상 추천 <span class="spoiler">(에덴 멤버들의 과거)</span> — 다만 <em>미니게임 진행에 시간 상당히 소요</em>됨.',
       '<span class="spoiler">나유타들이 궁금하면 유튜브에서 <strong>XXX명의 나유타</strong> 감상 추천</span>',
     ],
   },
@@ -395,6 +395,7 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: true,
     anniversary: '3.5주년',
+    annotations: ['맵 변화 감상 추천', '무대 중앙쪽 카메라 상호작용 가능'],
   },
   {
     type: 'card',
@@ -451,5 +452,6 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: true,
     anniversary: '4주년',
+    annotations: ['맵 변화 감상 추천,  맵 변화마다 생겨나는 금색 빛무리 감상 추천'],
   },
 ];
