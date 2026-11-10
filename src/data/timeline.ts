@@ -273,7 +273,7 @@ export const timeline: TimelineItem[] = [
     title: 'Chapter 37 — 38',
     category: 'main',
     required: true,
-    annotations: ['<span class="spoiler">헬름과의 과거가 궁금하면 BRAND NEW YEAR, SEA YOU AGAIN 감상 추천</span>'],
+    annotations: ['<span class="spoiler">이지스와의 이야기가 궁금하면 BRAND NEW YEAR, SEA YOU AGAIN 감상 추천</span>'],
   },
   {
     type: 'card',
