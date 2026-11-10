@@ -191,7 +191,7 @@ export const timeline: TimelineItem[] = [
       },
     ],
     innerNote:
-      '<strong>이벤트 맵에서 크리스탈(가능하면 맵 변화마다 바로 감상 추천) · 유실물 · 아지랑이 감상 추천.</strong>',
+      '<strong>이벤트 맵에서 크리스탈</strong>(가능하면 맵 변화 시마다 바로) <strong>· 유실물 · 아지랑이 감상 추천.</strong>',
   },
   {
     type: 'card',
