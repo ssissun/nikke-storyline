@@ -453,9 +453,9 @@ export const timeline: TimelineItem[] = [
     required: true,
     anniversary: '4주년',
     annotations: [
-      '<em>맵 변화</em> 및 생겨나는 <em>빛무리</em> 감상 추천', 
-      '<em>미니게임</em> 플레이 추천. <span class="spoiler">1부-1루트, 2부-2루트, 2부끝-3루트 에 대응됨</span>,',
-      '<span class="spoiler">Hard 다 깨면 00지역에 유실물 생겨남.</span>'
+      '<em>맵 변화</em> 및 생겨나는 <em>빛무리</em> 감상 추천',
+      '<em>미니게임</em> 플레이 추천. <span class="spoiler">1부-1루트, 2부-2루트, 2부끝-3루트 에 대응됨</span>',
+      '<span class="spoiler">Hard 다 깨면 00지역에 유실물 생겨남.</span>',
     ],
   },
   {
