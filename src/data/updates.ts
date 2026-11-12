@@ -8,7 +8,7 @@ import type { UpdateLogEntry } from './types';
  * 화면의 특정 카드를 가리키는 줄은 { text, to: '카드 제목' }으로 쓰면 눌렀을 때 그 위치로 이동한다.
  */
 export const updates: UpdateLogEntry[] = [
-  {|
+  {
     date: '2026-11-12',
     items: [
       '[설명] MARIA-n 감상 가이드 추가',
