@@ -45,7 +45,7 @@ export const galleryFor = (title: string): ThumbView[] => {
     const extra = title.split('·')[1]?.trim(); // 'Chapter 31 — 32 · OLD TALES'의 OLD TALES를 맨 앞에
     if (extra) entries.push({ name: slug(extra), caption: extra });
     for (let chapter = Number(range[1]); chapter <= Number(range[2]); chapter += 1) {
-      entries.push({ name: chapterName(chapter), caption: `Chapter ${chapter}` });
+      entries.push({ name: chapterName(chapter), caption: `Chapter ${String(chapter).padStart(2, '0')}` });
     }
   } else {
     entries.push({ name: ALIASES[title] ?? slug(title), caption: title });

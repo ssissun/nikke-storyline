@@ -3,21 +3,21 @@ import type { TimelineItem } from './types';
 export const timeline: TimelineItem[] = [
   {
     type: 'card',
-    title: 'Chapter 0 — 1',
+    title: 'Chapter 00 — 01',
     category: 'main',
     required: true,
     annotations: ['프롤로그'],
   },
   {
     type: 'card',
-    title: 'Chapter 2 — 6',
+    title: 'Chapter 02 — 06',
     category: 'main',
     required: true,
     annotations: ['6챕터까지 클리어 시 스토리모드 해금'],
   },
   {
     type: 'card',
-    title: 'Chapter 7 — 14',
+    title: 'Chapter 07 — 14',
     category: 'main',
     required: true,
   },
@@ -45,8 +45,7 @@ export const timeline: TimelineItem[] = [
     importance: 'low',
     noDub: true,
     annotations: [
-      '스토리 라인에 포함된 이벤트 아님 — 넘어가도 무방',
-      '<span class="spoiler">언더월드 퀸</span>',
+      '스토리라인에 없으나 <span class="spoiler">언더월드 퀸</span> 관련',
     ],
   },
   {
@@ -62,9 +61,9 @@ export const timeline: TimelineItem[] = [
     required: true,
     anniversary: '1주년',
     annotations: [
-      '하드 스테이지 <em>좌측 상단 테이프 · 빨간 버튼</em> 이스터에그.',
+      'HARD <em>좌상단 카세트테이프 빨간버튼</em> 이스터에그.',
       '<em>유실물 스토리</em> 감상 추천.',
-      '미니게임 <strong>M.O.G</strong> — 소소한 떡밥은 있지만 안 봐도 무방.',
+      '미니게임 — 소소한 떡밥, 안 봐도 무방.',
     ],
   },
   {
@@ -104,6 +103,10 @@ export const timeline: TimelineItem[] = [
     importance: 'low',
     annotations: [
       '감상한다면 SECOND AFFECTION 이후에',
+    ],
+    expandedAnnotations: [
+      '13지와 14지 사이의 이야기.',
+      '관련 공식 유튜브: 전초기지 오늘은 쉽니다. 마리안 편',
     ],
   },
   {
@@ -149,7 +152,7 @@ export const timeline: TimelineItem[] = [
     required: false,
     importance: 'high',
     noDub: true,
-    annotations: ['일단 선택으로 놓았으나 필수급 떡밥을 투척', '미감상시 미싱링크 다수 발생'],
+    annotations: ["필수 급이지만 BOOM'S DAY를 같이 봐야해서 선택으로 놓음"],
   },
   {
     type: 'card',
@@ -241,8 +244,7 @@ export const timeline: TimelineItem[] = [
     category: 'side',
     required: true,
     annotations: [
-      '26지 후를 추천하기도 하는데, 그 근처에 이미 배치된 이벤스가 많아서 이곳에 배치',
-      '취향껏 선택'
+      '26지 후를 추천하기도 함. 어느 시점에 볼지는 본인 선택',
     ],
   },
   {
@@ -267,13 +269,14 @@ export const timeline: TimelineItem[] = [
     required: true,
     anniversary: '2.5주년',
     annotations: ['<em>유실물 · 물거품 스토리</em> 감상 추천.'],
+    expandedAnnotations: ['맵에 세이렌의 친구들을 닮은 물거품(슬라임)들 있음'],
   },
   {
     type: 'card',
     title: 'Chapter 37 — 38',
     category: 'main',
     required: true,
-    annotations: ['<span class="spoiler">이지스와의 이야기가 궁금하면 BRAND NEW YEAR, SEA YOU AGAIN 감상 추천</span>'],
+    annotations: ['<span class="spoiler">이지스</span>와의 이야기가 궁금하면 BRAND NEW YEAR, SEA YOU AGAIN 감상 추천'],
   },
   {
     type: 'card',
@@ -291,8 +294,8 @@ export const timeline: TimelineItem[] = [
     importance: 'medium',
     noDub: true,
     annotations: [
-      '아직 메인과 접점은 없으나 중요도 높은 떡밥 존재',
-      'L.T.K → KILL THE LORD → LORD FOR JUSTICE 순서로 이어지는 스토리',
+      '아직 메인과 접점 없지만, 중요한 떡밥있음',
+      'L.T.K → KILL THE LORD → LORD FOR JUSTICE 순서로 연결됨',
     ],
   },
   {
@@ -309,7 +312,7 @@ export const timeline: TimelineItem[] = [
     category: 'event',
     required: true,
     noArchive: true,
-    annotations: ['메인 연관 스토리만 이해하려면 PART 1 마지막 에피소드와, PART 2 떠오르는 [기억] 에피소드부터 끝까지만 감상해도 됨'],
+    annotations: ['메인 연관 내용만 보려면: PART 1 마지막 에피소드 + PART 2 「떠오르는 [기억]」부터 끝까지'],
   },
   {
     type: 'card',
@@ -337,8 +340,11 @@ export const timeline: TimelineItem[] = [
     required: true,
     anniversary: '3주년',
     annotations: [
-      '<em>미니게임 스토리 감상 추천</em> <span class="spoiler">(에덴 멤버들의 과거)</span> — 단, 미니게임 진행에 시간 상당히 소요됨.',
-      '<span class="spoiler">나유타들에 대해 궁금하면 유튜브 <strong>XXX명의 나유타</strong> 감상 추천</span>',
+      '<em>미니게임 스토리 감상 추천</em> <span class="spoiler">(에덴 멤버들의 과거)</span>',
+    ],
+    expandedAnnotations: [
+      '미니게임 진행에 시간 상당히 소요되므로 주의',
+      '관련 공식 유튜브: XXX명의 나유타',
     ],
   },
   {
@@ -454,8 +460,11 @@ export const timeline: TimelineItem[] = [
     anniversary: '4주년',
     annotations: [
       '<em>맵 변화</em> 및 생겨나는 <em>빛무리</em> 감상 추천',
-      '<em>미니게임</em> 플레이 추천. <span class="spoiler">1부-1루트, 2부-2루트, 2부끝-3루트 에 대응됨</span>',
-      '<span class="spoiler">Hard 다 깨면 00지역에 유실물 생겨남.</span>',
+      '<em>미니게임</em> 플레이 추천',
+    ],
+    expandedAnnotations: [
+      '미니게임 시점: 1루트(1부) · 2루트(2부) · 3루트(2부끝)',
+      'HARD 클리어 후 <span class="spoiler">0지역에 유실물 생김.</span>',
     ],
   },
   {

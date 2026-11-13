@@ -20,6 +20,8 @@ const dataReq = card.required ? 'req' : 'opt';
 const orderStr = String(order).padStart(2, '0');
 const ttlClass = card.titleScript === 'kor' ? 'ttl kor' : 'ttl';
 const thumbs = thumbnailsFor(card.title);
+const annotations = card.annotations ?? [];
+const expandedAnnotations = card.expandedAnnotations ?? [];
 
 const categoryLabel: Record<StoryCard['category'], string> = {
   main: '메인',
@@ -62,13 +64,21 @@ const categoryLabel: Record<StoryCard['category'], string> = {
       <Stars required={card.required} importance={card.importance} />
     </div>
     {
-      card.annotations && card.annotations.length > 0 && (
+      (annotations.length > 0 || expandedAnnotations.length > 0) && (
         <div class="annot">
-          <ul>
-            {card.annotations.map((a) => (
-              <li set:html={a} />
-            ))}
-          </ul>
+          {annotations.length > 0 && (
+            <ul>
+              {annotations.map((a) => <li set:html={a} />)}
+            </ul>
+          )}
+          {expandedAnnotations.length > 0 && (
+            <details class="card-details">
+              <summary>참고</summary>
+              <ul>
+                {expandedAnnotations.map((a) => <li set:html={a} />)}
+              </ul>
+            </details>
+          )}
         </div>
       )
     }

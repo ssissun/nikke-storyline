@@ -17,6 +17,8 @@ export interface StoryCard {
    * annotations: HTML allowed (em/strong 사용)
    */
   annotations?: string[];
+  /** 기본 설명 아래 펼쳐 보는 추가 안내. HTML allowed. */
+  expandedAnnotations?: string[];
 }
 
 export interface ArcDividerItem {

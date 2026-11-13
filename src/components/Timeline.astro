@@ -6,6 +6,7 @@ import OldTalesGroup from './OldTalesGroup.astro';
 import ArcDivider from './ArcDivider.astro';
 import TimelineFilter from './TimelineFilter.astro';
 import WatchProgress from './WatchProgress.astro';
+import ChapterJumps from './ChapterJumps.astro';
 
 /**
  * Order numbering: dividers는 카운트하지 않음. 그 외 항목(card / group)은 순서대로 1, 2, 3...
@@ -25,6 +26,8 @@ const itemsWithOrder = timeline.map((item) => {
 </div>
 
 <WatchProgress />
+<div class="timeline-section" data-timeline-section>
+<ChapterJumps />
 <TimelineFilter />
 
 <div class="timeline">
@@ -54,4 +57,5 @@ const itemsWithOrder = timeline.map((item) => {
   <div class="timeline-end">
     <div class="endcap">— To be Continued —</div>
   </div>
+</div>
 </div>

@@ -26,6 +26,10 @@ const TAG_CATEGORY: Record<string, string> = {
 const targets = new Map<string, string>();
 const register = (kind: Parameters<typeof anchorId>[0], title: string) => {
   if (!targets.has(title)) targets.set(title, anchorId(kind, title));
+  if (kind === 'story' && /^Chapter \d+/.test(title)) {
+    const unpadded = title.replace(/^Chapter (\d+)\s*—\s*(\d+)/, (_, from, to) => `Chapter ${Number(from)} — ${Number(to)}`);
+    targets.set(unpadded, anchorId(kind, title));
+  }
 };
 timeline.forEach((item) => item.type !== 'divider' && register('story', item.title));
 bonusCards.forEach((card) => register('bonus', card.title));

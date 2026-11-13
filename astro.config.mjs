@@ -6,6 +6,7 @@ export default defineConfig({
   site: 'https://ssissun.github.io',
   base: '/nikke-storyline',
   output: 'static',
+  devToolbar: { enabled: false },
   build: {
     assets: 'assets',
   },

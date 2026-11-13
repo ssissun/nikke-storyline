@@ -17,12 +17,14 @@
 </button>
 
 <script>
-  const btn = document.querySelector('[data-theme-switch]');
-  btn?.addEventListener('click', () => {
+  const buttons = document.querySelectorAll('[data-theme-switch]');
+  const sync = () => buttons.forEach((btn) => btn.setAttribute('aria-checked', String(document.documentElement.dataset.theme === 'dark')));
+  buttons.forEach((btn) => btn.addEventListener('click', () => {
     const html = document.documentElement;
     const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
-    btn.setAttribute('aria-checked', String(next === 'dark'));
+    sync();
     localStorage.setItem('nikke-theme', next);
-  });
+  }));
+  sync();
 </script>

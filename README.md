@@ -83,8 +83,10 @@ const guide = await res.json();
 | `bonus` | 단독 감상으로 호평인 이벤트 카드 |
 
 각 항목의 정확한 형태는 [`src/data/types.ts`](src/data/types.ts)를 참고하세요.
-`annotations`, `description`, `innerNote`, `body`, `bullets`, `intro` 문자열에는
+`annotations`, `expandedAnnotations`, `description`, `innerNote`, `body`, `bullets`, `intro` 문자열에는
 `<em>`, `<strong>` 같은 HTML 태그가 들어 있습니다.
+
+타임라인 카드의 선택 필드 `expandedAnnotations`는 기본 설명 아래의 ‘참고’를 펼치면 보이는 항목입니다.
 
 ## 배포
 GitHub Actions로 자동화됨
