@@ -8,10 +8,7 @@ const PORTAL_URL = 'https://ssissun.github.io/nikke-portal/#story-ssissun';
 
 <aside class="portal-toast" role="status" aria-label="NIKKE Portal 안내" hidden data-portal-toast>
   <p class="portal-toast-text">
-    <span class="portal-toast-full">
-    이 페이지는 <b>NIKKE Portal</b>에서도 볼 수 있어요. 이 외에도 니케 관련 유용한 사이트들을 한 화면에서 모아볼 수 있어요.
-    </span>
-    <span class="portal-toast-mobile">니케 유용한 사이트를 <b>NIKKE Portal</b>에서 한눈에!</span>
+    이 사이트를 포함한 유용한 사이트를 한 사이트에서 한 눈에!
   </p>
   <div class="portal-toast-actions">
     <a class="portal-toast-action is-primary" href={PORTAL_URL} target="_blank" rel="noopener" data-portal-toast-open>
@@ -26,15 +23,24 @@ const PORTAL_URL = 'https://ssissun.github.io/nikke-portal/#story-ssissun';
   import { track } from '../track';
 
   const STORAGE_KEY = 'nikke-portal-toast:storyline';
+  // Portal은 홈 방문만 해도 last를 저장한다. 값의 내용은 읽지 않고 기록 유무만 확인한다.
+  const PORTAL_HISTORY_KEYS = ['nikke-hub:last', 'nikke-hub:recent', 'nikke-hub:favorites', 'nikke-hub:custom'];
   const SHOW_AT_RATIO = 0.25; // 타임라인 25% 지점 (Analytics.astro의 reach '타임라인 25%'와 같은 카드)
 
   const toast = document.querySelector<HTMLElement>('[data-portal-toast]');
   const timelineNodes = document.querySelectorAll<HTMLElement>('.timeline .node');
   const showPoint = timelineNodes[Math.floor(timelineNodes.length * SHOW_AT_RATIO)];
 
+  const hasPortalHistory = () => {
+    try {
+      return PORTAL_HISTORY_KEYS.some((key) => localStorage.getItem(key) !== null);
+    } catch {
+      return false;
+    }
+  };
   const dismissed = () => {
     try {
-      return localStorage.getItem(STORAGE_KEY) === 'dismissed';
+      return localStorage.getItem(STORAGE_KEY) === 'dismissed' || hasPortalHistory();
     } catch {
       return false;
     }
@@ -48,15 +54,27 @@ const PORTAL_URL = 'https://ssissun.github.io/nikke-portal/#story-ssissun';
   };
   const hide = () => {
     if (toast) toast.hidden = true;
+    window.removeEventListener('scroll', showIfReached);
   };
+  const showIfReached = () => {
+    if (dismissed()) {
+      hide();
+      return;
+    }
+    if (!toast || !showPoint || showPoint.getBoundingClientRect().top >= window.innerHeight) return;
+    toast.hidden = false;
+    window.removeEventListener('scroll', showIfReached);
+  };
+  if (hasPortalHistory()) dismissForever();
+  window.addEventListener('storage', (event) => {
+    if (event.key === STORAGE_KEY || (event.key && PORTAL_HISTORY_KEYS.includes(event.key))) {
+      if (hasPortalHistory()) dismissForever();
+      if (dismissed()) hide();
+    }
+  });
 
   if (toast && showPoint && window.self === window.top && !dismissed()) {
-    // 그 지점이 화면에 들어왔거나 이미 지나쳤으면(바로가기로 건너뛴 경우 포함) 띄운다
-    const showIfReached = () => {
-      if (showPoint.getBoundingClientRect().top >= window.innerHeight) return;
-      toast.hidden = false;
-      window.removeEventListener('scroll', showIfReached);
-    };
+    // 그 지점이 화면에 들어왔거나 이미 지나쳤으면(바로가기로 건너뛴 경우 포함) 띄운다.
     window.addEventListener('scroll', showIfReached, { passive: true });
     showIfReached();
     toast.querySelector('[data-portal-toast-close]')?.addEventListener('click', () => {

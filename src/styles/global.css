@@ -731,7 +731,6 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
 }
 .portal-toast[hidden] { display: none; }
 .portal-toast-text { word-break: keep-all; }
-.portal-toast-mobile { display: none; }
 .portal-toast-text b { color: var(--ink); }
 .portal-toast-actions { display: flex; align-items: center; gap: 6px; }
 .portal-toast-action {
@@ -2111,8 +2110,6 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
     font-size: 13px;
     line-height: 1.45;
   }
-  .portal-toast-full { display: none; }
-  .portal-toast-mobile { display: inline; }
 }
 
 .theme-switch {
@@ -2129,6 +2126,13 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
 .theme-switch:focus { outline: none; }
 .theme-switch:focus-visible .theme-switch-track {
   box-shadow: 0 0 0 3px rgba(93, 194, 240, 0.35);
+}
+@media (min-width: 821px) {
+  :root[data-chapter-bar-stuck] .theme-switch {
+    top: max(4px, calc((var(--chapter-bar-height, 51px) - 36px) / 2));
+    background: var(--navigation-bg);
+    border-radius: 999px;
+  }
 }
 
 .theme-switch-track {

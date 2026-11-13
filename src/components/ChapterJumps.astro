@@ -139,6 +139,7 @@ const jumps = Array.from({ length: Math.max(0, Math.floor((lastChapter - FIRST_C
   if (nav) {
     new ResizeObserver(() => {
       const rect = nav.getBoundingClientRect();
+      document.documentElement.style.setProperty('--chapter-bar-height', `${rect.height}px`);
       if (!nav.hasAttribute('data-stuck')) {
         section?.style.setProperty('--chapter-nav-height', `${Math.ceil(rect.height)}px`);
       }
@@ -160,6 +161,9 @@ const jumps = Array.from({ length: Math.max(0, Math.floor((lastChapter - FIRST_C
     }
     nav.style.setProperty('--chapter-bar-left', `${nav.getBoundingClientRect().left}px`);
     nav.style.setProperty('--chapter-bar-width', `${document.documentElement.clientWidth}px`);
+    const rect = nav.getBoundingClientRect();
+    document.documentElement.toggleAttribute('data-chapter-bar-stuck', stuck && rect.top >= -1);
+    document.documentElement.style.setProperty('--chapter-bar-height', `${rect.height}px`);
   };
   let positionFrame = 0;
   const schedulePosition = () => {
