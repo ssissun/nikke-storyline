@@ -839,6 +839,7 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
   border-radius: 4px;
 }
 .timeline-section > .tf-jumps[data-stuck] {
+  z-index: 50;
   margin-left: calc(-1 * var(--chapter-edge-inset, 0px));
   padding-left: 6px;
   border-color: transparent;
