@@ -872,7 +872,7 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
 .timeline-section .tf-panel { width: min(560px, calc(100vw - 32px)); }
 .timeline-filter {
   position: relative;
-  z-index: 20;
+  z-index: 40;
   margin: 0 0 26px;
 }
 .tf-bar {
