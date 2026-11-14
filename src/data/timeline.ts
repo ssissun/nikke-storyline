@@ -463,6 +463,7 @@ export const timeline: TimelineItem[] = [
       '<em>미니게임</em> 플레이 추천',
     ],
     expandedAnnotations: [
+      '맵변화는 알림 없이 5지역 클리어시 마다 발생한다고 함',
       '미니게임 시점: 1루트(1부) · 2루트(2부) · 3루트(2부끝)',
       'HARD 클리어 후 <span class="spoiler">0지역에 유실물 생김.</span>',
     ],
