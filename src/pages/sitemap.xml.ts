@@ -9,6 +9,10 @@ export const GET = () =>
     <loc>https://ssissun.github.io/nikke-storyline/</loc>
     <lastmod>${LAST_UPDATED}</lastmod>
   </url>
+  <url>
+    <loc>https://ssissun.github.io/nikke-storyline/ja/</loc>
+    <lastmod>${LAST_UPDATED}</lastmod>
+  </url>
 </urlset>
 `,
     { headers: { 'Content-Type': 'application/xml' } },

@@ -29,6 +29,13 @@
 
 html { scroll-behavior: smooth; }
 
+html:lang(ja) {
+  --kor: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', 'Noto Sans JP', sans-serif;
+  line-break: strict;
+}
+html:lang(ja) .annot,
+html:lang(ja) .subtitle { word-break: normal; overflow-wrap: anywhere; }
+
 body {
   font-family: var(--kor);
   background: var(--paper);

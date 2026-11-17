@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ThemeSwitch from '../components/ThemeSwitch.astro';
+import Masthead from '../components/Masthead.astro';
+import UpdateLog from '../components/UpdateLog.astro';
+import Intro from '../components/Intro.astro';
+import Legend from '../components/Legend.astro';
+import Notes from '../components/Notes.astro';
+import Timeline from '../components/Timeline.astro';
+import SettingStories from '../components/SettingStories.astro';
+import Bonus from '../components/Bonus.astro';
+import Footer from '../components/Footer.astro';
+import ThumbViewer from '../components/ThumbViewer.astro';
+import PortalToast from '../components/PortalToast.astro';
+import MobileBar from '../components/MobileBar.astro';
+import LanguageSwitch from './LanguageSwitch.astro';
+import { LAST_UPDATED } from '../data/meta';
+import { japanese } from '../i18n/ja';
+
+interface Props { locale: 'ko' | 'ja' }
+const { locale } = Astro.props;
+
+const SITE_URL = 'https://ssissun.github.io/nikke-storyline/';
+const OG_IMAGE = `${SITE_URL}assets/og-thumbnail.jpg`;
+const PAGE_URL = locale === 'ja' ? `${SITE_URL}ja/` : SITE_URL;
+const TITLE = locale === 'ja' ? japanese('니케 스토리 감상 순서 | NIKKE') : '니케 스토리 감상 순서 | NIKKE';
+const DESCRIPTION = locale === 'ja'
+  ? '勝利の女神：NIKKEのストーリーを読む順番ガイド。メイン・イベント・サイド・個別エピソードを、実装順ではなく物語の流れに沿って紹介します。'
+  : '니케(NIKKE: 승리의 여신) 스토리 감상 순서와 보는 순서를 정리한 가이드. 메인 · 이벤트 · 사이드 · 인연 스토리를 릴리즈 순이 아닌 이야기 흐름 기준으로 배치한 타임라인.';
+
+// 검색 엔진용 구조화 데이터: 이 페이지가 무엇에 대한 것이고 언제 갱신됐는지
+const STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: TITLE,
+  description: DESCRIPTION,
+  url: PAGE_URL,
+  image: OG_IMAGE,
+  inLanguage: locale,
+  dateModified: LAST_UPDATED,
+  about: {
+    '@type': 'VideoGame',
+    name: locale === 'ja' ? '勝利の女神：NIKKE' : '승리의 여신: 니케',
+    alternateName: ['니케', 'NIKKE', 'GODDESS OF VICTORY: NIKKE'],
+  },
+};
+---
+
+<BaseLayout
+  title={TITLE}
+  description={DESCRIPTION}
+  ogImage={OG_IMAGE}
+  pageUrl={PAGE_URL}
+  locale={locale}
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(STRUCTURED_DATA)} />
+  <ThemeSwitch />
+  <div class="page">
+    <LanguageSwitch locale={locale} />
+    <Masthead lastUpdated={LAST_UPDATED} />
+    <UpdateLog />
+    <Intro />
+    <Legend />
+    <Notes />
+    <Timeline />
+    <SettingStories />
+    <Bonus />
+    <Footer />
+  </div>
+  <ThumbViewer />
+  <PortalToast />
+  <MobileBar />
+</BaseLayout>

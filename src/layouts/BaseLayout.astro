@@ -2,31 +2,40 @@
 import '../styles/global.css';
 import { BUILD_ID } from '../buildId';
 import Analytics from '../components/Analytics.astro';
+import { japaneseMarkup } from '../i18n/markup';
 
 interface Props {
   title: string;
   description: string;
   ogImage: string;
   pageUrl: string;
+  noindex?: boolean;
+  locale?: 'ko' | 'ja';
 }
 
-const { title, description, ogImage, pageUrl } = Astro.props;
+const { title, description, ogImage, pageUrl, noindex = false, locale = 'ko' } = Astro.props;
+const content = await Astro.slots.render('default');
+const body = locale === 'ja' ? japaneseMarkup(content) : content;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const versionUrl = `${base}/version.json`;
 ---
 
 <!doctype html>
-<html lang="ko" data-theme="dark">
+<html lang={locale} data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex,follow" />}
     <meta
       name="google-site-verification"
       content="JZyY8BnHt9RerWgT0XoRhuso9yhA_ud8AJwvKKZQ5s8"
     />
     <title>{title}</title>
     <link rel="canonical" href={pageUrl} />
+    <link rel="alternate" hreflang="ko" href="https://ssissun.github.io/nikke-storyline/" />
+    <link rel="alternate" hreflang="ja" href="https://ssissun.github.io/nikke-storyline/ja/" />
+    <link rel="alternate" hreflang="x-default" href="https://ssissun.github.io/nikke-storyline/" />
 
     <link rel="icon" href={`${base}/favicon.ico`} sizes="48x48" />
     <link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml" />
@@ -51,8 +60,8 @@ const versionUrl = `${base}/version.json`;
     <meta property="og:image:width" content="1542" />
     <meta property="og:image:height" content="1166" />
     <meta property="og:url" content={pageUrl} />
-    <meta property="og:locale" content="ko_KR" />
-    <meta property="og:site_name" content="니케 스토리 감상 순서" />
+    <meta property="og:locale" content={locale === 'ja' ? 'ja_JP' : 'ko_KR'} />
+    <meta property="og:site_name" content={locale === 'ja' ? 'NIKKE ストーリーを読む順番' : '니케 스토리 감상 순서'} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -74,7 +83,7 @@ const versionUrl = `${base}/version.json`;
     <Analytics />
   </head>
   <body>
-    <slot />
+    <Fragment set:html={body} />
 
     <script>
       // 스포일러(.spoiler)는 흐리게 가려 두고, 마우스를 올리면 잠깐 · 누르면 계속 보인다.

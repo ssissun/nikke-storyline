@@ -1,0 +1,66 @@
+---
+interface Props { locale: 'ko' | 'ja' }
+const { locale } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<nav class="language-switch" aria-label="언어 선택 / 言語選択" data-language-switch>
+  <a href={`${base}/`} lang="ko" aria-current={locale === 'ko' ? 'page' : undefined}>한국어</a>
+  <a href={`${base}/ja/`} lang="ja" aria-current={locale === 'ja' ? 'page' : undefined}>日本語</a>
+</nav>
+
+<script>
+  const key = 'nikke-language-transition';
+  const form = document.querySelector<HTMLFormElement>('[data-timeline-filter]');
+  document.querySelector('[data-language-switch]')?.addEventListener('click', (event) => {
+    const link = (event.target as Element).closest<HTMLAnchorElement>('a');
+    if (!link || link.hasAttribute('aria-current')) return;
+    const mouse = event as MouseEvent;
+    if (mouse.button !== 0 || mouse.ctrlKey || mouse.metaKey || mouse.shiftKey || mouse.altKey) return;
+    const url = new URL(link.href);
+    url.hash = location.hash;
+    const card = [...document.querySelectorAll<HTMLElement>('.node [id]')]
+      .find((item) => item.offsetParent !== null && item.getBoundingClientRect().bottom > 60 && item.getBoundingClientRect().top < innerHeight);
+    try {
+      sessionStorage.setItem(key, JSON.stringify({
+        path: url.pathname,
+        scroll: scrollY,
+        card: card?.id,
+        offset: card?.getBoundingClientRect().top,
+        filters: [...(form?.querySelectorAll<HTMLInputElement>('input[type="checkbox"]') ?? [])]
+          .map(({ name, value, checked }) => ({ name, value, checked })),
+      }));
+    } catch { /* 저장소를 못 써도 언어 링크는 동작한다. */ }
+    link.href = url.href;
+  });
+
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(key) ?? 'null');
+    if (saved?.path === location.pathname) {
+      sessionStorage.removeItem(key);
+      for (const input of form?.querySelectorAll<HTMLInputElement>('input[type="checkbox"]') ?? []) {
+        const state = saved.filters?.find((entry: { name: string; value: string }) => entry.name === input.name && entry.value === input.value);
+        if (state && typeof state.checked === 'boolean') input.checked = state.checked;
+      }
+      // 필터 모듈의 초기화가 끝난 후 복원한 선택값으로 다시 계산한다.
+      setTimeout(() => {
+        form?.dispatchEvent(new Event('reset'));
+        setTimeout(async () => {
+          await document.fonts.ready;
+          const card = saved.card && document.getElementById(saved.card);
+          const top = card && Number.isFinite(saved.offset)
+            ? card.getBoundingClientRect().top + scrollY - saved.offset
+            : saved.scroll;
+          if (Number.isFinite(top)) window.scrollTo({ top, behavior: 'instant' });
+        });
+      });
+    }
+  } catch { /* 잘못된 임시 상태는 사용하지 않는다. */ }
+</script>
+
+<style>
+  .language-switch { display: flex; justify-content: flex-start; gap: 2px; margin-bottom: 12px; }
+  .language-switch a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 12px; border: 1px solid transparent; border-radius: 5px; color: var(--ink-2); font-size: 13px; text-decoration: none; }
+  .language-switch a[aria-current] { color: var(--ink); border-color: var(--line-strong); background: var(--paper-2); }
+  .language-switch a:hover { color: var(--ink); background: var(--paper-2); }
+  .language-switch a:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
+</style>

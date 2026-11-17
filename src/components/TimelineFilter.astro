@@ -115,6 +115,7 @@ const WATCHES = [
 
 <script>
   import { TIMELINE_FILTERED, WATCHED_CHANGE } from '../watched';
+  import { text, isJapanese } from '../i18n/client';
 
   const form = document.querySelector<HTMLFormElement>('[data-timeline-filter]');
   const toggles = document.querySelectorAll<HTMLButtonElement>('[data-filter-toggle]');
@@ -142,10 +143,10 @@ const WATCHES = [
   const kindSummary = (checked: HTMLInputElement[]) => {
     const all = [...(form?.querySelectorAll<HTMLInputElement>('[name="kind"]') ?? [])];
     if (checked.length === all.length) return undefined;
-    if (checked.length === 0) return '종류 없음';
+    if (checked.length === 0) return text('종류 없음');
     const off = all.filter((input) => !input.checked);
     const names = (inputs: HTMLInputElement[]) => inputs.map((input) => input.dataset.summary).join(', ');
-    return off.length <= checked.length ? `${names(off)} 제외` : names(checked);
+    return off.length <= checked.length ? `${names(off)}${isJapanese() ? 'を除く' : ' 제외'}` : names(checked);
   };
 
   const apply = () => {
@@ -182,9 +183,9 @@ const WATCHES = [
     const parts = [levelInput?.dataset.summary, kindSummary(kindInputs), dubInput?.dataset.summary, watchInput?.dataset.summary].filter(Boolean);
 
     if (summary) {
-      summary.textContent = parts.length
-        ? `${parts.join(' · ')} — ${items.length}개 중 ${shown}개`
-        : `전체 ${items.length}개`;
+      summary.textContent = isJapanese()
+        ? (parts.length ? `${parts.join(' · ')} — ${items.length}件中${shown}件` : `全${items.length}件`)
+        : (parts.length ? `${parts.join(' · ')} — ${items.length}개 중 ${shown}개` : `전체 ${items.length}개`);
     }
     if (badge) {
       badge.hidden = parts.length === 0;
