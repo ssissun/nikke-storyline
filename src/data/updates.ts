@@ -9,6 +9,12 @@ import type { UpdateLogEntry } from './types';
  */
 export const updates: UpdateLogEntry[] = [
   {
+    date: '2026-11-17',
+    items: [
+      '[기능] 일본어판 · AI 번역 추가',
+    ],
+  },
+  {
     date: '2026-11-13',
     items: [
       '[설명] 타임라인 11곳 수정',

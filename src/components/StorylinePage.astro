@@ -41,7 +41,9 @@ const STRUCTURED_DATA = {
   about: {
     '@type': 'VideoGame',
     name: locale === 'ja' ? '勝利の女神：NIKKE' : '승리의 여신: 니케',
-    alternateName: ['니케', 'NIKKE', 'GODDESS OF VICTORY: NIKKE'],
+    alternateName: locale === 'ja'
+      ? ['ニケ', 'メガニケ', 'GODDESS OF VICTORY: NIKKE']
+      : ['니케', 'NIKKE', 'GODDESS OF VICTORY: NIKKE'],
   },
 };
 ---
@@ -57,6 +59,7 @@ const STRUCTURED_DATA = {
   <ThemeSwitch />
   <div class="page">
     <LanguageSwitch locale={locale} />
+    {locale === 'ja' && <p class="translation-notice">このページはAI翻訳を使用しています。不自然な表現や誤訳が含まれる場合があります。</p>}
     <Masthead lastUpdated={LAST_UPDATED} />
     <UpdateLog />
     <Intro />
@@ -71,3 +74,12 @@ const STRUCTURED_DATA = {
   <PortalToast />
   <MobileBar />
 </BaseLayout>
+
+<style>
+  .translation-notice {
+    margin: -4px 0 16px;
+    color: var(--ink-3);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+</style>
