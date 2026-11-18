@@ -297,14 +297,17 @@ export const timeline: TimelineItem[] = [
   },
   {
     type: 'card',
-    title: 'LORD FOR JUSTICE',
+    title: 'D·K 관련 이벤스',
+    titleScript: 'kor',
+    id: 'story-lord-for-justice',
+    storyTitles: ['L.T.K — LICENSE TO KILL', 'KILL THE LORD', 'LORD FOR JUSTICE'],
     category: 'event',
     required: false,
-    importance: 'medium',
+    importance: 'low',
     noDub: true,
     annotations: [
-      '아직 메인과 접점 없지만, 중요한 떡밥있음',
-      'L.T.K → KILL THE LORD → LORD FOR JUSTICE 순서로 연결됨',
+      '현재 메인과 접점이 없어 중요도 낮음·추후 메인 접점 발생 시 중요도 상향 조정될 것임',
+      '순서: L.T.K → KILL THE LORD → LORD FOR JUSTICE',
     ],
   },
   {
@@ -421,11 +424,24 @@ export const timeline: TimelineItem[] = [
   },
   {
     type: 'card',
+    title: 'WAVE TO YOU 선행 스토리',
+    titleScript: 'kor',
+    storyTitles: ['SCHOOL OF LOCK', 'COLOR LESS', '나가 인연 스토리', 'DAZZLING CUPID'],
+    category: 'event',
+    required: false,
+    importance: 'medium',
+    noDub: true,
+    annotations: [
+      'WAVE TO YOU 전 SCHOOL OF LOCK · COLOR LESS · 나가 인연스 중 최소 하나 감상 추천.',
+      '모든 배경을 알고 싶다면 DAZZLING CUPID까지 (중요도 낮음).',
+    ],
+  },
+  {
+    type: 'card',
     title: 'WAVE TO YOU',
     category: 'event',
     required: false,
     importance: 'medium',
-    annotations: ['SCHOOL OF LOCK/COLOR LESS/나가 인연스 중 최소 하나 이상 선감상 추천'],
   },
   {
     type: 'card',

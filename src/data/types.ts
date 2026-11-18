@@ -5,6 +5,10 @@ export type Importance = 'high' | 'medium' | 'low';
 export interface StoryCard {
   type: 'card';
   title: string;
+  /** 제목을 바꿔도 기존 링크와 감상 기록을 유지할 때 지정한다. */
+  id?: string;
+  /** 여러 스토리를 묶은 카드의 썸네일과 확대 보기 목록. */
+  storyTitles?: string[];
   titleScript?: 'en' | 'kor'; // default 'en'. 한글 제목('디젤' 등)은 'kor'
   category: Category;
   required: boolean;

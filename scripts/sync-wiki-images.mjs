@@ -70,8 +70,11 @@ const filesByTitle = (text, pattern, titleOf) => {
 };
 
 const timelineSource = await readFile(new URL('src/data/timeline.ts', root), 'utf8');
-const titles = [...timelineSource.matchAll(/^\s+title: (['"])(.+?)\1,$/gm)]
+const collectionTitles = [...timelineSource.matchAll(/storyTitles:\s*\[([^\]]+)\]/g)]
+  .flatMap(([, values]) => [...values.matchAll(/(['"])(.*?)\1/g)].map(([, , title]) => title));
+const titles = [...new Set([...timelineSource.matchAll(/^\s+title: (['"])(.+?)\1,$/gm)]
   .map(([, , title]) => title)
+  .concat(collectionTitles))]
   .filter((title) => /^[\x20-\x7E—·]+$/.test(title)); // 한글 제목(인연 스토리 · 안내 묶음)은 위키 이미지 없음
 const placeholders = JSON.parse(await readFile(placeholdersPath, 'utf8'));
 

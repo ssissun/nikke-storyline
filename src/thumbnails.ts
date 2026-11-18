@@ -40,7 +40,8 @@ export interface ThumbView {
 }
 
 // 제목이 가리키는 이미지 전체(크게 보기 순서). 메인 묶음은 범위 안의 모든 챕터.
-export const galleryFor = (title: string): ThumbView[] => {
+export const galleryFor = (title: string, storyTitles?: string[]): ThumbView[] => {
+  if (storyTitles?.length) return storyTitles.flatMap((story) => galleryFor(story));
   const range = title.match(/^Chapter (\d+)\s*—\s*(\d+)/);
   const entries: { name: string; caption: string }[] = [];
   if (range) {
@@ -71,8 +72,9 @@ export const galleryFor = (title: string): ThumbView[] => {
 };
 
 // 카드에 겹쳐 보일 장(앞에 보일 것부터): 메인 묶음은 첫 챕터 · 마지막 챕터, OLD TALES는 앞에 하나 더
-export const thumbnailsFor = (title: string): ThumbView[] => {
-  const gallery = galleryFor(title);
+export const thumbnailsFor = (title: string, storyTitles?: string[]): ThumbView[] => {
+  const gallery = galleryFor(title, storyTitles);
+  if (storyTitles?.length) return gallery;
   const isChapterRange = /^Chapter \d+/.test(title);
   if (!isChapterRange || gallery.length <= 2) return gallery;
   const hasExtra = title.includes('·');

@@ -6,13 +6,14 @@ import { galleryFor, thumbnailsFor } from '../thumbnails';
 
 interface Props {
   title: string;
+  storyTitles?: string[];
   size?: 'card' | 'mini';
 }
 
-const MAX_LAYERS = 3;
-const { title, size = 'card' } = Astro.props;
-const layers = (size === 'mini' ? thumbnailsFor(title).slice(0, 1) : thumbnailsFor(title)).slice(0, MAX_LAYERS);
-const gallery = galleryFor(title);
+const MAX_LAYERS = 4;
+const { title, size = 'card', storyTitles } = Astro.props;
+const layers = (size === 'mini' ? thumbnailsFor(title, storyTitles).slice(0, 1) : thumbnailsFor(title, storyTitles)).slice(0, MAX_LAYERS);
+const gallery = galleryFor(title, storyTitles);
 const label = `${title} 썸네일 크게 보기${gallery.length > 1 ? ` (${gallery.length}장)` : ''}`;
 ---
 

@@ -24,14 +24,20 @@ const TAG_CATEGORY: Record<string, string> = {
 
 // 제목 → 요소 id. 이름이 바뀌거나 지워진 카드를 가리키면 링크 없이 보여 준다.
 const targets = new Map<string, string>();
-const register = (kind: Parameters<typeof anchorId>[0], title: string) => {
-  if (!targets.has(title)) targets.set(title, anchorId(kind, title));
+const register = (kind: Parameters<typeof anchorId>[0], title: string, id = anchorId(kind, title)) => {
+  if (!targets.has(title)) targets.set(title, id);
   if (kind === 'story' && /^Chapter \d+/.test(title)) {
     const unpadded = title.replace(/^Chapter (\d+)\s*—\s*(\d+)/, (_, from, to) => `Chapter ${Number(from)} — ${Number(to)}`);
     targets.set(unpadded, anchorId(kind, title));
   }
 };
-timeline.forEach((item) => item.type !== 'divider' && register('story', item.title));
+timeline.forEach((item) => {
+  if (item.type === 'divider') return;
+  register('story', item.title, item.type === 'card' ? item.id : undefined);
+  if (item.type === 'card' && item.id && item.storyTitles) {
+    item.storyTitles.forEach((title) => register('story', title, item.id));
+  }
+});
 bonusCards.forEach((card) => register('bonus', card.title));
 externalNotes.forEach((note) => register('note', note.title));
 settingStoryGroups.forEach((group) => register('setting', group.setting));

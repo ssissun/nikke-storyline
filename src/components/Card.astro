@@ -19,7 +19,8 @@ const lane = laneFor(card.category);
 const dataReq = card.required ? 'req' : 'opt';
 const orderStr = String(order).padStart(2, '0');
 const ttlClass = card.titleScript === 'kor' ? 'ttl kor' : 'ttl';
-const thumbs = thumbnailsFor(card.title);
+const thumbs = thumbnailsFor(card.title, card.storyTitles);
+const id = card.id ?? anchorId('story', card.title);
 const annotations = card.annotations ?? [];
 const expandedAnnotations = card.expandedAnnotations ?? [];
 
@@ -41,14 +42,14 @@ const categoryLabel: Record<StoryCard['category'], string> = {
   {lane === 'right' && <div class="marker"><div class="dot"></div></div>}
 
   <div
-    class:list={['card', lane, { 'has-thumb': thumbs.length > 0 }]}
-    id={anchorId('story', card.title)}
+    class:list={['card', lane, { 'has-thumb': thumbs.length > 0, 'has-story-group': Boolean(card.storyTitles?.length) }]}
+    id={id}
     data-cat={card.category}
     data-req={dataReq}
     data-anniv={card.anniversary ? '' : undefined}
   >
-    <Thumb title={card.title} />
-    <WatchToggle id={anchorId('story', card.title)} title={card.title} />
+    <Thumb title={card.title} storyTitles={card.storyTitles} />
+    <WatchToggle id={id} title={card.title} />
     <div class="head">
       <span class="order">{orderStr}</span>
       <span class={ttlClass}>{card.title}</span>

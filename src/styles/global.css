@@ -1308,6 +1308,7 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
   line-height: 1.25;
 }
 .card .ttl.kor { font-family: var(--kor); font-weight: 700; }
+.card.has-story-group:lang(ko) .ttl { word-break: keep-all; overflow-wrap: anywhere; }
 
 .card .meta-row {
   display: flex;
