@@ -81,6 +81,15 @@ export const timeline: TimelineItem[] = [
   },
   {
     type: 'card',
+    title: '홍련',
+    titleScript: 'kor',
+    category: 'affinity',
+    required: false,
+    noDub: true,
+    importance: 'low',
+  },
+  {
+    type: 'card',
     title: 'NEW YEAR, NEW SWORD',
     category: 'event',
     required: true,
@@ -423,6 +432,15 @@ export const timeline: TimelineItem[] = [
     title: 'PROJECT MATIS',
     category: 'event',
     required: true,
+  },
+  {
+    type: 'card',
+    title: '라푼젤',
+    titleScript: 'kor',
+    category: 'affinity',
+    required: false,
+    noDub: true,
+    importance: 'low',
   },
   {
     type: 'card',

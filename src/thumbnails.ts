@@ -15,6 +15,8 @@ const byName = new Map(
 );
 
 const ALIASES: Record<string, string> = {
+  홍련: 'scarlet',
+  라푼젤: 'rapunzel',
   킬로: 'kilo',
   에테르: 'ether',
   모리: 'mori',
