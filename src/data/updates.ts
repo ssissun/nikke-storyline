@@ -12,6 +12,11 @@ export const updates: UpdateLogEntry[] = [
     date: '2026-11-18',
     items: [
       { text: '[인연 스토리] 홍련, 라푼젤 추가', to: '홍련' },
+      { text: '[이벤트] WAVE TO YOU 선행 스토리 추가', to: 'WAVE TO YOU 선행 스토리' },
+      { text: '[이벤트] LORD FOR JUSTICE → D·K 관련 이벤스 · 세 스토리 묶음, 중요도 중간 → 낮음, 설명 수정', to: 'D·K 관련 이벤스' },
+      { text: '[이벤트] WAVE TO YOU · 설명 수정', to: 'WAVE TO YOU' },
+      '[기능] 썸네일 크게 보기 · 제목 영역 높이 통일, 원본 이미지 열기·저장 지원',
+      '[디자인] 스토리 썸네일 · 이미지 교체 및 크롭 조정',
     ],
   },
   {

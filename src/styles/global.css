@@ -421,6 +421,7 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
   margin: 0 -6px 8px 0;
 }
 .viewer-caption {
+  flex: 1;
   display: flex;
   align-items: center;
   min-height: 30px;
@@ -465,6 +466,8 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
 .viewer-strip button:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
 
 .viewer-stage {
+  position: relative;
+  aspect-ratio: 1;
   margin: 0;
   overflow: hidden;
   border-radius: 3px;

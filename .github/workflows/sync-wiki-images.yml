@@ -38,7 +38,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          git add src/assets scripts/wiki-image-placeholders.json
+          git add src/assets src/thumbnail-sources.json public/thumbnail-originals scripts/wiki-image-placeholders.json
           if git diff --cached --quiet; then
             echo 'No new images'
             exit 0

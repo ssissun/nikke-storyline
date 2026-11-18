@@ -44,6 +44,49 @@
 - [NIKKEpedia 이지스](https://w.atwiki.jp/nikkepedia/pages/50.html), [M.M.R.附属高校](https://w.atwiki.jp/nikkepedia/pages/154.html), [OVER ZONE](https://w.atwiki.jp/nikkepedia/pages/420.html): 부대·학교·수집 로봇 이름.
 - [엘리베이터 괴담 관련 일본 기사](https://www.famitsu.com/news/202401/05330201.html): 突発イベント와 エレベーターの怪談.
 
+## 썸네일 수집과 원본
+
+- 매일 12:00 KST에 `scripts/sync-wiki-images.mjs`를 실행합니다. 이벤트·사이드 썸네일은 Fandom `Campaign/Storyline`의 `Storyline *.png`를 우선하고, 아직 파일이 없으면 `https://nikke-db.pages.dev/gallery`의 **Album Covers** 목록에서 제목이 일치하는 이미지를 사용합니다. 갤러리의 다른 이미지 종류는 자동 수집하지 않습니다.
+- 두 출처에 모두 없는 카드는 사용자가 지정한 임시 이미지를 `src/assets/thumbs/`에 넣고 `scripts/wiki-image-placeholders.json`에 카드 제목을 등록합니다. Album Cover로 교체해도 대기를 유지하며, 위키 Storyline 이미지로 교체한 뒤에만 목록에서 제거합니다. 이미 수집한 같은 앨범 이미지는 다시 받지 않습니다.
+- 메인 챕터는 기존 위키 `Album Chapter NN.png`, 이벤트 로고는 기존 `Event` 문서의 `* logo.png`를 사용합니다. 기존 챕터·로고 파일은 덮어쓰지 않습니다.
+- `src/thumbnail-sources.json`에는 위키 이외 이미지와 새로 자동 수집한 이미지의 출처·원본 파일명·필요한 크롭 좌표를 기록합니다. 크롭 좌표는 원본 픽셀 기준 `x`, `y`, `size`이며, 카드용 이미지는 같은 영역을 256×256 WebP로 저장합니다.
+- 확대 창도 256×256 영역으로 보여 줍니다. 보관된 원본이 있으면 CSS로 표시 영역만 잘라서 우클릭의 이미지 열기·저장은 원본 파일을 사용합니다. 원본은 `public/thumbnail-originals/`에 두고 확대 창을 열 때만 요청합니다. 원본을 보관하지 않은 기존 위키 썸네일은 현재 256×256 파일을 사용합니다.
+- 수집 순서 회귀 검증: `node --test scripts/sync-wiki-images.test.mjs`.
+
+### 캐릭터 이미지 기본 방식
+
+니케 캐릭터는 Fandom 캐릭터 페이지의 `이름 MI.png` 반신 원본을 얼굴 중심으로 정사각형 크롭하여 256×256 썸네일로 만듭니다. `이름S.png` 저해상도 아이콘을 확대하는 방식은 사용하지 않습니다. 얼굴·머리 장식 위치에 맞춰 크롭 좌표를 정하고, 투명 배경에는 남색 그라데이션을 받칩니다.
+
+### 현재 이미지 출처
+
+메인 챕터와 일반 이벤트·사이드 이미지는 [Fandom Campaign/Storyline](https://nikke-goddess-of-victory-international.fandom.com/wiki/Campaign/Storyline)의 `Album Chapter NN.png`·`Storyline *.png`를 사용합니다. 이벤트 로고는 [Fandom Event](https://nikke-goddess-of-victory-international.fandom.com/wiki/Event) 문서의 로고 파일을 사용합니다. 아래는 이 기본 출처 외의 이미지를 사용하는 전체 목록입니다. 정확한 CDN URL과 크롭 좌표는 [`src/thumbnail-sources.json`](src/thumbnail-sources.json)에서 관리합니다.
+
+| 이미지 | 실제 원본 출처 | 사용 방식 |
+|---|---|---|
+| 홍련 | [Scarlet_MI.png](https://nikke-goddess-of-victory-international.fandom.com/wiki/File:Scarlet_MI.png) | 반신 원본에서 얼굴 중심 크롭 |
+| 라푼젤 | [Rapunzel_MI.png](https://nikke-goddess-of-victory-international.fandom.com/wiki/File:Rapunzel_MI.png) | 반신 원본에서 얼굴 중심 크롭 |
+| MIRACLE SNOW | [Miracle_Snow_splash_2.jpg](https://nikke-goddess-of-victory-international.fandom.com/wiki/File:Miracle_Snow_splash_2.jpg) | splash/공식 일러스트 크롭 |
+| CHERRY BLOSSOM | [Cherry_Blossom_splash_1.jpg](https://nikke-goddess-of-victory-international.fandom.com/wiki/File:Cherry_Blossom_splash_1.jpg) | splash/공식 일러스트 크롭 |
+| FIRST AFFECTION | [First_Affection_splash_1.jpg](https://nikke-goddess-of-victory-international.fandom.com/wiki/File:First_Affection_splash_1.jpg) | splash/공식 일러스트 크롭 |
+| SCHOOL OF LOCK | [School_of_Lock_splash_1.jpg](https://nikke-goddess-of-victory-international.fandom.com/wiki/File:School_of_Lock_splash_1.jpg) | splash/공식 일러스트 크롭 |
+| DAZZLING CUPID | [Dazzling_Cupid_splash_1.jpg](https://nikke-goddess-of-victory-international.fandom.com/wiki/File:Dazzling_Cupid_splash_1.jpg) | splash/공식 일러스트 크롭 |
+| 에테르 | [Ether_MI.png](https://nikke-goddess-of-victory-international.fandom.com/wiki/File:Ether_MI.png) | 반신 원본에서 얼굴 중심 크롭 |
+| 나가 | [Naga_MI.png](https://nikke-goddess-of-victory-international.fandom.com/wiki/File:Naga_MI.png) | 반신 원본에서 얼굴 중심 크롭 |
+| 킬로 | [Kilo_MI.png](https://nikke-goddess-of-victory-international.fandom.com/wiki/File:Kilo_MI.png) | 반신 원본에서 얼굴 중심 크롭 |
+| COLOR LESS | [Colorless_splash_1.jpg](https://nikke-goddess-of-victory-international.fandom.com/wiki/File:Colorless_splash_1.jpg) | splash/공식 일러스트 크롭 |
+| FOR REST | [For_Rest_splash_1.jpg](https://nikke-goddess-of-victory-international.fandom.com/wiki/File:For_Rest_splash_1.jpg) | splash/공식 일러스트 크롭 |
+| 모리 | [Mori_MI.png](https://nikke-goddess-of-victory-international.fandom.com/wiki/File:Mori_MI.png) | 반신 원본에서 얼굴 중심 크롭 |
+| BLANK TICKET | [Blank_Ticket_splash_1.jpg](https://nikke-goddess-of-victory-international.fandom.com/wiki/File:Blank_Ticket_splash_1.jpg) | splash/공식 일러스트 크롭 |
+| GINGERBREAD HOUSE | [nikke-db 사이드 스토리 장면](https://nikke-db-legacy.pages.dev/images/gallery/side06/EventScene_Side_06_03_1.webp) | 정사각형 장면 이미지 |
+| MARIA N | [니케 공식 CDN](https://na-nikke-aws.playerinfinite.com/cms/nrft/feeds/pic/_a1c0db2b7bbd28d6815ea2f44586ca351233e2cd-3840x2160-ori_s_80_50_ori_q_80.webp) | splash/공식 일러스트 크롭 |
+| PROJECT MATIS | [nikke-db Album Cover](https://nikke-db-legacy.pages.dev/images/gallery/albums/album_projectmatis_01.png) | 정사각형 앨범 커버 |
+| COIN RUSH SHOWDOWN | [nikke-db Album Cover](https://nikke-db-legacy.pages.dev/images/gallery/albums/album_coinrushshowdown_01.png) | 정사각형 앨범 커버 |
+| ICE DRAGON SAGA | [nikke-db Album Cover](https://nikke-db-legacy.pages.dev/images/gallery/albums/album_icedragonsaga_01.png) | 정사각형 앨범 커버 |
+| TERMINUS TICKET | [nikke-db Album Cover](https://nikke-db-legacy.pages.dev/images/gallery/albums/album_terminusticket_01.png) | 정사각형 앨범 커버 |
+| 2X2 LOVE | [nikke-db Album Cover](https://nikke-db-legacy.pages.dev/images/gallery/albums/album_2x2love_01.png) | 정사각형 앨범 커버 |
+
+크롭을 바꿀 때에는 썸네일 파일과 메타데이터 좌표를 함께 갱신하고, 확대 창에서도 같은 부분이 보이는지 확인합니다. 원본의 종횡비나 기존 크롭을 추정하여 기록하지 않습니다.
+
 ## 구조
 
 ```

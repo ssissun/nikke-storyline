@@ -26,6 +26,9 @@
 
   interface ThumbView {
     src: string;
+    originalSrc?: string;
+    background?: string;
+    crop?: { x: number; y: number; size: number; width: number; height: number };
     caption: string;
     logo?: string;
     logoRatio?: number;
@@ -44,27 +47,60 @@
 
   let views: ThumbView[] = [];
   let current = 0;
+  const head = dialog?.querySelector<HTMLElement>('.viewer-head');
+
+  const fillCaption = (target: Element, view: ThumbView) => {
+    if (!view.logo) {
+      target.textContent = view.caption;
+      return;
+    }
+    const logo = document.createElement('img');
+    logo.className = 'viewer-logo';
+    logo.src = view.logo;
+    logo.style.setProperty('--ratio', String(view.logoRatio ?? 2));
+    logo.style.setProperty('--scale', String(view.logoScale ?? 1));
+    logo.style.aspectRatio = String(view.logoRatio ?? 2);
+    logo.alt = view.caption;
+    target.replaceChildren(logo);
+  };
+
+  // 같은 묶음의 모든 제목을 현재 폭에서 재어 가장 큰 높이로 고정한다.
+  const sizeHeader = () => {
+    if (!head || !caption || !dialog?.open) return;
+    const measure = document.createElement('span');
+    measure.className = 'viewer-caption';
+    measure.style.cssText = `position:absolute;visibility:hidden;width:${caption.getBoundingClientRect().width}px;pointer-events:none;`;
+    head.append(measure);
+    let height = 30;
+    for (const view of views) {
+      fillCaption(measure, view);
+      height = Math.max(height, measure.getBoundingClientRect().height);
+    }
+    measure.remove();
+    head.style.height = `${Math.ceil(height)}px`;
+  };
 
   // direction: 1이면 오른쪽에서, -1이면 왼쪽에서 밀려 들어온다. 0이면 애니메이션 없이 바꾼다
   const show = async (index: number, direction = 0) => {
     if (!image || views.length === 0) return;
     current = (index + views.length) % views.length;
     const view = views[current];
-    image.src = view.src;
+    image.src = view.originalSrc ?? view.src;
+    image.onerror = () => {
+      image.onerror = null;
+      image.removeAttribute('style');
+      image.src = view.src;
+    };
+    image.removeAttribute('style');
+    if (stage) stage.style.background = view.background ?? '';
+    if (view.originalSrc && view.crop) {
+      const { x, y, size, width, height } = view.crop;
+      image.style.cssText = `position:absolute;width:${width / size * 100}%;height:${height / size * 100}%;max-width:none;aspect-ratio:auto;left:${-x / size * 100}%;top:${-y / size * 100}%;`;
+      if (view.background) image.style.background = 'transparent';
+    }
     image.alt = view.caption;
     if (caption) {
-      // 이벤트는 제목 대신 로고(alt에 제목)
-      if (view.logo) {
-        const logo = document.createElement('img');
-        logo.className = 'viewer-logo';
-        logo.src = view.logo;
-        logo.style.setProperty('--ratio', String(view.logoRatio ?? 2));
-        logo.style.setProperty('--scale', String(view.logoScale ?? 1));
-        logo.alt = view.caption;
-        caption.replaceChildren(logo);
-      } else {
-        caption.textContent = view.caption;
-      }
+      fillCaption(caption, view);
     }
     if (count) count.textContent = `${current + 1} / ${views.length}`;
     strip?.querySelectorAll('button').forEach((button, i) => {
@@ -104,9 +140,11 @@
     dialog.classList.remove('is-closing');
     dialog.showModal();
     show(0);
+    sizeHeader();
   };
 
   if (dialog) bindDialogMotion(dialog);
+  window.addEventListener('resize', sizeHeader);
 
   document.addEventListener('click', (event) => {
     const trigger = (event.target as Element).closest<HTMLElement>('[data-viewer]');

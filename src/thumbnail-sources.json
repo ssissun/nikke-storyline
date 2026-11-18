@@ -1,0 +1,221 @@
+{
+  "scarlet": {
+    "kind": "character",
+    "url": "https://static.wikia.nocookie.net/nikke-goddess-of-victory-international/images/4/45/Scarlet_MI.png/revision/latest?cb=20231123052441",
+    "original": "scarlet.webp",
+    "width": 256,
+    "height": 512,
+    "crop": {
+      "x": 0,
+      "y": 90,
+      "size": 256
+    },
+    "background": "linear-gradient(#182c49, #0c1628)"
+  },
+  "rapunzel": {
+    "kind": "character",
+    "url": "https://static.wikia.nocookie.net/nikke-goddess-of-victory-international/images/c/c9/Rapunzel_MI.png/revision/latest?cb=20231123052434",
+    "original": "rapunzel.webp",
+    "width": 256,
+    "height": 508,
+    "crop": {
+      "x": 0,
+      "y": 70,
+      "size": 256
+    },
+    "background": "linear-gradient(#182c49, #0c1628)"
+  },
+  "miracle-snow": {
+    "kind": "promo-crop",
+    "url": "https://static.wikia.nocookie.net/nikke-goddess-of-victory-international/images/5/56/Miracle_Snow_splash_2.jpg/revision/latest?cb=20230314082714",
+    "original": "miracle-snow.webp",
+    "width": 1920,
+    "height": 2072,
+    "crop": {
+      "x": 60,
+      "y": 272,
+      "size": 1800
+    }
+  },
+  "cherry-blossom": {
+    "kind": "promo-crop",
+    "url": "https://static.wikia.nocookie.net/nikke-goddess-of-victory-international/images/c/c0/Cherry_Blossom_splash_1.jpg/revision/latest?cb=20230327143153",
+    "original": "cherry-blossom.webp",
+    "width": 1080,
+    "height": 1920,
+    "crop": {
+      "x": 0,
+      "y": 160,
+      "size": 1080
+    }
+  },
+  "first-affection": {
+    "kind": "promo-crop",
+    "url": "https://static.wikia.nocookie.net/nikke-goddess-of-victory-international/images/f/f9/First_Affection_splash_1.jpg/revision/latest?cb=20230821182903",
+    "original": "first-affection.webp",
+    "width": 1920,
+    "height": 1080,
+    "crop": {
+      "x": 240,
+      "y": 0,
+      "size": 1080
+    }
+  },
+  "school-of-lock": {
+    "kind": "promo-crop",
+    "url": "https://static.wikia.nocookie.net/nikke-goddess-of-victory-international/images/0/05/School_of_Lock_splash_1.jpg/revision/latest?cb=20230917045554",
+    "original": "school-of-lock.webp",
+    "width": 1080,
+    "height": 1920,
+    "crop": {
+      "x": 0,
+      "y": 200,
+      "size": 1080
+    }
+  },
+  "dazzling-cupid": {
+    "kind": "promo-crop",
+    "url": "https://static.wikia.nocookie.net/nikke-goddess-of-victory-international/images/0/04/Dazzling_Cupid_splash_1.jpg/revision/latest?cb=20231001063411",
+    "original": "dazzling-cupid.webp",
+    "width": 1080,
+    "height": 1920,
+    "crop": {
+      "x": 80,
+      "y": 330,
+      "size": 960
+    }
+  },
+  "ether": {
+    "kind": "character",
+    "url": "https://static.wikia.nocookie.net/nikke-goddess-of-victory-international/images/3/33/Ether_MI.png/revision/latest?cb=20231123052332",
+    "original": "ether.webp",
+    "width": 256,
+    "height": 512,
+    "crop": {
+      "x": 0,
+      "y": 70,
+      "size": 256
+    }
+  },
+  "naga": {
+    "kind": "character",
+    "url": "https://static.wikia.nocookie.net/nikke-goddess-of-victory-international/images/f/f6/Naga_MI.png/revision/latest?cb=20231123052410",
+    "original": "naga.webp",
+    "width": 256,
+    "height": 446,
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "size": 256
+    }
+  },
+  "kilo": {
+    "kind": "character",
+    "url": "https://static.wikia.nocookie.net/nikke-goddess-of-victory-international/images/4/4d/Kilo_MI.png/revision/latest?cb=20240425072318",
+    "original": "kilo.webp",
+    "width": 256,
+    "height": 456,
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "size": 256
+    }
+  },
+  "color-less": {
+    "kind": "promo-crop",
+    "url": "https://static.wikia.nocookie.net/nikke-goddess-of-victory-international/images/f/f5/Colorless_splash_1.jpg/revision/latest?cb=20240805075512",
+    "original": "colorless.webp",
+    "width": 1080,
+    "height": 1920,
+    "crop": {
+      "x": 0,
+      "y": 240,
+      "size": 1080
+    }
+  },
+  "for-rest": {
+    "kind": "promo-crop",
+    "url": "https://static.wikia.nocookie.net/nikke-goddess-of-victory-international/images/9/9b/For_Rest_splash_1.jpg/revision/latest?cb=20250310131527",
+    "original": "for-rest.webp",
+    "width": 1080,
+    "height": 1920,
+    "crop": {
+      "x": 0,
+      "y": 160,
+      "size": 1080
+    }
+  },
+  "mori": {
+    "kind": "character",
+    "url": "https://static.wikia.nocookie.net/nikke-goddess-of-victory-international/images/9/9b/Mori_MI.png/revision/latest?cb=20250424002314",
+    "original": "mori.webp",
+    "width": 256,
+    "height": 505,
+    "crop": {
+      "x": 0,
+      "y": 30,
+      "size": 256
+    }
+  },
+  "blank-ticket": {
+    "kind": "promo-crop",
+    "url": "https://static.wikia.nocookie.net/nikke-goddess-of-victory-international/images/b/b2/Blank_Ticket_splash_1.jpg/revision/latest?cb=20251117124030",
+    "original": "blank-ticket.webp",
+    "width": 1080,
+    "height": 1920,
+    "crop": {
+      "x": 0,
+      "y": 240,
+      "size": 1080
+    }
+  },
+  "gingerbread-house": {
+    "kind": "scene",
+    "url": "https://nikke-db-legacy.pages.dev/images/gallery/side06/EventScene_Side_06_03_1.webp",
+    "original": "gingerbread-house.webp",
+    "width": 2048,
+    "height": 2048,
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "size": 2048
+    }
+  },
+  "maria-n": {
+    "kind": "promo-crop",
+    "url": "https://na-nikke-aws.playerinfinite.com/cms/nrft/feeds/pic/_a1c0db2b7bbd28d6815ea2f44586ca351233e2cd-3840x2160-ori_s_80_50_ori_q_80.webp",
+    "original": "maria-n.webp",
+    "width": 3840,
+    "height": 2160,
+    "crop": {
+      "x": 840,
+      "y": 0,
+      "size": 2160
+    }
+  },
+  "project-matis": {
+    "kind": "nikke-db-album",
+    "url": "https://nikke-db-legacy.pages.dev/images/gallery/albums/album_projectmatis_01.png",
+    "original": "project-matis.png"
+  },
+  "coin-rush-showdown": {
+    "kind": "nikke-db-album",
+    "url": "https://nikke-db-legacy.pages.dev/images/gallery/albums/album_coinrushshowdown_01.png",
+    "original": "coin-rush-showdown.png"
+  },
+  "ice-dragon-saga": {
+    "kind": "nikke-db-album",
+    "url": "https://nikke-db-legacy.pages.dev/images/gallery/albums/album_icedragonsaga_01.png",
+    "original": "ice-dragon-saga.png"
+  },
+  "terminus-ticket": {
+    "kind": "nikke-db-album",
+    "url": "https://nikke-db-legacy.pages.dev/images/gallery/albums/album_terminusticket_01.png",
+    "original": "terminus-ticket.png"
+  },
+  "2x2-love": {
+    "kind": "nikke-db-album",
+    "url": "https://nikke-db-legacy.pages.dev/images/gallery/albums/album_2x2love_01.png",
+    "original": "2x2-love.png"
+  }
+}

@@ -1,5 +1,14 @@
 import type { ImageMetadata } from 'astro';
 import { logoFor, logoScaleFor } from './eventLogos';
+import thumbnailSources from './thumbnail-sources.json';
+
+const sourceByName = thumbnailSources as Record<string, {
+  original?: string;
+  width?: number;
+  height?: number;
+  crop?: { x: number; y: number; size: number };
+  background?: string;
+}>;
 
 // 스토리 썸네일(src/assets/thumbs/*.webp, 256px 정사각형). 파일 이름은 제목에서 만든다.
 // - 메인 'Chapter 39 — 40' → chapter-39 · chapter-40
@@ -33,6 +42,9 @@ const chapterName = (chapter: number) => `chapter-${String(chapter).padStart(2, 
 
 export interface ThumbView {
   src: string;
+  originalSrc?: string;
+  background?: string;
+  crop?: { x: number; y: number; size: number; width: number; height: number };
   caption: string;
   logo?: string; // 이벤트면 크게 보기에서 제목 대신 보여 줄 로고
   logoRatio?: number; // 로고 가로 ÷ 세로
@@ -57,9 +69,17 @@ export const galleryFor = (title: string, storyTitles?: string[]): ThumbView[] =
     const image = byName.get(name);
     if (!image) return [];
     const logo = name.startsWith('chapter-') ? undefined : logoFor(caption);
+    const source = sourceByName[name];
     return [
       {
         src: image.src,
+        ...(source?.original && {
+          originalSrc: `${import.meta.env.BASE_URL.replace(/\/$/, '')}/thumbnail-originals/${source.original}`,
+          ...(source.background && { background: source.background }),
+          ...(source.crop && source.width && source.height && {
+            crop: { ...source.crop, width: source.width, height: source.height },
+          }),
+        }),
         caption,
         ...(logo && {
           logo: logo.src,
