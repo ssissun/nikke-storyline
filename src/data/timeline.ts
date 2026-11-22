@@ -314,9 +314,10 @@ export const timeline: TimelineItem[] = [
     importance: 'low',
     noDub: true,
     annotations: [
-      '현재 메인과 접점이 없어 중요도 낮음·추후 메인 접점 발생 시 중요도 상향 조정될 것임',
+      '현재 메인과 접점이 없어 중요도 낮음·추후 메인 접점 발생 시 중요도 상향 조정',
       '순서: L.T.K → KILL THE LORD → LORD FOR JUSTICE',
     ],
+    expandedAnnotations: ['이 세개 이벤스의 스토리 자체는 호평이 많음'],
   },
   {
     type: 'card',
