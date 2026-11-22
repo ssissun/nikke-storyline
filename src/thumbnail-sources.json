@@ -217,5 +217,10 @@
     "kind": "nikke-db-album",
     "url": "https://nikke-db-legacy.pages.dev/images/gallery/albums/album_2x2love_01.png",
     "original": "2x2-love.png"
+  },
+  "no-caller-id": {
+    "kind": "wiki-storyline",
+    "url": "https://static.wikia.nocookie.net/nikke-goddess-of-victory-international/images/1/18/Storyline_No_Caller_ID.png/revision/latest?cb=20251215144518",
+    "original": "no-caller-id.webp"
   }
 }

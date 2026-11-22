@@ -17,6 +17,14 @@ export const timeline: TimelineItem[] = [
   },
   {
     type: 'card',
+    title: 'NO CALLER ID',
+    category: 'event',
+    required: false,
+    importance: 'low',
+    annotations: ['메인에서 짧게 언급됨. 안보고 넘어가도 됨'],
+  },
+  {
+    type: 'card',
     title: 'Chapter 07 — 14',
     category: 'main',
     required: true,
