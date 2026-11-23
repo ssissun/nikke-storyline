@@ -7,6 +7,8 @@ import { cardFilterAttrs } from '../timelineFilter';
 import { thumbnailsFor } from '../thumbnails';
 import Thumb from './Thumb.astro';
 import WatchToggle from './WatchToggle.astro';
+import SummaryToggle from './SummaryToggle.astro';
+import StorySummary from './StorySummary.astro';
 
 interface Props {
   card: StoryCard;
@@ -23,6 +25,8 @@ const thumbs = thumbnailsFor(card.title, card.storyTitles);
 const id = card.id ?? anchorId('story', card.title);
 const annotations = card.annotations ?? [];
 const expandedAnnotations = card.expandedAnnotations ?? [];
+const storySummary = card.summary;
+const summaryId = `${id}-summary`;
 
 const categoryLabel: Record<StoryCard['category'], string> = {
   main: '메인',
@@ -54,7 +58,7 @@ const categoryLabel: Record<StoryCard['category'], string> = {
       <span class="order">{orderStr}</span>
       <span class={ttlClass}>{card.title}</span>
     </div>
-    <div class="meta-row">
+    <div class:list={['meta-row', { 'has-summary-action': Boolean(storySummary) }]}>
       <span class={`badge cat-${card.category}`}>{categoryLabel[card.category]}</span>
       {card.anniversary && <span class="badge anniv">{card.anniversary}</span>}
       {card.noDub && <span class="badge no-dub">더빙X</span>}
@@ -63,6 +67,7 @@ const categoryLabel: Record<StoryCard['category'], string> = {
       </span>
       {card.important && <span class="badge important">중요</span>}
       <Stars required={card.required} importance={card.importance} />
+      {storySummary && <SummaryToggle panelId={summaryId} compact />}
     </div>
     {
       (annotations.length > 0 || expandedAnnotations.length > 0) && (
@@ -83,6 +88,7 @@ const categoryLabel: Record<StoryCard['category'], string> = {
         </div>
       )
     }
+    {storySummary && <StorySummary id={summaryId} paragraphs={storySummary} />}
   </div>
 
   {lane === 'left' && <div class="marker"><div class="dot"></div></div>}

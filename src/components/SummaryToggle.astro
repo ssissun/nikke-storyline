@@ -1,0 +1,19 @@
+---
+interface Props {
+  panelId: string;
+  compact?: boolean;
+}
+const { panelId, compact = false } = Astro.props;
+---
+
+<button
+  type="button"
+  class:list={['summary-toggle', { 'summary-toggle-compact': compact }]}
+  aria-expanded="false"
+  aria-controls={panelId}
+  aria-label="요약 · 스포주의"
+  title="요약 · 스포주의"
+  data-summary-toggle
+>
+  <span>요약</span>{!compact && <span class="summary-warning"> · 스포주의</span>}
+</button>

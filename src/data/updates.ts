@@ -9,6 +9,10 @@ import type { UpdateLogEntry } from './types';
  */
 export const updates: UpdateLogEntry[] = [
   {
+    date: '2026-11-23',
+    items: [{ text: '[이벤트] NO CALLER ID · 요약 추가', to: 'NO CALLER ID' }],
+  },
+  {
     date: '2026-11-22',
     items: [
       { text: '[이벤트] NO CALLER ID 추가', to: 'NO CALLER ID' },

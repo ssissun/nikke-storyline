@@ -23,6 +23,8 @@ export interface StoryCard {
   annotations?: string[];
   /** 기본 설명 아래 펼쳐 보는 추가 안내. HTML allowed. */
   expandedAnnotations?: string[];
+  /** 클릭해서 공개하는 스포일러 요약. 각 항목은 한 문단. */
+  summary?: string[];
 }
 
 export interface ArcDividerItem {

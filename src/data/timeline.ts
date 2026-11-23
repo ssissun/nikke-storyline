@@ -2,6 +2,10 @@ import type { TimelineItem } from './types';
 
 export const timeline: TimelineItem[] = [
   {
+    type: 'divider',
+    text: '스토리 요약을 선택·미더빙 우선 순차적으로 추가 중.  스토리 카드의 요약버튼을 눌러 확인 가능.',
+  },
+  {
     type: 'card',
     title: 'Chapter 00 — 01',
     category: 'main',
@@ -18,6 +22,13 @@ export const timeline: TimelineItem[] = [
   {
     type: 'card',
     title: 'NO CALLER ID',
+    summary: [
+      '지상 생존자는 없다는 공식 발표와 달리, 낙원을 알리는 메시지가 수신됨',
+      '카운터스와 발신지를 조사하던 중 메시지에 비명까지 섞여들림',
+      '신호의 정체는 폐놀이공원의 광고와 환호성으로 단순 해프닝이었음',
+      '지휘관은 카운터스의 권유로 대관람차에 타서 드넓은 지상을 바라봄',
+      '엔더슨은 누군가의 개입을 의심하지만, 진상을 밝히지 않고 사건을 종결함',
+    ],
     category: 'event',
     required: false,
     importance: 'low',

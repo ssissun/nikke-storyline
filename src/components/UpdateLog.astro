@@ -12,8 +12,6 @@ import { settingStoryGroups } from '../data/settingStories';
 import type { UpdateLogItem } from '../data/types';
 import { anchorId } from '../anchors';
 
-const RECENT_COUNT = 10; // 창에 보여줄 최근 업데이트 날짜 수
-
 // 분류 꼬리표 색은 카드 카테고리 색을 따른다. 섹션 · 기능 등 꼬리표는 기본색.
 const TAG_CATEGORY: Record<string, string> = {
   메인: 'main',
@@ -65,7 +63,7 @@ const sortLines = (lines: Line[]) => lines.toSorted((a, b) => rank(a) - rank(b))
 
 const formatDate = (date: string) => date.replaceAll('-', '.');
 
-const recent = updates.slice(0, RECENT_COUNT).map(({ date, items }) => ({
+const recent = updates.map(({ date, items }) => ({
   date,
   lines: sortLines(items.map(parseItem)),
 }));
@@ -135,9 +133,26 @@ const moreCount = latest.lines.length - 1;
 
   const dialog = document.querySelector<HTMLDialogElement>('[data-update-log]');
 
+  // 정적 페이지도 방문한 날짜를 기준으로 최근 두 달만 표시한다.
+  const filterRecentUpdates = () => {
+    const today = new Date();
+    const cutoff = new Date(today.getFullYear(), today.getMonth() - 2, 1);
+    const lastDay = new Date(cutoff.getFullYear(), cutoff.getMonth() + 1, 0).getDate();
+    cutoff.setDate(Math.min(today.getDate(), lastDay));
+    const dateKey = (date: Date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+    const from = dateKey(cutoff);
+    const to = dateKey(today);
+    dialog?.querySelectorAll<HTMLElement>('.update-day').forEach((day) => {
+      const date = day.querySelector('time')?.getAttribute('datetime') ?? '';
+      day.hidden = date < from || date > to;
+    });
+  };
+
+  filterRecentUpdates();
   if (dialog) bindDialogMotion(dialog);
   document.querySelectorAll('[data-update-open]').forEach((button) =>
     button.addEventListener('click', () => {
+      filterRecentUpdates();
       dialog?.classList.remove('is-closing');
       dialog?.showModal();
     }),

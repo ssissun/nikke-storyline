@@ -1,0 +1,65 @@
+---
+import warningIcon from '@tabler/icons/outline/alert-triangle.svg?raw';
+
+interface Props {
+  id: string;
+  paragraphs: string[];
+}
+const { id, paragraphs } = Astro.props;
+---
+
+<section class="story-summary" id={id} aria-label="스토리 요약" hidden data-story-summary>
+  <div class="summary-spoiler" data-summary-spoiler>
+    <div class="summary-copy" inert aria-hidden="true" data-summary-copy>
+      {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+    <button type="button" class="summary-reveal" data-summary-reveal>
+      <strong class="summary-spoiler-warning">
+        <i class="summary-warning-icon" aria-hidden="true" set:html={warningIcon} />
+        스포일러 주의!
+      </strong>
+      <span>눌러서 보기</span>
+    </button>
+  </div>
+  <button type="button" class="summary-hide" hidden data-summary-hide>다시 가리기</button>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-story-summary]').forEach((panel) => {
+    const card = panel.closest('.card');
+    const toggle = card?.querySelector<HTMLButtonElement>('[data-summary-toggle]');
+    const spoiler = panel.querySelector<HTMLElement>('[data-summary-spoiler]');
+    const copy = panel.querySelector<HTMLElement>('[data-summary-copy]');
+    const reveal = panel.querySelector<HTMLButtonElement>('[data-summary-reveal]');
+    const hide = panel.querySelector<HTMLButtonElement>('[data-summary-hide]');
+    if (!toggle || !spoiler || !copy || !reveal || !hide) return;
+
+    let pinned = false;
+    const render = () => {
+      const visible = !panel.hidden && pinned;
+      spoiler.classList.toggle('is-visible', visible);
+      copy.inert = !visible;
+      copy.setAttribute('aria-hidden', String(!visible));
+      reveal.hidden = pinned;
+      hide.hidden = !pinned;
+    };
+
+    toggle.addEventListener('click', () => {
+      panel.hidden = !panel.hidden;
+      pinned = false;
+      toggle.setAttribute('aria-expanded', String(!panel.hidden));
+      render();
+    });
+    reveal.addEventListener('click', (event) => {
+      pinned = true;
+      render();
+      if (event.detail === 0) hide.focus();
+    });
+    hide.addEventListener('click', () => {
+      pinned = false;
+      render();
+      reveal.focus({ preventScroll: true });
+    });
+  });
+
+</script>
