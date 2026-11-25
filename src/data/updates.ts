@@ -9,6 +9,15 @@ import type { UpdateLogEntry } from './types';
  */
 export const updates: UpdateLogEntry[] = [
   {
+    date: '2026-11-25',
+    items: [
+      { text: '[이벤트] OVER THE HORIZON, ENTER HEAVEN · 요약 추가', to: 'OVER THE HORIZON' },
+      { text: '[메인] Chapter 43 — 44 · 세르반 서브퀘스트 요약 추가', to: 'Chapter 43 — 44' },
+      { text: '[이벤트] CHERRY BLOSSOM, DIRTY BACKYARD · 요약 추가', to: 'CHERRY BLOSSOM' },
+      { text: '[이벤트] NO CALLER ID · 요약 수정', to: 'NO CALLER ID' },
+    ],
+  },
+  {
     date: '2026-11-23',
     items: [{ text: '[이벤트] NO CALLER ID · 요약 추가', to: 'NO CALLER ID' }],
   },

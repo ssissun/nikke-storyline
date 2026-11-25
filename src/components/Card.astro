@@ -67,7 +67,7 @@ const categoryLabel: Record<StoryCard['category'], string> = {
       </span>
       {card.important && <span class="badge important">중요</span>}
       <Stars required={card.required} importance={card.importance} />
-      {storySummary && <SummaryToggle panelId={summaryId} compact />}
+      {storySummary && <SummaryToggle panelId={summaryId} label={card.summaryLabel} compact />}
     </div>
     {
       (annotations.length > 0 || expandedAnnotations.length > 0) && (

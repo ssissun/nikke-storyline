@@ -25,6 +25,8 @@ export interface StoryCard {
   expandedAnnotations?: string[];
   /** 클릭해서 공개하는 스포일러 요약. 각 항목은 한 문단. */
   summary?: string[];
+  /** 요약 대신 관련 이야기 이름을 버튼에 표시할 때 사용한다. */
+  summaryLabel?: string;
 }
 
 export interface ArcDividerItem {

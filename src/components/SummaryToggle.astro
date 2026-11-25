@@ -2,8 +2,10 @@
 interface Props {
   panelId: string;
   compact?: boolean;
+  label?: string;
 }
-const { panelId, compact = false } = Astro.props;
+const { panelId, compact = false, label = '요약' } = Astro.props;
+const warningLabel = `${label} · 스포주의`;
 ---
 
 <button
@@ -11,9 +13,9 @@ const { panelId, compact = false } = Astro.props;
   class:list={['summary-toggle', { 'summary-toggle-compact': compact }]}
   aria-expanded="false"
   aria-controls={panelId}
-  aria-label="요약 · 스포주의"
-  title="요약 · 스포주의"
+  aria-label={warningLabel}
+  title={warningLabel}
   data-summary-toggle
 >
-  <span>요약</span>{!compact && <span class="summary-warning"> · 스포주의</span>}
+  <span>{label}</span>{!compact && <span class="summary-warning"> · 스포주의</span>}
 </button>
