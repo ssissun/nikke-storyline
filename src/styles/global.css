@@ -1464,6 +1464,7 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
 .summary-spoiler { position: relative; border-radius: 3px; }
 .summary-copy { filter: blur(6px); user-select: none; pointer-events: none; }
 .summary-copy p { margin: 0; }
+.summary-copy p + p { margin-top: 1.75em; }
 .summary-reveal {
   position: absolute;
   inset: 0;
