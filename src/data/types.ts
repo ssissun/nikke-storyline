@@ -27,6 +27,7 @@ export interface StoryCard {
   summary?: string[];
   /** 요약 대신 관련 이야기 이름을 버튼에 표시할 때 사용한다. */
   summaryLabel?: string;
+  summaryDisplay?: 'button' | 'details';
 }
 
 export interface ArcDividerItem {

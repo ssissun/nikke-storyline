@@ -4,11 +4,12 @@ import warningIcon from '@tabler/icons/outline/alert-triangle.svg?raw';
 interface Props {
   id: string;
   paragraphs: string[];
+  embedded?: boolean;
 }
-const { id, paragraphs } = Astro.props;
+const { id, paragraphs, embedded = false } = Astro.props;
 ---
 
-<section class="story-summary" id={id} aria-label="스토리 요약" hidden data-story-summary>
+<section class="story-summary" id={id} aria-label="스토리 요약" hidden={!embedded} data-story-summary>
   <div class="summary-spoiler" data-summary-spoiler>
     <div class="summary-copy" inert aria-hidden="true" data-summary-copy>
       {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
@@ -28,11 +29,12 @@ const { id, paragraphs } = Astro.props;
   document.querySelectorAll<HTMLElement>('[data-story-summary]').forEach((panel) => {
     const card = panel.closest('.card');
     const toggle = card?.querySelector<HTMLButtonElement>('[data-summary-toggle]');
+    const details = panel.closest<HTMLDetailsElement>('[data-summary-details]');
     const spoiler = panel.querySelector<HTMLElement>('[data-summary-spoiler]');
     const copy = panel.querySelector<HTMLElement>('[data-summary-copy]');
     const reveal = panel.querySelector<HTMLButtonElement>('[data-summary-reveal]');
     const hide = panel.querySelector<HTMLButtonElement>('[data-summary-hide]');
-    if (!toggle || !spoiler || !copy || !reveal || !hide) return;
+    if ((!toggle && !details) || !spoiler || !copy || !reveal || !hide) return;
 
     let pinned = false;
     const render = () => {
@@ -44,11 +46,17 @@ const { id, paragraphs } = Astro.props;
       hide.hidden = !pinned;
     };
 
-    toggle.addEventListener('click', () => {
+    toggle?.addEventListener('click', () => {
       panel.hidden = !panel.hidden;
       pinned = false;
       toggle.setAttribute('aria-expanded', String(!panel.hidden));
       render();
+    });
+    details?.addEventListener('toggle', () => {
+      if (!details.open) {
+        pinned = false;
+        render();
+      }
     });
     reveal.addEventListener('click', (event) => {
       pinned = true;

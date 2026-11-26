@@ -1485,7 +1485,7 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
   cursor: pointer;
 }
 .summary-reveal span { font-size: 11px; color: var(--ink-2); }
-.summary-reveal .summary-spoiler-warning {
+.story-summary .summary-reveal .summary-spoiler-warning {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1493,7 +1493,7 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
 }
 .summary-warning-icon { display: inline-flex; flex: none; }
 .summary-warning-icon svg { width: 18px; height: 18px; }
-:root[data-theme="light"] .summary-reveal .summary-spoiler-warning { color: #b95600; }
+:root[data-theme="light"] .story-summary .summary-reveal .summary-spoiler-warning { color: #b95600; }
 :root[data-theme="light"] .story-summary {
   background: color-mix(in srgb, var(--paper-3) 60%, var(--paper-2));
   border-color: var(--line);

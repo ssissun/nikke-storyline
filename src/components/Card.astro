@@ -26,6 +26,7 @@ const id = card.id ?? anchorId('story', card.title);
 const annotations = card.annotations ?? [];
 const expandedAnnotations = card.expandedAnnotations ?? [];
 const storySummary = card.summary;
+const summaryAsDetails = card.summaryDisplay === 'details';
 const summaryId = `${id}-summary`;
 
 const categoryLabel: Record<StoryCard['category'], string> = {
@@ -58,7 +59,7 @@ const categoryLabel: Record<StoryCard['category'], string> = {
       <span class="order">{orderStr}</span>
       <span class={ttlClass}>{card.title}</span>
     </div>
-    <div class:list={['meta-row', { 'has-summary-action': Boolean(storySummary) }]}>
+    <div class:list={['meta-row', { 'has-summary-action': Boolean(storySummary) && !summaryAsDetails }]}>
       <span class={`badge cat-${card.category}`}>{categoryLabel[card.category]}</span>
       {card.anniversary && <span class="badge anniv">{card.anniversary}</span>}
       {card.noDub && <span class="badge no-dub">더빙X</span>}
@@ -67,10 +68,10 @@ const categoryLabel: Record<StoryCard['category'], string> = {
       </span>
       {card.important && <span class="badge important">중요</span>}
       <Stars required={card.required} importance={card.importance} />
-      {storySummary && <SummaryToggle panelId={summaryId} label={card.summaryLabel} compact />}
+      {storySummary && !summaryAsDetails && <SummaryToggle panelId={summaryId} label={card.summaryLabel} compact />}
     </div>
     {
-      (annotations.length > 0 || expandedAnnotations.length > 0) && (
+      (annotations.length > 0 || expandedAnnotations.length > 0 || (storySummary && summaryAsDetails)) && (
         <div class="annot">
           {annotations.length > 0 && (
             <ul>
@@ -85,10 +86,16 @@ const categoryLabel: Record<StoryCard['category'], string> = {
               </ul>
             </details>
           )}
+          {storySummary && summaryAsDetails && (
+            <details class="card-details" data-summary-details>
+              <summary>{card.summaryLabel ?? '요약'}</summary>
+              <StorySummary id={summaryId} paragraphs={storySummary} embedded />
+            </details>
+          )}
         </div>
       )
     }
-    {storySummary && <StorySummary id={summaryId} paragraphs={storySummary} />}
+    {storySummary && !summaryAsDetails && <StorySummary id={summaryId} paragraphs={storySummary} />}
   </div>
 
   {lane === 'left' && <div class="marker"><div class="dot"></div></div>}
