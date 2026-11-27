@@ -9,6 +9,7 @@ import Thumb from './Thumb.astro';
 import WatchToggle from './WatchToggle.astro';
 import SummaryToggle from './SummaryToggle.astro';
 import StorySummary from './StorySummary.astro';
+import SummaryGroup from './SummaryGroup.astro';
 
 interface Props {
   card: StoryCard;
@@ -26,6 +27,7 @@ const id = card.id ?? anchorId('story', card.title);
 const annotations = card.annotations ?? [];
 const expandedAnnotations = card.expandedAnnotations ?? [];
 const storySummary = card.summary;
+const hasSummary = Boolean(storySummary || card.summaryStories?.length);
 const summaryAsDetails = card.summaryDisplay === 'details';
 const summaryId = `${id}-summary`;
 
@@ -47,7 +49,7 @@ const categoryLabel: Record<StoryCard['category'], string> = {
   {lane === 'right' && <div class="marker"><div class="dot"></div></div>}
 
   <div
-    class:list={['card', lane, { 'has-thumb': thumbs.length > 0, 'has-story-group': Boolean(card.storyTitles?.length) }]}
+    class:list={['card', lane, { 'has-thumb': thumbs.length > 0, 'has-story-group': Boolean(card.storyTitles?.length), 'has-summary-group': Boolean(card.summaryStories?.length) }]}
     id={id}
     data-cat={card.category}
     data-req={dataReq}
@@ -59,7 +61,7 @@ const categoryLabel: Record<StoryCard['category'], string> = {
       <span class="order">{orderStr}</span>
       <span class={ttlClass}>{card.title}</span>
     </div>
-    <div class:list={['meta-row', { 'has-summary-action': Boolean(storySummary) && !summaryAsDetails }]}>
+    <div class:list={['meta-row', { 'has-summary-action': hasSummary && !summaryAsDetails }]}>
       <span class={`badge cat-${card.category}`}>{categoryLabel[card.category]}</span>
       {card.anniversary && <span class="badge anniv">{card.anniversary}</span>}
       {card.noDub && <span class="badge no-dub">더빙X</span>}
@@ -68,7 +70,7 @@ const categoryLabel: Record<StoryCard['category'], string> = {
       </span>
       {card.important && <span class="badge important">중요</span>}
       <Stars required={card.required} importance={card.importance} />
-      {storySummary && !summaryAsDetails && <SummaryToggle panelId={summaryId} label={card.summaryLabel} compact />}
+      {hasSummary && !summaryAsDetails && <SummaryToggle panelId={summaryId} label={card.summaryLabel} compact />}
     </div>
     {
       (annotations.length > 0 || expandedAnnotations.length > 0 || (storySummary && summaryAsDetails)) && (
@@ -96,6 +98,7 @@ const categoryLabel: Record<StoryCard['category'], string> = {
       )
     }
     {storySummary && !summaryAsDetails && <StorySummary id={summaryId} paragraphs={storySummary} />}
+    {card.summaryStories?.length && <SummaryGroup id={summaryId} stories={card.summaryStories} />}
   </div>
 
   {lane === 'left' && <div class="marker"><div class="dot"></div></div>}

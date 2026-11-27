@@ -9,6 +9,13 @@ import type { UpdateLogEntry } from './types';
  */
 export const updates: UpdateLogEntry[] = [
   {
+    date: '2026-11-27',
+    items: [
+      { text: "[이벤트] BOOM'S DAY, D.ARK HERO · 요약 추가", to: "BOOM'S DAY" },
+      { text: '[이벤트] WAVE TO YOU 선행 스토리 · 4편 요약 추가', to: 'WAVE TO YOU 선행 스토리' },
+    ],
+  },
+  {
     date: '2026-11-25',
     items: [
       { text: '[이벤트] OVER THE HORIZON, ENTER HEAVEN · 요약 추가', to: 'OVER THE HORIZON' },

@@ -28,7 +28,8 @@ const { id, paragraphs, embedded = false } = Astro.props;
 <script>
   document.querySelectorAll<HTMLElement>('[data-story-summary]').forEach((panel) => {
     const card = panel.closest('.card');
-    const toggle = card?.querySelector<HTMLButtonElement>('[data-summary-toggle]');
+    const toggle = Array.from(card?.querySelectorAll<HTMLButtonElement>('[data-summary-toggle]') ?? [])
+      .find((button) => button.getAttribute('aria-controls') === panel.id);
     const details = panel.closest<HTMLDetailsElement>('[data-summary-details]');
     const spoiler = panel.querySelector<HTMLElement>('[data-summary-spoiler]');
     const copy = panel.querySelector<HTMLElement>('[data-summary-copy]');

@@ -1406,6 +1406,7 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
 .summary-toggle[aria-expanded="true"]:not(.summary-toggle-compact)::before { transform: rotate(90deg); }
 .summary-warning { color: var(--ink-3); font-size: 11px; }
 .card .meta-row.has-summary-action { flex-wrap: nowrap; }
+.card.has-summary-group .meta-row.has-summary-action { flex-wrap: wrap; }
 .card .meta-row.has-summary-action .badge { flex: none; white-space: nowrap; }
 .card .meta-row.has-summary-action .imp { margin-left: 0; white-space: nowrap; }
 .card .meta-row.has-summary-action .summary-toggle { margin-left: auto; }
@@ -1445,6 +1446,21 @@ a.update-line-action { color: var(--coral); text-decoration: underline; text-und
 .summary-toggle:focus-visible,
 .summary-reveal:focus-visible,
 .summary-hide:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+.summary-group {
+  grid-column: 1 / -1;
+  min-width: 0;
+  margin-top: 10px;
+}
+.summary-group[hidden] { display: none; }
+.summary-group .summary-story + .summary-story { margin-top: 8px; }
+.summary-group .summary-story > summary {
+  padding: 8px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  background: var(--paper-2);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
 .story-summary {
   grid-column: 1 / -1;
   margin-top: 10px;

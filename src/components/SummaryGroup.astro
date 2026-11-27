@@ -1,0 +1,39 @@
+---
+import StorySummary from './StorySummary.astro';
+
+interface Props {
+  id: string;
+  stories: { title: string; paragraphs: string[] }[];
+}
+const { id, stories } = Astro.props;
+---
+
+<div class="summary-group" id={id} hidden data-summary-group>
+  {stories.map((story, index) => (
+    <details class="card-details summary-story" name={`${id}-stories`} data-summary-details>
+      <summary>{story.title}</summary>
+      <StorySummary id={`${id}-${index}`} paragraphs={story.paragraphs} embedded />
+    </details>
+  ))}
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-summary-group]').forEach((group) => {
+    const toggle = Array.from(group.closest('.card')?.querySelectorAll<HTMLButtonElement>('[data-summary-toggle]') ?? [])
+      .find((button) => button.getAttribute('aria-controls') === group.id);
+    if (!toggle) return;
+    const stories = Array.from(group.querySelectorAll<HTMLDetailsElement>('[data-summary-details]'));
+    toggle.addEventListener('click', () => {
+      group.hidden = !group.hidden;
+      toggle.setAttribute('aria-expanded', String(!group.hidden));
+      if (group.hidden) stories.forEach((story) => { story.open = false; });
+    });
+    stories.forEach((story) => {
+      story.addEventListener('toggle', () => {
+        if (story.open) stories.forEach((other) => {
+          if (other !== story) other.open = false;
+        });
+      });
+    });
+  });
+</script>
